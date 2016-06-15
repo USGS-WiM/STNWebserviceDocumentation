@@ -15,8 +15,8 @@
 //Comments
 //04.14.2015 jkn - Created
 //Imports"
-var StreamStats;
-(function (StreamStats) {
+var STN;
+(function (STN) {
     var Controllers;
     (function (Controllers) {
         'use strinct';
@@ -61,14 +61,14 @@ var StreamStats;
                 this.markers = null;
                 this.geojson = null;
                 $scope.vm = this;
-                this.selectedUri = new StreamStats.Models.URI('');
+                this.selectedUri = new STN.Models.URI('');
                 this.waitCursor = false;
                 this.sideBarCollapsed = false;
                 this.applicationURL = configuration.baseurls['application'];
                 this.servicesBaseURL = configuration.baseurls['services'];
                 this._onSelectedResourceHandler = new WiM.Event.EventHandler(function () {
                     //clear selectedUri on resource change
-                    _this.selectedUri = new StreamStats.Models.URI('');
+                    _this.selectedUri = new STN.Models.URI('');
                     _this.selectedResource = Resource.SelectedResource;
                 });
                 Resource.onResourceChanged.subscribe(this._onSelectedResourceHandler);
@@ -233,10 +233,10 @@ var StreamStats;
             };
             //Constructor
             //-+-+-+-+-+-+-+-+-+-+-+-
-            MainController.$inject = ['$scope', '$filter', 'StreamStats.Services.ResourceService', 'leafletBoundsHelpers', 'leafletData'];
+            MainController.$inject = ['$scope', '$filter', 'STN.Services.ResourceService', 'leafletBoundsHelpers', 'leafletData'];
             return MainController;
         })(); //end class
-        angular.module('StreamStats.Controllers').controller('StreamStats.Controllers.MainController', MainController);
-    })(Controllers = StreamStats.Controllers || (StreamStats.Controllers = {}));
-})(StreamStats || (StreamStats = {})); //end module
+        angular.module('STN.Controllers').controller('STN.Controllers.MainController', MainController);
+    })(Controllers = STN.Controllers || (STN.Controllers = {}));
+})(STN || (STN = {})); //end module
 //# sourceMappingURL=MainController.js.map

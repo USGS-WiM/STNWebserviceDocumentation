@@ -22,7 +22,7 @@
 
 //Imports"
 // Interface
-module StreamStats.Models {
+module STN.Models {
     export interface IMethod {
         type: string;
         uriList: Array<Models.IURI>;

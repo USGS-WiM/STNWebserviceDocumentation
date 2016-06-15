@@ -23,7 +23,7 @@
 //04.14.2015 jkn - Created
 
 //Imports"
-module StreamStats.Controllers {
+module STN.Controllers {
     'use strinct';
     interface INavbarControllerScope extends ng.IScope {
         vm: NavbarController;
@@ -128,8 +128,8 @@ module StreamStats.Controllers {
         BUILD = 5
     }
 
-    angular.module('StreamStats.Controllers')
-        .controller('StreamStats.Controllers.NavbarController', NavbarController)
+    angular.module('STN.Controllers')
+        .controller('STN.Controllers.NavbarController', NavbarController)
     
 }//end module
  

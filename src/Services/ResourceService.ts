@@ -22,7 +22,7 @@
 //04.15.2015 jkn - Created
 
 //Import
-module StreamStats.Services {
+module STN.Services {
     'use strict'
     export interface IResourceService {
         onResourceChanged: WiM.Event.Delegate<WiM.Event.EventArgs>;
@@ -114,6 +114,6 @@ module StreamStats.Services {
     function factory($http: ng.IHttpService, $q: ng.IQService) {
         return new ResourceService($http,$q)
     }
-    angular.module('StreamStats.Services')
-        .factory('StreamStats.Services.ResourceService', factory)
+    angular.module('STN.Services')
+        .factory('STN.Services.ResourceService', factory)
 }//end module

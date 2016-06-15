@@ -23,7 +23,7 @@
 //04.14.2015 jkn - Created
 
 //Imports"
-module StreamStats.Controllers {
+module STN.Controllers {
     'use strinct';
     interface IMainControllerScope extends ng.IScope {
         vm: MainController;
@@ -140,10 +140,10 @@ module StreamStats.Controllers {
 
         //Constructor
         //-+-+-+-+-+-+-+-+-+-+-+-
-        static $inject = ['$scope', '$filter', 'StreamStats.Services.ResourceService', 'leafletBoundsHelpers', 'leafletData'];
+        static $inject = ['$scope', '$filter', 'STN.Services.ResourceService', 'leafletBoundsHelpers', 'leafletData'];
         constructor($scope: IMainControllerScope, private $filter, private Resource: Services.IResourceService, leafletBoundsHelper: any, leafletData: ILeafletData) {
             $scope.vm = this;         
-            this.selectedUri = new StreamStats.Models.URI('');
+            this.selectedUri = new STN.Models.URI('');
             this.waitCursor = false;
             this.sideBarCollapsed = false;
             this.applicationURL = configuration.baseurls['application'];
@@ -151,7 +151,7 @@ module StreamStats.Controllers {
 
             this._onSelectedResourceHandler = new WiM.Event.EventHandler<WiM.Event.EventArgs>(() => {
                 //clear selectedUri on resource change
-                this.selectedUri = new StreamStats.Models.URI('');
+                this.selectedUri = new STN.Models.URI('');
                 this.selectedResource = Resource.SelectedResource;
             });
             Resource.onResourceChanged.subscribe(this._onSelectedResourceHandler);
@@ -361,6 +361,6 @@ module StreamStats.Controllers {
         }
     }//end class
 
-    angular.module('StreamStats.Controllers')
-        .controller('StreamStats.Controllers.MainController', MainController)
+    angular.module('STN.Controllers')
+        .controller('STN.Controllers.MainController', MainController)
 }//end module

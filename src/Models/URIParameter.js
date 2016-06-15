@@ -16,8 +16,8 @@
 //08.20.2014 jkn - Created
 //Imports"
 // Interface
-var StreamStats;
-(function (StreamStats) {
+var STN;
+(function (STN) {
     var Models;
     (function (Models) {
         var URIParameter = (function () {
@@ -31,6 +31,6 @@ var StreamStats;
             return URIParameter;
         })();
         Models.URIParameter = URIParameter; //end class
-    })(Models = StreamStats.Models || (StreamStats.Models = {}));
-})(StreamStats || (StreamStats = {})); //end module 
+    })(Models = STN.Models || (STN.Models = {}));
+})(STN || (STN = {})); //end module 
 //# sourceMappingURL=URIParameter.js.map

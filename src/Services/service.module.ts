@@ -2,5 +2,5 @@
     'use strict';
 
     angular
-        .module('StreamStats.Services', []);
+        .module('STN.Services', []);
 })();

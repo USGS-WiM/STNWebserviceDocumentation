@@ -23,7 +23,7 @@
 //04.14.2015 jkn - Created
 
 //Imports"
-module StreamStats.Controllers {
+module STN.Controllers {
     'use strinct';
     interface ISidebarControllerScope extends ng.IScope {
         vm: SidebarController;
@@ -44,7 +44,7 @@ module StreamStats.Controllers {
         
         //Constructor
         //-+-+-+-+-+-+-+-+-+-+-+-
-        static $inject = ['$scope','StreamStats.Services.ResourceService'];
+        static $inject = ['$scope','STN.Services.ResourceService'];
         constructor($scope: ISidebarControllerScope, private resourceService:Services.IResourceService) {
             $scope.vm = this; 
             this._onSelectedResourceHandler = new WiM.Event.EventHandler<WiM.Event.EventArgs>(() => {
@@ -90,8 +90,8 @@ module StreamStats.Controllers {
     }//end class
 
 
-    angular.module('StreamStats.Controllers')
-        .controller('StreamStats.Controllers.SidebarController', SidebarController)
+    angular.module('STN.Controllers')
+        .controller('STN.Controllers.SidebarController', SidebarController)
     
 }//end module
  

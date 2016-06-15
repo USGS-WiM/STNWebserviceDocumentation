@@ -3,7 +3,7 @@
 //http://www.funnyant.com/angularjs-ui-router/
 
 declare var configuration: any;
-module StreamStats {
+module STN {
     'use strinct';
 
     class config {
@@ -18,16 +18,16 @@ module StreamStats {
                 views: {
                     'main': {
                         templateUrl: "Views/homeview.html",
-                        controller: "StreamStats.Controllers.MainController"
+                        controller: "STN.Controllers.MainController"
                     },
                     'sidebar': {
                         templateUrl: "Views/sidebarview.html",  
-                        controller: "StreamStats.Controllers.SidebarController"
+                        controller: "STN.Controllers.SidebarController"
 
                     },
                     'navbar': {
                         templateUrl: "Views/navigationview.html",
-                        controller: "StreamStats.Controllers.NavbarController"
+                        controller: "STN.Controllers.NavbarController"
                     }
                 }
                 })//end main state 
@@ -38,11 +38,11 @@ module StreamStats {
         }//end constructor
     }//end class
 
-    angular.module('StreamStats',[
+    angular.module('STN',[
         "ui.router", "mobile-angular-ui",
         'leaflet-directive',
-        "StreamStats.Services",
-        "StreamStats.Controllers",
+        "STN.Services",
+        "STN.Controllers",
         'jsonFormatter','WiM.Services', 'WiM.Event'//, 'wim_angular'
         ])
         .config(config);

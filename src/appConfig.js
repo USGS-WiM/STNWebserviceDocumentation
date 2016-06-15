@@ -1,53 +1,40 @@
 ﻿var configuration = {}
 configuration.baseurls =
 {
-    'services': 'http://ssdev.cr.usgs.gov/streamstatsservices',
-    'application': 'http://ssdev.cr.usgs.gov/v3_beta/',
-    'StreamStats': 'http://streamstats09.cr.usgs.gov',
+    'services': 'https://stn.wim.usgs.gov/STNServices',
+    'application': 'https://stn.wim.usgs.gov/STNWeb'
+    //'StreamStats': 'http://streamstats09.cr.usgs.gov',
 }
 
-configuration.queryparams =
-{
-    'SSdelineation': '/watershed.geojson?rcode={0}&xlocation={1}&ylocation={2}&crs={3}&simplify=true&includeparameters=false&includeflowtypes=false&includefeatures=true',
-}
+//configuration.queryparams =
+//{
+//    'SSdelineation': '/watershed.geojson?rcode={0}&xlocation={1}&ylocation={2}&crs={3}&simplify=true&includeparameters=false&includeflowtypes=false&includefeatures=true',
+//}
 configuration.resources =
     [
         {
-            "name": "Watershed",
-            "description": "The watershed resource represents a delineated hydrologic study area.",
+            "name": "Agency",
+            "description": "The agency resource represents an agency that a member or source is an employee for.",
             "methods": [{
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/watershed{0}?rcode={1}&xlocation={2}&ylocation={3}&crs={4}&includeparameters={5}&includeflowtypes={6}&includefeatures={7}&simplify={8}",
-                        "description": "Returns a watershed object. The request configuration will determine the overall request response. However all returns will return a watershed object with at least the workspaceid. The workspace id is the id to the service workspace where files are stored and can be used for further processing such as for downloads and flow statistic computations.",
-                        "id": "Delineate Watershed By Location",
-                        "parameters": [
-                            { "name": "rcode", "type": "string", "description": "StreamStats 2-3 character code that identifies the Study Area (either a State or a Regional Study)", "value": "NY" },
-                            { "name": "xlocation", "type": "number", "description": "X location of the most downstream point of desired study area.", "value": -74.524 },
-                            { "name": "ylocation", "type": "number", "description": "Y location of the most downstream point of desired study area.", "value": 43.939 },
-                            { "name": "crs", "type": "string", "description": "ESPSG spatial reference code.", "value": "4326" },
-                            { "name": "includeparameters", "type": "string", "optional": true, "description": "Comma separated list of region parameters to compute. Default: true, will return all parameters for region", "value": "false" },
-                            { "name": "includeflowtypes", "type": "string", "optional": true, "description": "Not yet implemented", "value": "false" },
-                            { "name": "includefeatures", "type": "string", "optional": true, "description": "Comma separated list of features to include in response. See Feature resource for more information. Default: true, returns delineated basin and pourpoint", "value": "true" },
-                            { "name": "simplify", "type": "boolean", "optional": true, "description": "Whether to simplify returned result, defaut: true.", "value": "true" }],
-                        "availableMedia": [".xml", ".json", ".geojson"],
-                        "selectedMedia": ".geojson"
+                        "uri": "/Agencies",
+                        "description": "This service returns a list of agencies.",
+                        "id": "All Agencies",
+                        "parameters": [],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/watershed{0}?rcode={1}&workspaceID={2}&includeparameters={3}&includeflowtypes={4}&includefeatures={5}&crs={6}&simplify={7}",
-                        "description": "This service returns a watershed",
-                        "id": "Watershed By Workspace",
+                        "uri": "/Agencies/{0}",
+                        "description": "This service returns an agency",
+                        "id": "An Agency",
                         "parameters": [
-                           { "name": "rcode", "type": "string", "description": "StreamStats 2-3 character code that identifies the Study Area (either a State or a Regional Study).", "value": "NY" },
-                           { "name": "workspaceID", "type": "string", "description": "Service workspace received from watershed service result", "value": "" },
-                            { "name": "includeparameters", "type": "string", "optional": true, "description": "Comma separated list of region parameters to compute. Default: true, will return all parameters for region", "value": "false" },
-                            { "name": "includeflowtypes", "type": "string", "optional": true, "description": "Not yet implemented", "value": "false" },
-                            { "name": "includefeatures", "type": "string", "optional": true, "description": "Comma separated list of features to include in response. See Feature resource for more information. Default: true, returns delineated basin and pourpoint", "value": "true" },
-                            { "name": "crs", "type": "string", "optional": true, "description": "ESPSG spatial reference code. Default is local projection", "value": "4326" },
-                            { "name": "simplify", "type": "boolean", "optional": true, "description": "Whether to simplify returned result, defaut: true.", "value": "true" }],
-                        "availableMedia": [".xml", ".json", ".geojson"],
-                        "selectedMedia": ".geojson"
+                           { "name": "agencyId", "type": "number", "description": "Id of agency requested", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
                     }
                 ]
             }

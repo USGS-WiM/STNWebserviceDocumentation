@@ -251,9 +251,10 @@ module STN.Controllers {
             this.selectedUri.newURL = newURL;            
 
             //for file download endpoints, don't show button to load response in output box
-            if (this.selectedUri.availableMedia.length == 0) 
-                this.downloadable = true;
-
+            if (this.selectedUri.availableMedia != undefined) {
+                if (this.selectedUri.availableMedia.length == 0)
+                    this.downloadable = true;
+            }
             return newURL.replace(/\{(.+?)\}/g, "");
 
         }

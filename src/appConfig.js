@@ -300,7 +300,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/datafiles{0}?IsApproved={1}&Event={2}&Processor={3}&State={4}",
+                        "uri": "/datafiles{0}?IsApproved={1}&event={2}&processor={3}&state={4}",
                         "description": "This service returns a list of data files that meet the passed-in parameters. Without authentication, only approved data files are returned.",
                         "id": "Filtered Data Files",
                         "parameters": [
@@ -593,7 +593,7 @@ configuration.resources =
             }]
         },
         //#endregion
-        //#region event type
+        //#region file
         {
             "name": "File",
             "description": "The file resource represents files that can be uploaded at sites, objective points, hwms, and sensors.",
@@ -619,7 +619,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/files/{1}/Item",
+                        "uri": "/files/{1}/item",
                         "description": "This service returns a file item.",
                         "id": "File Item",
                         "parameters": [
@@ -752,7 +752,374 @@ configuration.resources =
                     //}
                 ]
             }]
-        }
+        },
+        //#endregion
+        //#region file type
+        {
+            "name": "File Type",
+            "description": "The file type resource represents file types that files can have.",
+            "methods": [{
+                "type": "GET",
+                "uriList": [
+                    {
+                        "uri": "/filetypes{0}",
+                        "description": "This service returns a list of file types.",
+                        "id": "All File Types",
+                        "parameters": [],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/filetypes/{1}{0}",
+                        "description": "This service returns a file type by it's ID.",
+                        "id": "A File Type",
+                        "parameters": [
+                           { "name": "fileTypeId", "type": "number", "description": "Id of file type requested", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/files/{1}/type{0}",
+                        "description": "This service returns a file type of a file.",
+                        "id": "File File Type",
+                        "parameters": [
+                           { "name": "fileId", "type": "number", "description": "Id of the file", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    }
+                ]
+            }]
+        },
+        //#endregion
+        //#region horizontal collect methods
+        {
+            "name": "Horizontal Collect Method",
+            "description": "The horizontal collect method resource represents horizontal collect method that sites, objective points, and hwms can have.",
+            "methods": [{
+                "type": "GET",
+                "uriList": [
+                    {
+                        "uri": "/horizontalmethods{0}",
+                        "description": "This service returns a list of horizontal collect methods.",
+                        "id": "All Horizontal Collect Methods",
+                        "parameters": [],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/horizontalmethods/{1}{0}",
+                        "description": "This service returns an horizontal collect method by it's ID.",
+                        "id": "An Horizontal Collect Method",
+                        "parameters": [
+                           { "name": "hcollectId", "type": "number", "description": "Id of horizontal collect method requested", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/hwms/{1}/horizontalmethod{0}",
+                        "description": "This service returns an horizontal collect method of an hwm.",
+                        "id": "HWM Horizontal Collect Method",
+                        "parameters": [
+                           { "name": "hwmId", "type": "number", "description": "Id of the hwm", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    }
+                ]
+            }]
+        },
+        //#endregion
+        //#region horizontal datum
+        {
+            "name": "Horizontal Datum",
+            "description": "The horizontal datum resource represents horizontal datum that sites, objective points, and hwms can have.",
+            "methods": [{
+                "type": "GET",
+                "uriList": [
+                    {
+                        "uri": "/horizontaldatums{0}",
+                        "description": "This service returns a list of horizontal datum.",
+                        "id": "All Horizontal Datums",
+                        "parameters": [],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/horizontaldatums/{1}{0}",
+                        "description": "This service returns an horizontal datum by it's ID.",
+                        "id": "An Horizontal Datum",
+                        "parameters": [
+                           { "name": "hdatumId", "type": "number", "description": "Id of horizontal datum requested", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/sites/{1}/hdatum{0}",
+                        "description": "This service returns an horizontal datum of a site.",
+                        "id": "Site Horizontal Datum",
+                        "parameters": [
+                           { "name": "siteId", "type": "number", "description": "Id of the site", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    }
+                ]
+            }]
+        },
+        //#endregion
+        //#region housing type
+        {
+            "name": "Housing Type",
+            "description": "The housing type resource represents housing type that sensors can have.",
+            "methods": [{
+                "type": "GET",
+                "uriList": [
+                    {
+                        "uri": "/housingtypes{0}",
+                        "description": "This service returns a list of horizontal datum.",
+                        "id": "All Housing Types",
+                        "parameters": [],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/housingtypes/{1}{0}",
+                        "description": "This service returns an housing type by it's ID.",
+                        "id": "An Housing Type",
+                        "parameters": [
+                           { "name": "housingTypeId", "type": "number", "description": "Id of housing type requested", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/instruments/{1}/instrumenthousingtype{0}",
+                        "description": "This service returns an housing type of a sensor.",
+                        "id": "Sensor Housing Type",
+                        "parameters": [
+                           { "name": "sensorId", "type": "number", "description": "Id of the sensor", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    }
+                ]
+            }]
+        },
+        //#endregion
+        //#region hwm
+        {
+            "name": "HWM",
+            "description": "The hwm resource represents hwms that are found at site locations.",
+            "methods": [{
+                "type": "GET",
+                "uriList": [
+                    {
+                        "uri": "/hwms{0}",
+                        "description": "This service returns a list of hwms. If unauthorized, only approved hwms will be returned.",
+                        "id": "All HWMs",
+                        "parameters": [],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json",
+                        "showMap": true
+                    },
+                    {
+                        "uri": "/hwms/{1}{0}",
+                        "description": "This service returns an hwm by it's ID.",
+                        "id": "An HWM",
+                        "parameters": [
+                           { "name": "hwmId", "type": "number", "description": "Id of hwm requested", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json",
+                        "showMap": true
+                    },
+                    {
+                        "uri": "/events/{1}/hwms{0}",
+                        "description": "This service returns a list of hwms found at an event. If unauthorized, only approved hwms will be returned.",
+                        "id": "Event HWMs",
+                        "parameters": [
+                           { "name": "eventId", "type": "number", "description": "Id of the event", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json",
+                        "showMap": true
+                    },
+                    {
+                        "uri": "/sites/{1}/EventHWMs{0}?Event={2}",
+                        "description": "This service returns a list of hwms found at a site for an event. If unauthorized, only approved hwms will be returned.",
+                        "id": "Site Event HWMs",
+                        "parameters": [
+                            { "name": "siteId", "type": "number", "description": "Id of the site", "value": "" },
+                            { "name": "eventId", "type": "number", "description": "Id of the event", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json",
+                        "showMap": true
+                    },
+                    {
+                        "uri": "/hwms{0}?IsApproved={1}&Event={2}&Member={3}&State={4}",
+                        "description": "This service returns a list of hwms that meet the passed-in parameters. If unauthorized, only approved hwms will be returned.",
+                        "id": "Approval HWMs",
+                        "parameters": [
+                           { "name": "appoved", "type": "boolean", "description": "True for hwms that are approved, false for those that are not", "value": "" },
+                           { "name": "eventId", "type": "number", "description": "Id of the event", "optional":true, "value": "" },
+                           { "name": "memberId", "type": "number", "description": "Id of the member that either flagged or surveyed", "optional": true, "value": "" },
+                           { "name": "stateAbbrev", "type": "string", "description": "State abbreviation", "optional": true, "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json",
+                        "showMap": true
+                    },
+                    {
+                        "uri": "/approvals/{1}/hwms{0}",
+                        "description": "This service returns a list of hwms for this approval.",
+                        "id": "Approved HWMs",
+                        "parameters": [
+                           { "name": "approvalId", "type": "number", "description": "Id of the approval", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json",
+                        "showMap": true
+                    },
+                    {
+                        "uri": "/members/{1}/hwms{0}",
+                        "description": "This service returns a list of hwms that were flagged or surveyed by the given member. If unauthorized, only approved hwms will be returned.",
+                        "id": "Member HWMs",
+                        "parameters": [
+                           { "name": "memberId", "type": "number", "description": "Id of the member", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json",
+                        "showMap": true
+                    },
+                    {
+                        "uri": "/hwmqualities/{1}/hwms{0}",
+                        "description": "This service returns a list of hwms with a given hwm quality. If unauthorized, only approved hwms will be returned.",
+                        "id": "HWM Quality HWMs",
+                        "parameters": [
+                           { "name": "hwmQualId", "type": "number", "description": "Id of the hwm quality", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json",
+                        "showMap": true
+                    },
+                    {
+                        "uri": "/hwmtypes/{1}/hwms{0}",
+                        "description": "This service returns a list of hwms with a given hwm type. If unauthorized, only approved hwms will be returned.",
+                        "id": "HWM Type HWMs",
+                        "parameters": [
+                           { "name": "hwmTypeId", "type": "number", "description": "Id of the hwm type", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json",
+                        "showMap": true
+                    },
+                    {
+                        "uri": "/horizontalmethods/{1}/hwms{0}",
+                        "description": "This service returns a list of hwms found with a given horizontal method. If unauthorized, only approved hwms will be returned.",
+                        "id": "Horizontal Method HWMs",
+                        "parameters": [
+                           { "name": "horizontalMethodId", "type": "number", "description": "Id of the horizontal method", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json",
+                        "showMap": true
+                    },
+                    {
+                        "uri": "/verticalmethods/{1}/hwms{0}",
+                        "description": "This service returns a list of hwms with a given vertical method. If unauthorized, only approved hwms will be returned.",
+                        "id": "Vertical Method HWMs",
+                        "parameters": [
+                           { "name": "verticalMethodId", "type": "number", "description": "Id of the vertical method", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json",
+                        "showMap": true
+                    },
+                    {
+                        "uri": "/sites/{1}/hwms{0}",
+                        "description": "This service returns a list of hwms found at a given site. If unauthorized, only approved hwms will be returned.",
+                        "id": "Site HWMs",
+                        "parameters": [
+                           { "name": "siteId", "type": "number", "description": "Id of the site", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json",
+                        "showMap": true
+                    },
+                    {
+                        "uri": "/VerticalDatums/{1}/hwms{0}",
+                        "description": "This service returns a list of hwms with a given vertical datum. If unauthorized, only approved hwms will be returned.",
+                        "id": "Vertical Datum HWMs",
+                        "parameters": [
+                           { "name": "verticalDatumId", "type": "number", "description": "Id of the vertical datum", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json",
+                        "showMap": true
+                    },
+                    {
+                        "uri": "/markers/{1}/hwms{0}",
+                        "description": "This service returns a list of hwms with a given marker. If unauthorized, only approved hwms will be returned.",
+                        "id": "Marker HWMs",
+                        "parameters": [
+                           { "name": "markerId", "type": "number", "description": "Id of the marker", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json",
+                        "showMap": true
+                    },
+                    {
+                        "uri": "/peaksummaries/{1}/hwms{0}",
+                        "description": "This service returns a list of hwms with a given peak summary. If unauthorized, only approved hwms will be returned.",
+                        "id": "Peak Summary HWMs",
+                        "parameters": [
+                           { "name": "peakSummaryId", "type": "number", "description": "Id of the peak summary", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json",
+                        "showMap": true
+                    },
+                    {
+                        "uri": "/files/{1}/hwm{0}",
+                        "description": "This service returns a hwm that a given file was uploaded for. If unauthorized, only approved hwms will be returned.",
+                        "id": "File HWM",
+                        "parameters": [
+                           { "name": "fileId", "type": "number", "description": "Id of the file", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json",
+                        "showMap": true
+                    },
+                    {
+                        "uri": "/HWMs/FilteredHWMs{0}?Event={1}&EventType={2}&EventStatus={3}"+
+                            "&States={4}&County={5}&HWMType={6}&HWMQuality={7}"+
+                            "&HWMEnvironment={8}&SurveyComplete={9}&StillWater={10}",
+                        "description": "This service returns a list of hwms that meet the passed-in parameters. If unauthorized, only approved hwms will be returned.",
+                        "id": "Filtered HWMs",
+                        "parameters": [
+                           { "name": "eventId", "type": "comma separated string", "description": "Comma separated list of event IDs", "optional":true, "value": "" },
+                           { "name": "eventTypeIDs", "type": "comma separated string", "description": "Comma separated list of event type IDs", "optional": true, "value": "" },
+                           { "name": "eventStatusID", "type": "number", "description": "Id of the event status", "optional": true, "value": "" },
+                           { "name": "states", "type": "comma separated string", "description": "Comma separated list of state abbreviations", "optional": true, "value": "" },
+                           { "name": "counties", "type": "comma separated string", "description": "Comma separated list of county names", "optional": true, "value": "" },
+                           { "name": "hwmTypeIDs", "type": "comma separated string", "description": "Comma separated list of hwm type IDs", "optional": true, "value": "" },
+                           { "name": "hwmQualIDs", "type": "comma separated string", "description": "Comma separated list of hwm qualiyt IDs", "optional": true, "value": "" },
+                           { "name": "hwmEnvironment", "type": "string", "description": "Either 'Coastal' or 'Riverine'", "optional": true, "value": "" },
+                           { "name": "surveyComplete", "type": "boolean", "description": "True or false: surveyed or not", "optional": true, "value": "" },
+                           { "name": "stillWater", "type": "boolean", "description": "True or false: stillwater or not", "optional": true, "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json",
+                        "showMap": true
+                    }
+                ]
+            }]
+        },
         //#endregion
     ]
 configuration.basemaps =

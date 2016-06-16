@@ -64,6 +64,7 @@ var STN;
                 this.selectedUri = new STN.Models.URI('');
                 this.waitCursor = false;
                 this.sideBarCollapsed = false;
+                this.downloadable = false;
                 this.applicationURL = configuration.baseurls['application'];
                 this.servicesBaseURL = configuration.baseurls['services'];
                 this._onSelectedResourceHandler = new WiM.Event.EventHandler(function () {
@@ -114,17 +115,6 @@ var STN;
                         for (var key in _this.selectedUri.parameters) {
                             //if oldval doesnt exists were on first page load
                             if (_this.selectedUri.parameters[key].name == "rcode") {
-                                //if there isn't a study area
-                                if (!_this.studyArea) {
-                                    //console.log('first page load');
-                                    _this.studyArea = new studyArea(_this.selectedUri.parameters[key].value);
-                                    _this.changeMapRegion(_this.selectedUri.parameters[key].value);
-                                }
-                                else if (_this.studyArea.rcode != _this.selectedUri.parameters[key].value) {
-                                    //console.log('rcode changed');
-                                    _this.studyArea = new studyArea(newVal[key].value);
-                                    _this.changeMapRegion(newVal[key].value);
-                                }
                             }
                         }
                     }
@@ -148,6 +138,7 @@ var STN;
             };
             MainController.prototype.makeRequestURL = function () {
                 //console.log('in makeRequest URL function');
+                this.downloadable = false;
                 var inputParams = [this.selectedUri.selectedMedia];
                 for (var i = 0; i < this.selectedUri.parameters.length; i++) {
                     inputParams.push(this.selectedUri.parameters[i].value);
@@ -155,6 +146,9 @@ var STN;
                 var func = this.selectedUri.uri.format;
                 var newURL = func.apply(this.selectedUri.uri, inputParams);
                 this.selectedUri.newURL = newURL;
+                //for file download endpoints, don't show button to load response in output box
+                if (this.selectedUri.availableMedia.length == 0)
+                    this.downloadable = true;
                 return newURL.replace(/\{(.+?)\}/g, "");
             };
             //MAP STUFF
@@ -197,7 +191,7 @@ var STN;
                         var bbox = _this.geojson['globalwatershed'].data.features[0].bbox;
                         //console.log(bbox);
                         _this.leafletData.getMap().then(function (map) {
-                            map.fitBounds([[bbox[1], bbox[0]], [bbox[3], bbox[2]]]);
+                            map.fitBounds([[bbox[1], bbox[0]], [bbox[3], bbox[2]]]); //lat, long, lat,long
                         });
                     }
                     if (item.name == 'globalwatershedpoint') {

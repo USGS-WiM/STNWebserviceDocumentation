@@ -76,11 +76,12 @@
                                     <input ng-model="item.value" placeholder="{{item.value}}" ng-required="!item.optional" novalidate>
                                 </td>
                             </tr>
+                            <tr ng-if="vm.selectedUri.parameters.length == 0"><td colspan="2">No parameters are required.</td></tr>
                         </tbody>
                     </table>
                 </div>
 
-                <div class="well" ng-if="vm.selectedUri.id == 'Delineate Watershed By Location' && vm.selectedUri.parameters[0].value && vm.selectedUri.selectedMedia == '.geojson'">
+                <div class="well" ng-if="vm.showMap">
                     <leaflet width="100%" height="400px" layers="vm.layers" center="vm.center" markers="vm.markers" geojson="vm.geojson" geojson-nested="true" ng-style="{cursor:vm.cursorStyle}"><i id="loadingSpinner" class="fa map-spinner fa-5x fa-spin" ng-show="vm.mapSpinner"></i></leaflet>
                 </div>
 
@@ -91,17 +92,17 @@
 
                     <p><a href="{{vm.servicesBaseURL}}{{vm.selectedUri.newURL}}" target="_blank">{{vm.servicesBaseURL}}{{vm.selectedUri.newURL}}</a></p>
                     <p>
-                        <div class="btn-toolbar" role="toolbar" aria-label="...">
+                        <div ng-if="!vm.downloadable" class="btn-toolbar" role="toolbar" aria-label="...">
                             <button ng-click="vm.loadResponse()" type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh" ng-class="(vm.waitCursor) ? 'fa-spin' : ''"></i>&nbsp;&nbsp;Load response in {{vm.selectedUri.selectedMedia}} format</button>
                             <button ng-click="vm.showResponseOnMap()" type="button" class="btn btn-primary btn-sm" ng-if="vm.selectedUri.id == 'Delineate Watershed By Location' && vm.selectedUri.selectedMedia == '.geojson'" ng-disabled="!vm.showOnMap"><i class="fa fa-map"></i>&nbsp;&nbsp;Show response on map</button>
                             <a id="exportButton" class="btn btn-sm btn-success pull left" ng-href="http://ssdev.cr.usgs.gov/streamstatsservices/download?workspaceID={{vm.studyArea.workspaceID}}" ng-if="vm.selectedUri.id == 'Delineate Watershed By Locationn' && vm.selectedUri.selectedMedia == '.geojson'" ng-disabled="!vm.showOnMap"><span><i class="fa fa-download"></i></span>&nbsp;&nbsp;Export Basin</a>
                         </div>
                     </p>
 
-                    <div class="panel panel-default">
-                      <div class="panel-body">                          
-                          <json-formatter ng-show="vm.requestResults" json="vm.requestResults" open="1"></json-formatter> 
-                      </div>
+                    <div ng-if="!vm.downloadable" class="panel panel-default">
+                        <div class="panel-body">
+                            <json-formatter ng-show="vm.requestResults" json="vm.requestResults" open="1"></json-formatter>
+                        </div>
                     </div>
                 </div>
             </div>

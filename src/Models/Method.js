@@ -23,7 +23,6 @@ var STN;
         var Method = (function () {
             function Method(t) {
                 this.type = t;
-                ;
             }
             return Method;
         })();

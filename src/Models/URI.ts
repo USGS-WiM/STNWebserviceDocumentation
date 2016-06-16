@@ -31,6 +31,7 @@ module STN.Models {
         availableMedia: string;
         selectedMedia: string;
         newURL: string;
+        showMap: boolean;
     }
 
     export class URI implements IURI {
@@ -42,10 +43,12 @@ module STN.Models {
         public availableMedia: string;
         public selectedMedia: string;
         public newURL: string;
+        public showMap: boolean;
 
         constructor(u: string) {
             this.uri = u;
             this.parameters = [];
+            this.showMap = false;
         }
 
     }//end class

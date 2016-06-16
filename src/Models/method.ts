@@ -34,7 +34,7 @@ module STN.Models {
         public uriList: Array<Models.IURI>;
 
         constructor(t: string) {
-            this.type = t;;
+            this.type = t;
         }
 
     }//end class

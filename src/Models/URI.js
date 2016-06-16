@@ -24,6 +24,7 @@ var STN;
             function URI(u) {
                 this.uri = u;
                 this.parameters = [];
+                this.showMap = false;
             }
             return URI;
         })();

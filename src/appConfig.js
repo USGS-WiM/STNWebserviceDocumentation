@@ -1,186 +1,759 @@
 ﻿var configuration = {}
 configuration.baseurls =
 {
-    'services': 'http://ssdev.cr.usgs.gov/streamstatsservices',
-    'application': 'http://ssdev.cr.usgs.gov/v3_beta/',
-    'StreamStats': 'http://streamstats09.cr.usgs.gov',
+    'services': 'https://stn.wim.usgs.gov/STNServices',
+    'application': 'https://stn.wim.usgs.gov/STNWeb'    
 }
 
-configuration.queryparams =
-{
-    'SSdelineation': '/watershed.geojson?rcode={0}&xlocation={1}&ylocation={2}&crs={3}&simplify=true&includeparameters=false&includeflowtypes=false&includefeatures=true',
-}
 configuration.resources =
     [
-        {
-            "name": "Watershed",
-            "description": "The watershed resource represents a delineated hydrologic study area.",
+        //#region agency
+        {            
+            "name": "Agency",
+            "description": "The agency resource represents an agency that a member or source is an employee for.",
             "methods": [{
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/watershed{0}?rcode={1}&xlocation={2}&ylocation={3}&crs={4}&includeparameters={5}&includeflowtypes={6}&includefeatures={7}&simplify={8}",
-                        "description": "Returns a watershed object. The request configuration will determine the overall request response. However all returns will return a watershed object with at least the workspaceid. The workspace id is the id to the service workspace where files are stored and can be used for further processing such as for downloads and flow statistic computations.",
-                        "id": "Delineate Watershed By Location",
-                        "parameters": [
-                            { "name": "rcode", "type": "string", "description": "StreamStats 2-3 character code that identifies the Study Area (either a State or a Regional Study)", "value": "NY" },
-                            { "name": "xlocation", "type": "number", "description": "X location of the most downstream point of desired study area.", "value": -74.524 },
-                            { "name": "ylocation", "type": "number", "description": "Y location of the most downstream point of desired study area.", "value": 43.939 },
-                            { "name": "crs", "type": "string", "description": "ESPSG spatial reference code.", "value": "4326" },
-                            { "name": "includeparameters", "type": "string", "optional": true, "description": "Comma separated list of region parameters to compute. Default: true, will return all parameters for region", "value": "false" },
-                            { "name": "includeflowtypes", "type": "string", "optional": true, "description": "Not yet implemented", "value": "false" },
-                            { "name": "includefeatures", "type": "string", "optional": true, "description": "Comma separated list of features to include in response. See Feature resource for more information. Default: true, returns delineated basin and pourpoint", "value": "true" },
-                            { "name": "simplify", "type": "boolean", "optional": true, "description": "Whether to simplify returned result, defaut: true.", "value": "true" }],
-                        "availableMedia": [".xml", ".json", ".geojson"],
-                        "selectedMedia": ".geojson"
+                        "uri": "/agencies{0}",
+                        "description": "This service returns a list of agencies.",
+                        "id": "All Agencies",
+                        "parameters": [],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"                        
                     },
                     {
-                        "uri": "/watershed{0}?rcode={1}&workspaceID={2}&includeparameters={3}&includeflowtypes={4}&includefeatures={5}&crs={6}&simplify={7}",
-                        "description": "This service returns a watershed",
-                        "id": "Watershed By Workspace",
+                        "uri": "/agencies/{1}{0}",
+                        "description": "This service returns an agency.",
+                        "id": "An Agency",
                         "parameters": [
-                           { "name": "rcode", "type": "string", "description": "StreamStats 2-3 character code that identifies the Study Area (either a State or a Regional Study).", "value": "NY" },
-                           { "name": "workspaceID", "type": "string", "description": "Service workspace received from watershed service result", "value": "" },
-                            { "name": "includeparameters", "type": "string", "optional": true, "description": "Comma separated list of region parameters to compute. Default: true, will return all parameters for region", "value": "false" },
-                            { "name": "includeflowtypes", "type": "string", "optional": true, "description": "Not yet implemented", "value": "false" },
-                            { "name": "includefeatures", "type": "string", "optional": true, "description": "Comma separated list of features to include in response. See Feature resource for more information. Default: true, returns delineated basin and pourpoint", "value": "true" },
-                            { "name": "crs", "type": "string", "optional": true, "description": "ESPSG spatial reference code. Default is local projection", "value": "4326" },
-                            { "name": "simplify", "type": "boolean", "optional": true, "description": "Whether to simplify returned result, defaut: true.", "value": "true" }],
-                        "availableMedia": [".xml", ".json", ".geojson"],
-                        "selectedMedia": ".geojson"
+                           { "name": "agencyId", "type": "number", "description": "Id of agency requested", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                         "uri": "/members/{1}/agencies{0}",
+                         "description": "This service returns a member's agency.",
+                         "id": "Member Agency",
+                         "parameters": [
+                            { "name": "memberId", "type": "number", "description": "Id of member requested", "value": "" }
+                         ],
+                         "availableMedia": [".xml", ".json"],
+                         "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/sources/{1}/agencies{0}",
+                        "description": "This service returns a source's agency.",
+                        "id": "Source Agency",
+                        "parameters": [
+                           { "name": "sourceId", "type": "number", "description": "Id of member requested", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
                     }
                 ]
             }
             ]
         },
+        //#endregion
+        //#region approval
         {
-            "name": "Basin Characteristics",
-            "description": "The basin characteristics resource represent a list of characteristics that defines the study area. Such as Drainage Area and mean annual precipitation.",
+            "name": "Approval",
+            "description": "The approval resource represents an approval that is applied to a hwm or data file once reviewed and deemed complete.",
             "methods": [{
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/parameters{0}?rcode={1}&group={2}",
-                        "description": "This service returns a list of basin characteristics available to be computed in the selected region.",
-                        "id": "Available Basin Characteristics",
-                        "parameters": [
-                            { "name": "rcode", "type": "string", "description": "StreamStats 2-3 character code that identifies the Study Area (either a State or a Regional Study).", "value": "NY" },
-                            { "name": "group", "type": "string", "optional": true, "description": "Key word parameter group filter.", "value": "NY Set" }],
+                        "uri": "/approvals{0}",
+                        "description": "This service returns a list of approvals.",
+                        "id": "All Approvals",
+                        "parameters": [],
                         "availableMedia": [".xml", ".json"],
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/parameters{0}?rcode={1}&workspaceID={2}&includeparameters={3}",
-                        "description": "This service returns the computed basin characteristics based on the request configuration.",
-                        "id": "Compute Basin Characterisitcs",
+                        "uri": "/approvals/{1}{0}",
+                        "description": "This service returns an approval by it's ID.",
+                        "id": "An Approval",
                         "parameters": [
-                           { "name": "rcode", "type": "string", "description": "StreamStats 2-3 character code that identifies the Study Area (either a State or a Regional Study).", "value": "NY" },
-                           { "name": "workspaceID", "type": "string", "description": "Service workspace received from watershed service result", "value": "" },
-                           { "name": "includeparameters", "type": "string", "optional": "true", "description": "Comma separated list of region parameter codes to compute. Default: true, will return all parameters for region", "value": "true" }, ],
+                           { "name": "approvalId", "type": "number", "description": "Id of approval requested", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/hwms/{1}/approval{0}",
+                        "description": "This service returns a hwm approval by a hwm ID.",
+                        "id": "HWM Approval",
+                        "parameters": [
+                           { "name": "hwmId", "type": "number", "description": "Id of hwm", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/datafiles/{1}/approval{0}",
+                        "description": "This service returns a data file approval by a data file ID.",
+                        "id": "Data File Approval",
+                        "parameters": [
+                           { "name": "datafileId", "type": "number", "description": "Id of data file", "value": "" }
+                        ],
                         "availableMedia": [".xml", ".json"],
                         "selectedMedia": ".json"
                     }
                 ]
             }]
         },
+        //#endregion
+        //#region contact
         {
-            "name": "Download",
-            "description": "Download resource",
+            "name": "Contact",
+            "description": "The contact resource represents an contact that can be added to a report.",
             "methods": [{
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/download{0}?workspaceID={1}&format={2}",
-                        "description": "This service returns a zip file containing the workspace contents, in either a geodatabase or shape files",
-                        "id": "Download By Workspace",
+                        "uri": "/contacts{0}",
+                        "description": "This service returns a list of contacts. Authentication is required.",
+                        "id": "All Contacts",
+                        "parameters": [],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/contacts/{1}{0}",
+                        "description": "This service returns a contact by it's ID. Authentication is required.",
+                        "id": "A Contact",
                         "parameters": [
-                            { "name": "workspaceID", "type": "string", "description": "Service workspace received from watershed service result", "value": "" },
-                            { "name": "format", "type": "string", "optional": true, "description": "Download return format; default (nothing specified) will return an ESRI geodatabase zipfile. Optional input: SHAPE,:will return a zip file containing shape format. ", "value": "" }],
+                           { "name": "contactId", "type": "number", "description": "Id of contact requested", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/contacts{0}?reportmetric={1}&contacttype{2}",
+                        "description": "This service returns a contact for a report and by a contact type. Authentication is required.",
+                        "id": "Report Contact By Contact Type",
+                        "parameters": [
+                           { "name": "reportId", "type": "number", "description": "Id of the report", "value": "" },
+                           { "name": "contactTypeId", "type": "number", "description": "Id of the contact type", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/contacts{0}?reportmetric={1}",
+                        "description": "This service returns a list of contacts for a report. Authentication is required.",
+                        "id": "Report Contacts",
+                        "parameters": [
+                           { "name": "reportId", "type": "number", "description": "Id of report", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    }
+               ]
+           }]
+        },
+        //#endregion
+        //#region contact type
+        {
+            "name": "Contact Type",
+            "description": "The contact type resource represents a contact type that can be added to a contact.",
+            "methods": [{
+                "type": "GET",
+                "uriList": [
+                    {
+                        "uri": "/contacttypes{0}",
+                        "description": "This service returns a list of contact types.",
+                        "id": "All Contacts",
+                        "parameters": [],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/contacttypes/{1}{0}",
+                        "description": "This service returns a contact type by it's ID.",
+                        "id": "A Contact Type",
+                        "parameters": [
+                           { "name": "contactTypeId", "type": "number", "description": "Id of contact type requested", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/contacts/{1}/contacttypes{0}",
+                        "description": "This service returns a contact type for a contact.",
+                        "id": "Contact's Contact Type",
+                        "parameters": [
+                           { "name": "contactId", "type": "number", "description": "Id of the contact", "value": "" }                           
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    }
+                ]
+            }]
+        },
+        //#endregion
+        //#region county
+        {
+            "name": "Counties",
+            "description": "The counties resource represents U.S. counties.",
+            "methods": [{
+                "type": "GET",
+                "uriList": [
+                    {
+                        "uri": "/counties{0}",
+                        "description": "This service returns a list of counties.",
+                        "id": "All Counties",
+                        "parameters": [],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/counties/{1}{0}",
+                        "description": "This service returns a county by it's ID.",
+                        "id": "A County",
+                        "parameters": [
+                           { "name": "countyId", "type": "number", "description": "Id of county requested", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/states/{1}/counties{0}",
+                        "description": "This service returns a list of counties for a state by state ID.",
+                        "id": "State Counties by Id",
+                        "parameters": [
+                           { "name": "stateId", "type": "number", "description": "Id of the state", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/states/counties{0}?StateAbbrev={1}",
+                        "description": "This service returns a list of counties for a state by state abbreviation.",
+                        "id": "State Counties by Abbrev",
+                        "parameters": [
+                           { "name": "stateAbbrev", "type": "string", "description": "Abbreviation of the state", "value": "FL" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/sites/countiesbystate{0}?StateAbbrev={1}",
+                        "description": "This service returns a list of counties in a state where sites exists.",
+                        "id": "Site Counties",
+                        "parameters": [
+                           { "name": "stateAbbrev", "type": "string", "description": "Abbreviation of the state", "value": "FL" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    }
+                ]
+            }]
+        },
+        //#endregion
+        //#region data file
+        {
+            "name": "Data Files",
+            "description": "The data file resource represents data files associated with sensors.",
+            "methods": [{
+                "type": "GET",
+                "uriList": [
+                    {
+                        "uri": "/datafiles{0}",
+                        "description": "This service returns a list of data files. Without authentication, only approved data files are returned.",
+                        "id": "All Data Files",
+                        "parameters": [],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/datafiles/{1}{0}",
+                        "description": "This service returns a data file by it's ID. Without authentication, only approved data files are returned.",
+                        "id": "A Data File",
+                        "parameters": [
+                           { "name": "datafileId", "type": "number", "description": "Id of data file requested", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/files/{1}/datafile{0}",
+                        "description": "This service returns a data file of a file that is of type data. Without authentication, only approved data files are returned.",
+                        "id": "File Data File",
+                        "parameters": [
+                           { "name": "fileId", "type": "number", "description": "Id of the file", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/approvals/{1}/datafiles{0}",
+                        "description": "This service returns a list of data files for an approval. Without authentication, only approved data files are returned.",
+                        "id": "Approval Data Files",
+                        "parameters": [
+                           { "name": "approvalId", "type": "number", "description": "Id of the approval", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/datafiles{0}?IsApproved={1}&Event={2}&Processor={3}&State={4}",
+                        "description": "This service returns a list of data files that meet the passed-in parameters. Without authentication, only approved data files are returned.",
+                        "id": "Filtered Data Files",
+                        "parameters": [
+                           { "name": "appoved", "type": "boolean", "description": "True for data files that are approved, false for those that are not.", "value": "" },
+                           { "name": "eventId", "type": "number", "description": "Id for an event.", "optional": true, "value": "" },
+                           { "name": "processorId", "type": "number", "description": "Id for a member that processed the data file.", "optional": true, "value": "" },
+                           { "name": "stateAbbrev", "type": "string", "description": "State abbreviation.", "optional": true, "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/instruments/{1}/datafiles{0}",
+                        "description": "This service returns a list of data files for a sensor. Without authentication, only approved data files are returned.",
+                        "id": "Sensor Data Files",
+                        "parameters": [
+                           { "name": "instrumentId", "type": "number", "description": "Id of the sensor", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/peaksummaries/{1}/datafiles{0}",
+                        "description": "This service returns a list of data files for a peak summary. Without authentication, only approved data files are returned.",
+                        "id": "Peak Summary Data files",
+                        "parameters": [
+                           { "name": "peakSummaryId", "type": "number", "description": "Id of the peak summary", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"                        
+                    }
+                ]
+            }]
+        },
+        //#endregion
+        //#region deployment priority
+        {
+            "name": "Deployment Priority",
+            "description": "The deployment priority resource represents deployment priorities that sites can have.",
+            "methods": [{
+                "type": "GET",
+                "uriList": [
+                    {
+                        "uri": "/deploymentpriorities{0}",
+                        "description": "This service returns a list of deployment priorities.",
+                        "id": "All Deployment Priorities",
+                        "parameters": [],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/deploymentpriorities/{1}{0}",
+                        "description": "This service returns a deployment priority by it's ID.",
+                        "id": "A Deployment Priority",
+                        "parameters": [
+                           { "name": "deploymentPriorityId", "type": "number", "description": "Id of deployment priority requested", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/sites/{1}/deploymentpriorities{0}",
+                        "description": "This service returns a deployment priority of a site.",
+                        "id": "Site Deployment Priority",
+                        "parameters": [
+                           { "name": "siteId", "type": "number", "description": "Id of the site", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    }
+                ]
+            }]
+        },
+        //#endregion
+        //#region deployment type
+        {
+            "name": "Deployment Type",
+            "description": "The deployment type resource represents deployment types that sensors can have.",
+            "methods": [{
+                "type": "GET",
+                "uriList": [
+                    {
+                        "uri": "/deploymenttypes{0}",
+                        "description": "This service returns a list of deployment types.",
+                        "id": "All Deployment Types",
+                        "parameters": [],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/deploymenttypes/{1}{0}",
+                        "description": "This service returns a deployment type by it's ID.",
+                        "id": "A Deployment Type",
+                        "parameters": [
+                           { "name": "deploymentTypeId", "type": "number", "description": "Id of deployment type requested", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/instruments/{1}/deploymenttype{0}",
+                        "description": "This service returns a deployment type of a sensor.",
+                        "id": "Sensor Deployment Type",
+                        "parameters": [
+                           { "name": "instrumentId", "type": "number", "description": "Id of the sensor", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/sensortypes/{1}/deploymenttypes{0}",
+                        "description": "This service returns a list of deployment types of a sensor type.",
+                        "id": "Sensor Type Deployment Types",
+                        "parameters": [
+                           { "name": "sensorTypeId", "type": "number", "description": "Id of the sensor type", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    }
+                ]
+            }]
+        },
+        //#endregion
+        //#region event
+        {
+            "name": "Event",
+            "description": "The event resource represents the event that sensor and hwms are created during.",
+            "methods": [{
+                "type": "GET",
+                "uriList": [
+                    {
+                        "uri": "/events{0}",
+                        "description": "This service returns a list of events.",
+                        "id": "All Events",
+                        "parameters": [],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/events/{1}{0}",
+                        "description": "This service returns an event by it's ID.",
+                        "id": "An Event",
+                        "parameters": [
+                           { "name": "eventId", "type": "number", "description": "Id of event requested", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/events{0}?Site={1}",
+                        "description": "This service returns a list of events that a site has sensor and/or hwms created at.",
+                        "id": "Site Events",
+                        "parameters": [
+                           { "name": "siteId", "type": "number", "description": "Id of the site", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/eventtypes/{1}/events{0}",
+                        "description": "This service returns a list of events that have this event type.",
+                        "id": "Event Type Events",
+                        "parameters": [
+                           { "name": "eventTypeId", "type": "number", "description": "Id of the event type", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/eventstatus/{1}/events{0}",
+                        "description": "This service returns a list of events that have this event status.",
+                        "id": "Event Status Events",
+                        "parameters": [
+                           { "name": "eventStatusId", "type": "number", "description": "Id of the event status", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/hwms/{1}/event{0}",
+                        "description": "This service returns the event that this hwm was created at.",
+                        "id": "HWM Event",
+                        "parameters": [
+                           { "name": "hwmId", "type": "number", "description": "Id of the hwm", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/instruments/{1}/event{0}",
+                        "description": "This service returns the event that this sensor was deployed at.",
+                        "id": "Sensor Event",
+                        "parameters": [
+                           { "name": "sensorId", "type": "number", "description": "Id of the sensor", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/events/FilteredEvents{0}?Date={1}&Type={2}&State={3}",
+                        "description": "This service returns a list of events that meet the passed-in parameters.",
+                        "id": "Filtered Events",
+                        "parameters": [
+                           { "name": "date", "type": "date", "description": "Date to start query, events that started on or after this date", "optional": true, "value": "08/01/2012" },
+                           { "name": "eventTypeId", "type": "number", "description": "Id of event type", "optional": true, "value": "" },
+                           { "name": "stateAbbrev", "type": "string", "description": "State abbreviation", "optional": true, "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    }
+                ]
+            }]
+        },
+        //#endregion
+        //#region event status
+        {
+            "name": "Event Status",
+            "description": "The event status resource represents event statuses that events can have.",
+            "methods": [{
+                "type": "GET",
+                "uriList": [
+                    {
+                        "uri": "/eventstatus{0}",
+                        "description": "This service returns a list of event statuses.",
+                        "id": "All Event Statuses",
+                        "parameters": [],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/eventstatus/{1}{0}",
+                        "description": "This service returns an event status by it's ID.",
+                        "id": "An Event Status",
+                        "parameters": [
+                           { "name": "eventStatusId", "type": "number", "description": "Id of event status requested", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/events/{1}/status{0}",
+                        "description": "This service returns an event status of an event.",
+                        "id": "Event Event Status",
+                        "parameters": [
+                           { "name": "eventId", "type": "number", "description": "Id of the event", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    }
+                ]
+            }]
+        },
+        //#endregion
+        //#region event type
+        {
+            "name": "Event Type",
+            "description": "The event type resource represents event types that events can have.",
+            "methods": [{
+                "type": "GET",
+                "uriList": [
+                    {
+                        "uri": "/eventtypes{0}",
+                        "description": "This service returns a list of event types.",
+                        "id": "All Event Types",
+                        "parameters": [],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/eventtypes/{1}{0}",
+                        "description": "This service returns an event type by it's ID.",
+                        "id": "An Event Type",
+                        "parameters": [
+                           { "name": "eventTypeId", "type": "number", "description": "Id of event type requested", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/events/{1}/Type{0}",
+                        "description": "This service returns an event type of an event.",
+                        "id": "Event Event Type",
+                        "parameters": [
+                           { "name": "eventId", "type": "number", "description": "Id of the event", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    }
+                ]
+            }]
+        },
+        //#endregion
+        //#region event type
+        {
+            "name": "File",
+            "description": "The file resource represents files that can be uploaded at sites, objective points, hwms, and sensors.",
+            "methods": [{
+                "type": "GET",
+                "uriList": [
+                    {
+                        "uri": "/files{0}",
+                        "description": "This service returns a list of files.",
+                        "id": "All Files",
+                        "parameters": [],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/files/{1}{0}",
+                        "description": "This service returns a file by it's ID.",
+                        "id": "A File",
+                        "parameters": [
+                           { "name": "fileId", "type": "number", "description": "Id of file requested", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/files/{1}/Item",
+                        "description": "This service returns a file item.",
+                        "id": "File Item",
+                        "parameters": [
+                           { "name": "fileId", "type": "number", "description": "Id of the file", "value": "" }
+                        ],
                         "availableMedia": [],
                         "selectedMedia": ""
-                    }
-                ]
-            }]
-        },
-        {
-            "name": "Flow statistics",
-            "description": "The Flow statistics resource represent a list of flow statistics computed for the study area.",
-            "methods": [{
-                "type": "GET",
-                "uriList": [
+                    },
                     {
-                        "uri": "/flowstatistics{0}?rcode={1}",
-                        "description": "This service returns a list of flowstatistics available to be computed in the selected region.",
-                        "id": "Available Flow Statistics",
+                        "uri": "/files{0}?FromDate={1}&ToDate={2}",
+                        "description": "This service returns a list of files that were uploaded within the given date range.",
+                        "id": "Files By Date Range",
                         "parameters": [
-                            { "name": "rcode", "type": "string", "description": "StreamStats 2-3 character code that identifies the Study Area (either a State or a Regional Study).", "value": "NY" }],
+                           { "name": "fromDate", "type": "date", "description": "date to start with", "value": "02/28/2016" },
+                           { "name": "toDate", "type": "date", "description": "date to end with", "value": "03/01/2016" }
+                        ],
                         "availableMedia": [".xml", ".json"],
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/flowstatistics{0}?rcode={1}&workspaceID={2}&includeflowtypes={3}",
-                        "description": "This service returns the computed flow statistic values based on the request configuration",
-                        "id": "Compute Flow Statistics",
+                        "uri": "/hwms/{1}/files{0}",
+                        "description": "This service returns a list of files for a hwm.",
+                        "id": "HWM Files",
                         "parameters": [
-                            { "name": "rcode", "type": "string", "description": "StreamStats 2-3 character code that identifies the Study Area (either a State or a Regional Study).", "value": "NY" },
-                            { "name": "workspaceID", "type": "string", "description": "Service workspace received from watershed service result", "value": "" },
-                            { "name": "includeflowtypes", "type": "string", "optional": true, "description": "Comma separated list of region flow types to compute. Default: true, will return all flow types available for the region region", "value": "true" }],
-                        "availableMedia": [".json"],
-                        "selectedMedia": ".json"
-                    }
-                ]
-            }]
-        },
-        {
-            "name": "Features",
-            "description": "The Features resource represents a list of spatial features computed for the study area.",
-            "methods": [{
-                "type": "GET",
-                "uriList": [
-                    {
-                        "uri": "/features{0}?workspaceID={1}",
-                        "description": "This service returns a collection of spatial feature names available for the workspace.",
-                        "id": "Available Features",
-                        "parameters": [
-                            { "name": "workspaceID", "type": "string", "description": "Service workspace received from watershed service result", "value": "" }],
+                           { "name": "hwmId", "type": "number", "description": "Id of the hwm", "value": "" }
+                        ],
                         "availableMedia": [".xml", ".json"],
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/features{0}?workspaceID={1}&crs={2}&includefeatures={3}&simplify={4}",
-                        "description": "This service returns a collection of spatial features available for the workspace.",
-                        "id": "Features",
+                        "uri": "/objectivepoints/{1}/files{0}",
+                        "description": "This service returns a list of file for an objective point.",
+                        "id": "Objective Point Files",
                         "parameters": [
-                            { "name": "workspaceID", "type": "string", "description": "Service workspace received from watershed service result", "value": "" },
-                            { "name": "crs", "type": "string", "optional": true, "description": "ESPSG spatial reference code. Default is local projection", "value": "4326" },
-                            { "name": "includefeatures", "type": "string", "description": "Comma separated list of feature names to include in response.", "value": "pourpoint,delineatedbasin" },
-                            { "name": "simplify", "type": "boolean", "optional": true, "description": "Whether to simplify returned result, defaut: true.", "value": "true" }],
-                        "availableMedia": [".xml", ".json", ".geojson"],
-                        "selectedMedia": ".geojson"
-                    }
+                           { "name": "objectivePointId", "type": "number", "description": "Id of the objective point", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/filetypes/{1}/files{0}",
+                        "description": "This service returns a list of file that are of a given file type.",
+                        "id": "File Type Files",
+                        "parameters": [
+                           { "name": "fileTypeId", "type": "number", "description": "Id of the file type", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/sites/{1}/files{0}",
+                        "description": "This service returns a list of files for a site.",
+                        "id": "Site Files",
+                        "parameters": [
+                           { "name": "siteId", "type": "number", "description": "Id of the site", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/sources/{1}/files{0}",
+                        "description": "This service returns a list of files that were uploaded by a given source.",
+                        "id": "Source Files",
+                        "parameters": [
+                           { "name": "sourceId", "type": "number", "description": "Id of the source", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/datafiles/{1}/files{0}",
+                        "description": "This service returns a list of files for a data file.",
+                        "id": "Data File Files",
+                        "parameters": [
+                           { "name": "dataFileId", "type": "number", "description": "Id of the data file", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/instruments/{1}/files{0}",
+                        "description": "This service returns a list of files for a sensor.",
+                        "id": "Sensor Files",
+                        "parameters": [
+                           { "name": "instrumentId", "type": "number", "description": "Id of the sensor", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/events/{1}/files{0}",
+                        "description": "This service returns a list of files for an event.",
+                        "id": "Event Files",
+                        "parameters": [
+                           { "name": "eventId", "type": "number", "description": "Id of the event", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/events/{1}/eventfileitems",
+                        "description": "This service returns a zip file of all files uploaded during an event.",
+                        "id": "Event File Items",
+                        "parameters": [
+                           { "name": "eventId", "type": "number", "description": "Id of the event", "value": "" }
+                        ],
+                        "availableMedia": [],
+                        "selectedMedia": ""
+                    },
+                    {
+                        "uri": "/files{0}?Site={1}&Event={2}",
+                        "description": "This service returns a list of files for a site during a given event.",
+                        "id": "Site Event Files",
+                        "parameters": [
+                           { "name": "siteId", "type": "number", "description": "Id of the site", "value": "" },
+                           { "name": "eventId", "type": "number", "description": "Id of the event", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    }//,
+                    //{ //do we really need this one.. anyone using it?? -- doesn't work
+                    //    "uri": "/files{0}?State={1}",
+                    //    "description": "This service returns a list of files for a state.",
+                    //    "id": "Files By State",
+                    //    "parameters": [
+                    //       { "name": "stateAbbrev", "type": "string", "description": "State abbreviation", "value": "" }
+                    //    ],
+                    //    "availableMedia": [".xml", ".json"],
+                    //    "selectedMedia": ".json"
+                    //}
                 ]
             }]
-        },
-        {
-            "name": "Network navigation",
-            "description": "!!!Not yet fully implemented!!!",
-            //"methods": [{
-            //    "type": "GET",
-            //    "uriList": [
-            //        {
-            //            "uri": "/networkpath{0}?rcode={1}&spoint={2}epoint={3}&workspaceID={4}",
-            //            "description": "This service returns a watershed",
-            //            "id": "nn0",
-            //            "parameters": [
-            //                { "name": "regioncode", "type": "string", "description": "", "value": "" },
-            //                { "name": "startpoint", "type": "string", "description": "", "value": "" },
-            //                { "name": "endpoint", "type": "string", "description": "", "value": "" },
-            //                { "name": "workspaceID", "type": "string", "optional": true, "description": "", "value": "" }],
-            //            "availableMedia": "xml, json, geojson"
-            //        }
-            //    ]
-            //}]
         }
+        //#endregion
     ]
 configuration.basemaps =
 {

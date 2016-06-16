@@ -23,8 +23,8 @@ var __extends = this.__extends || function (d, b) {
 //Comments
 //04.15.2015 jkn - Created
 //Import
-var StreamStats;
-(function (StreamStats) {
+var STN;
+(function (STN) {
     var Services;
     (function (Services) {
         'use strict';
@@ -116,7 +116,7 @@ var StreamStats;
         function factory($http, $q) {
             return new ResourceService($http, $q);
         }
-        angular.module('StreamStats.Services').factory('StreamStats.Services.ResourceService', factory);
-    })(Services = StreamStats.Services || (StreamStats.Services = {}));
-})(StreamStats || (StreamStats = {})); //end module
+        angular.module('STN.Services').factory('STN.Services.ResourceService', factory);
+    })(Services = STN.Services || (STN.Services = {}));
+})(STN || (STN = {})); //end module
 //# sourceMappingURL=ResourceService.js.map

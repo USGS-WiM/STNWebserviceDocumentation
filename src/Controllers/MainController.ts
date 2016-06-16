@@ -23,7 +23,7 @@
 //04.14.2015 jkn - Created
 
 //Imports"
-module StreamStats.Controllers {
+module STN.Controllers {
     'use strinct';
     interface IMainControllerScope extends ng.IScope {
         vm: MainController;
@@ -116,6 +116,7 @@ module StreamStats.Controllers {
         //Properties
         //-+-+-+-+-+-+-+-+-+-+-+-
         public sideBarCollapsed: boolean;
+        public downloadable: boolean;
         public selectedUri: Models.IURI;
         public selectedResource: Models.IResource;
         //public selectedUriParameters: Array<Models.IURIParameter>;
@@ -140,18 +141,19 @@ module StreamStats.Controllers {
 
         //Constructor
         //-+-+-+-+-+-+-+-+-+-+-+-
-        static $inject = ['$scope', '$filter', 'StreamStats.Services.ResourceService', 'leafletBoundsHelpers', 'leafletData'];
+        static $inject = ['$scope', '$filter', 'STN.Services.ResourceService', 'leafletBoundsHelpers', 'leafletData'];
         constructor($scope: IMainControllerScope, private $filter, private Resource: Services.IResourceService, leafletBoundsHelper: any, leafletData: ILeafletData) {
             $scope.vm = this;         
-            this.selectedUri = new StreamStats.Models.URI('');
+            this.selectedUri = new STN.Models.URI('');
             this.waitCursor = false;
             this.sideBarCollapsed = false;
+            this.downloadable = false;
             this.applicationURL = configuration.baseurls['application'];
             this.servicesBaseURL = configuration.baseurls['services'];
 
             this._onSelectedResourceHandler = new WiM.Event.EventHandler<WiM.Event.EventArgs>(() => {
                 //clear selectedUri on resource change
-                this.selectedUri = new StreamStats.Models.URI('');
+                this.selectedUri = new STN.Models.URI('');
                 this.selectedResource = Resource.SelectedResource;
             });
             Resource.onResourceChanged.subscribe(this._onSelectedResourceHandler);
@@ -209,20 +211,7 @@ module StreamStats.Controllers {
 
                         //if oldval doesnt exists were on first page load
                         if (this.selectedUri.parameters[key].name == "rcode") {
-
-                            //if there isn't a study area
-                            if (!this.studyArea) {
-                                //console.log('first page load');
-                                this.studyArea = new studyArea(this.selectedUri.parameters[key].value);
-                                this.changeMapRegion(this.selectedUri.parameters[key].value);
-                            }
-
-                            //otherwise change studyArea
-                            else if (this.studyArea.rcode != this.selectedUri.parameters[key].value) {
-                                //console.log('rcode changed');
-                                this.studyArea = new studyArea(newVal[key].value);
-                                this.changeMapRegion(newVal[key].value);
-                            }
+                                                       
                         }
                     }
                 }
@@ -252,14 +241,21 @@ module StreamStats.Controllers {
 
         public makeRequestURL() {
             //console.log('in makeRequest URL function');
+            this.downloadable = false;
             var inputParams = [this.selectedUri.selectedMedia];
             for (var i = 0; i < this.selectedUri.parameters.length; i++) {
                 inputParams.push(this.selectedUri.parameters[i].value);
             }
             var func = this.selectedUri.uri.format;
             var newURL = func.apply(this.selectedUri.uri, inputParams);
-            this.selectedUri.newURL = newURL;
+            this.selectedUri.newURL = newURL;            
+
+            //for file download endpoints, don't show button to load response in output box
+            if (this.selectedUri.availableMedia.length == 0) 
+                this.downloadable = true;
+
             return newURL.replace(/\{(.+?)\}/g, "");
+
         }
 
 
@@ -310,7 +306,7 @@ module StreamStats.Controllers {
                     var bbox = this.geojson['globalwatershed'].data.features[0].bbox;
                     //console.log(bbox);
                     this.leafletData.getMap().then((map: any) => {
-                        map.fitBounds([[bbox[1], bbox[0]], [bbox[3], bbox[2]]]);
+                        map.fitBounds([[bbox[1], bbox[0]], [bbox[3], bbox[2]]]); //lat, long, lat,long
                     });
 
                 }
@@ -361,6 +357,6 @@ module StreamStats.Controllers {
         }
     }//end class
 
-    angular.module('StreamStats.Controllers')
-        .controller('StreamStats.Controllers.MainController', MainController)
+    angular.module('STN.Controllers')
+        .controller('STN.Controllers.MainController', MainController)
 }//end module

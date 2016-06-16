@@ -1,5 +1,5 @@
 (function () {
     'use strict';
-    angular.module('StreamStats.Models', []);
+    angular.module('STN.Models', []);
 })();
 //# sourceMappingURL=model.module.js.map

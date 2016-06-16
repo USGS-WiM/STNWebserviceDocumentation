@@ -22,7 +22,7 @@
 
 //Imports"
 // Interface
-module StreamStats.Models {
+module STN.Models {
     export interface IURI {
         uri: string;
         id: string;
@@ -31,6 +31,7 @@ module StreamStats.Models {
         availableMedia: string;
         selectedMedia: string;
         newURL: string;
+        showMap: boolean;
     }
 
     export class URI implements IURI {
@@ -42,10 +43,12 @@ module StreamStats.Models {
         public availableMedia: string;
         public selectedMedia: string;
         public newURL: string;
+        public showMap: boolean;
 
         constructor(u: string) {
             this.uri = u;
             this.parameters = [];
+            this.showMap = false;
         }
 
     }//end class

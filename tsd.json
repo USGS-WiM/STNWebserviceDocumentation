@@ -1,7 +1,7 @@
 {
-    "name": "StreamStats_WebService_Documentation",
+    "name": "STN_WebService_Documentation",
     "version": "v1",
-    "homepage": "https://github.com/USGS-WiM/StreamStatsWebserviceDocumentation",
+    "homepage": "https://github.com/USGS-WiM/STNWebserviceDocumentation",
     "repo": "borisyankov/DefinitelyTyped",
     "ref": "master",
     "path": "typings",

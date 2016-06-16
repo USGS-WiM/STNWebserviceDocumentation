@@ -22,7 +22,7 @@
 
 //Imports"
 // Interface
-module StreamStats.Models {
+module STN.Models {
     export interface IMethod {
         type: string;
         uriList: Array<Models.IURI>;
@@ -34,7 +34,7 @@ module StreamStats.Models {
         public uriList: Array<Models.IURI>;
 
         constructor(t: string) {
-            this.type = t;;
+            this.type = t;
         }
 
     }//end class

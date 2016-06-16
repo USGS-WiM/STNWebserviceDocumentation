@@ -2,15 +2,15 @@
     <div class="scrollable-content">
         <div class="home-view">
             <div ng-hide="vm.selectedResource" class="page-header">
-                <h2>StreamStats Services</h2>
+                <h2>STN Services</h2>
             </div>
             <div ng-hide="vm.selectedResource" class="well">
                 <h3>Introduction</h3>
-                <p>The <a href="{{vm.applicationURL}}" target="_blank">StreamStats application</a> uses data services that were created for it. When in use, the application manages interactions 
-                between the user and the services. However, the services can be directly accessed using the StreamStats Service API documented here, or consumed by a custom client application using HTTP protocols.</p>
+                <p>The <a href="{{vm.applicationURL}}" target="_blank">STNWeb application</a> uses data services that were created for it. When in use, the application manages interactions 
+                between the user and the services. However, the services can be directly accessed using the STN Service API documented here, or consumed by a custom client application using HTTP protocols.</p>
                 
-                <p>The StreamStats Service API performs multiple high level procedures which include; database queries, geospatial calculations and service requests in order to
-                   compile and create simple objects that can be consumed by custom client applications. As documented by this page, which can also serve as an URL builder, the StreamStats Service API is built 
+                <p>The STN Service API performs multiple high level procedures which include; database queries, geospatial queries and service requests in order to
+                   compile and create simple objects that can be consumed by custom client applications. As documented by this page, which can also serve as an URL builder, the STN Service API is built 
                    following <a href="http://en.wikipedia.org/wiki/Representational_state_transfer" target="_blank">RESTful</a> principles to ensure scalability and predictable URLs. 
                 </p>
 
@@ -18,7 +18,6 @@
                 <p>The URL of each resource can be obtained by accessing one of the resources located to the left.</p>
                 
                 <p>Every resource is exposed as a URL and follows the outlined pattern described below:
-                
                 <ul>
                     <li>The description of the resource.</li>
                     <li>The service URL.</li>
@@ -35,13 +34,10 @@
                     <li>A REST Query URL test tool that builds an example url, based on the given input parameter values.</li>
                     <li>And an example response from the REST Query</li>
                 </ul>
-                
-                
-                
                  </p>
-
             </div>
 
+            <!-- start of the resource section chosen -->
             <div id="resourceDescription" ng-show="vm.selectedResource">
                 <h4>{{vm.selectedResource.name}}</h4>
                 <div class="well">{{ vm.selectedResource.description }}</div>
@@ -70,12 +66,22 @@
                             <tr><th>Name</th><th>Type</th><th>Optional</th><th>Description</th><th>Input Parameter</th></tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="item in vm.selectedUri.parameters"><td><strong>{{item.name}}</strong></td><td>{{item.type}}</td><td>{{item.optional}}</td><td>{{item.description}}</td><td><i  ng-class="item.value || item.optional ? 'fa fa-check green': 'fa fa-warning red'"></i><input ng-model="item.value" placeholder="{{item.value}}" ng-required="!item.optional" novalidate></td></tr>
+                            <tr ng-repeat="item in vm.selectedUri.parameters">
+                                <td><strong>{{item.name}}</strong></td>
+                                <td>{{item.type}}</td>
+                                <td>{{item.optional}}</td>
+                                <td>{{item.description}}</td>
+                                <td>
+                                    <i ng-class="item.value || item.optional ? 'fa fa-check green': 'fa fa-warning red'"></i>
+                                    <input ng-model="item.value" placeholder="{{item.value}}" ng-required="!item.optional" novalidate>
+                                </td>
+                            </tr>
+                            <tr ng-if="vm.selectedUri.parameters.length == 0"><td colspan="2">No parameters are required.</td></tr>
                         </tbody>
                     </table>
                 </div>
 
-                <div class="well" ng-if="vm.selectedUri.id == 'Delineate Watershed By Location' && vm.selectedUri.parameters[0].value && vm.selectedUri.selectedMedia == '.geojson'">
+                <div class="well" ng-if="vm.showMap">
                     <leaflet width="100%" height="400px" layers="vm.layers" center="vm.center" markers="vm.markers" geojson="vm.geojson" geojson-nested="true" ng-style="{cursor:vm.cursorStyle}"><i id="loadingSpinner" class="fa map-spinner fa-5x fa-spin" ng-show="vm.mapSpinner"></i></leaflet>
                 </div>
 
@@ -86,17 +92,17 @@
 
                     <p><a href="{{vm.servicesBaseURL}}{{vm.selectedUri.newURL}}" target="_blank">{{vm.servicesBaseURL}}{{vm.selectedUri.newURL}}</a></p>
                     <p>
-                        <div class="btn-toolbar" role="toolbar" aria-label="...">
+                        <div ng-if="!vm.downloadable" class="btn-toolbar" role="toolbar" aria-label="...">
                             <button ng-click="vm.loadResponse()" type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh" ng-class="(vm.waitCursor) ? 'fa-spin' : ''"></i>&nbsp;&nbsp;Load response in {{vm.selectedUri.selectedMedia}} format</button>
                             <button ng-click="vm.showResponseOnMap()" type="button" class="btn btn-primary btn-sm" ng-if="vm.selectedUri.id == 'Delineate Watershed By Location' && vm.selectedUri.selectedMedia == '.geojson'" ng-disabled="!vm.showOnMap"><i class="fa fa-map"></i>&nbsp;&nbsp;Show response on map</button>
                             <a id="exportButton" class="btn btn-sm btn-success pull left" ng-href="http://ssdev.cr.usgs.gov/streamstatsservices/download?workspaceID={{vm.studyArea.workspaceID}}" ng-if="vm.selectedUri.id == 'Delineate Watershed By Locationn' && vm.selectedUri.selectedMedia == '.geojson'" ng-disabled="!vm.showOnMap"><span><i class="fa fa-download"></i></span>&nbsp;&nbsp;Export Basin</a>
                         </div>
                     </p>
 
-                    <div class="panel panel-default">
-                      <div class="panel-body">                          
-                          <json-formatter ng-show="vm.requestResults" json="vm.requestResults" open="1"></json-formatter> 
-                      </div>
+                    <div ng-if="!vm.downloadable" class="panel panel-default">
+                        <div class="panel-body">
+                            <json-formatter ng-show="vm.requestResults" json="vm.requestResults" open="1"></json-formatter>
+                        </div>
                     </div>
                 </div>
             </div>

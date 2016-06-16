@@ -1,7 +1,7 @@
 //http://lgorithms.blogspot.com/2013/07/angularui-router-as-infrastructure-of.html
 //http://www.funnyant.com/angularjs-ui-router/
-var StreamStats;
-(function (StreamStats) {
+var STN;
+(function (STN) {
     'use strinct';
     var config = (function () {
         function config($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -16,15 +16,15 @@ var StreamStats;
                 views: {
                     'main': {
                         templateUrl: "Views/homeview.html",
-                        controller: "StreamStats.Controllers.MainController"
+                        controller: "STN.Controllers.MainController"
                     },
                     'sidebar': {
                         templateUrl: "Views/sidebarview.html",
-                        controller: "StreamStats.Controllers.SidebarController"
+                        controller: "STN.Controllers.SidebarController"
                     },
                     'navbar': {
                         templateUrl: "Views/navigationview.html",
-                        controller: "StreamStats.Controllers.NavbarController"
+                        controller: "STN.Controllers.NavbarController"
                     }
                 }
             }); //end main state 
@@ -34,15 +34,15 @@ var StreamStats;
         config.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
         return config;
     })(); //end class
-    angular.module('StreamStats', [
+    angular.module('STN', [
         "ui.router",
         "mobile-angular-ui",
         'leaflet-directive',
-        "StreamStats.Services",
-        "StreamStats.Controllers",
+        "STN.Services",
+        "STN.Controllers",
         'jsonFormatter',
         'WiM.Services',
         'WiM.Event'
     ]).config(config);
-})(StreamStats || (StreamStats = {})); //end module 
+})(STN || (STN = {})); //end module 
 //# sourceMappingURL=config.js.map

@@ -15,8 +15,8 @@
 //Comments
 //04.14.2015 jkn - Created
 //Imports"
-var StreamStats;
-(function (StreamStats) {
+var STN;
+(function (STN) {
     var Controllers;
     (function (Controllers) {
         'use strinct';
@@ -85,7 +85,7 @@ var StreamStats;
             ProcedureType[ProcedureType["REFINE"] = 4] = "REFINE";
             ProcedureType[ProcedureType["BUILD"] = 5] = "BUILD";
         })(ProcedureType || (ProcedureType = {}));
-        angular.module('StreamStats.Controllers').controller('StreamStats.Controllers.NavbarController', NavbarController);
-    })(Controllers = StreamStats.Controllers || (StreamStats.Controllers = {}));
-})(StreamStats || (StreamStats = {})); //end module
+        angular.module('STN.Controllers').controller('STN.Controllers.NavbarController', NavbarController);
+    })(Controllers = STN.Controllers || (STN.Controllers = {}));
+})(STN || (STN = {})); //end module
 //# sourceMappingURL=NavbarController.js.map

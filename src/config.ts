@@ -43,7 +43,7 @@ module STN {
         'leaflet-directive',
         "STN.Services",
         "STN.Controllers",
-        'jsonFormatter','WiM.Services', 'WiM.Event'//, 'wim_angular'
+        'jsonFormatter','WiM.Services', 'WiM.Event', 'STN.Directives'
         ])
         .config(config);
 }//end module 

@@ -42,7 +42,8 @@ var STN;
         "STN.Controllers",
         'jsonFormatter',
         'WiM.Services',
-        'WiM.Event'
+        'WiM.Event',
+        'STN.Directives'
     ]).config(config);
 })(STN || (STN = {})); //end module 
 //# sourceMappingURL=config.js.map

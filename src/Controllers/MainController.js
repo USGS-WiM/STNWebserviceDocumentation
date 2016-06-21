@@ -41,14 +41,18 @@ var STN;
             }
             return Layer;
         })();
-        var studyArea = (function () {
-            //Constructor
-            //-+-+-+-+-+-+-+-+-+-+-+-
-            function studyArea(rcode) {
-                this.rcode = rcode;
-            }
-            return studyArea;
-        })();
+        //class mapFeatures {
+        //    //Properties
+        //    //-+-+-+-+-+-+-+-+-+-+-+-
+        //    public lat: number;
+        //    public lng: number;
+        //    //public rcode: string;  //public crs: number;//public workspaceID: string;        
+        //    //Constructor
+        //    //-+-+-+-+-+-+-+-+-+-+-+-
+        //    //constructor(rcode: string) {
+        //    //    this.rcode = rcode;
+        //    //}
+        //}   
         var MainController = (function () {
             function MainController($scope, $filter, Resource, leafletBoundsHelper, leafletData) {
                 var _this = this;
@@ -84,24 +88,24 @@ var STN;
                 this.leafletData = leafletData;
                 this.showOnMap = false;
                 //update lat lng on click
-                $scope.$on('leafletDirectiveMap.click', function (event, args) {
-                    var latlng = args.leafletEvent.latlng;
-                    _this.studyArea.lat = latlng.lat;
-                    _this.studyArea.lng = latlng.lng;
-                    _this.markers['pourpoint'] = {
-                        lat: _this.studyArea.lat,
-                        lng: _this.studyArea.lng,
-                        focus: true
-                    };
-                    for (var index in _this.selectedUri.parameters) {
-                        if (_this.selectedUri.parameters[index].name == "xlocation") {
-                            _this.selectedUri.parameters[index].value = latlng.lng.toFixed(4);
-                        }
-                        if (_this.selectedUri.parameters[index].name == "ylocation") {
-                            _this.selectedUri.parameters[index].value = latlng.lat.toFixed(4);
-                        }
-                    }
-                });
+                //$scope.$on('leafletDirectiveMap.click',(event, args) => {
+                //    var latlng = args.leafletEvent.latlng;
+                //    this.studyArea.lat = latlng.lat;
+                //    this.studyArea.lng = latlng.lng;
+                //    this.markers['pourpoint'] = {
+                //        lat: this.studyArea.lat,
+                //        lng: this.studyArea.lng,
+                //        focus: true
+                //    }
+                //    for (var index in this.selectedUri.parameters) {
+                //        if (this.selectedUri.parameters[index].name == "xlocation") {
+                //            this.selectedUri.parameters[index].value = latlng.lng.toFixed(4);
+                //        }
+                //        if (this.selectedUri.parameters[index].name == "ylocation") {
+                //            this.selectedUri.parameters[index].value = latlng.lat.toFixed(4);
+                //        }
+                //    }
+                //});
                 $scope.$on('leafletDirectiveMap.zoomend', function (event, args) {
                     //console.log('map zoom changed', args.leafletEvent.target._animateToZoom, 15, this.cursorStyle);
                     (args.leafletEvent.target._animateToZoom > 13) ? _this.cursorStyle = 'crosshair' : _this.cursorStyle = 'hand';
@@ -137,7 +141,8 @@ var STN;
                 });
             };
             MainController.prototype.makeRequestURL = function () {
-                //console.log('in makeRequest URL function');
+                //clear map if there's a response in there
+                this.geojson = {};
                 this.downloadable = false;
                 var inputParams = [this.selectedUri.selectedMedia];
                 for (var i = 0; i < this.selectedUri.parameters.length; i++) {
@@ -168,44 +173,38 @@ var STN;
             };
             MainController.prototype.showResponseOnMap = function () {
                 var _this = this;
-                this.studyArea.features = this.requestResults.hasOwnProperty("featurecollection") ? this.requestResults["featurecollection"] : null;
-                this.studyArea.workspaceID = this.requestResults.hasOwnProperty("workspaceID") ? this.requestResults["workspaceID"] : null;
                 //clear out this.markers
                 this.markers = {};
                 this.geojson = {};
-                if (!this.studyArea.features)
-                    return;
-                var rcode = this.studyArea.rcode;
-                var workspaceID = this.studyArea.workspaceID;
-                this.studyArea.features.forEach(function (item) {
-                    _this.geojson[item.name] = {
-                        data: item.feature
-                    };
-                    //do layer styling or labelling here
-                    if (item.name == 'globalwatershed') {
-                        _this.geojson[item.name].style = {
-                            fillColor: "yellow",
-                            weight: 2,
-                            opacity: 1,
-                            color: 'white',
-                            fillOpacity: 0.5
-                        };
-                        var bbox = _this.geojson['globalwatershed'].data.features[0].bbox;
-                        //console.log(bbox);
-                        _this.leafletData.getMap().then(function (map) {
-                            map.fitBounds([[bbox[1], bbox[0]], [bbox[3], bbox[2]]]); //lat, long, lat,long
-                        });
-                    }
-                    if (item.name == 'globalwatershedpoint') {
-                        _this.geojson[item.name].onEachFeature = function (feature, layer) {
-                            var popupContent = '<strong>Latitude: </strong>' + feature.geometry.coordinates[1] + '</br><strong>Longitude: </strong>' + feature.geometry.coordinates[0] + '</br><strong>Region: </strong>' + rcode + '</br><strong>WorkspaceID: </strong>' + workspaceID + '</br>';
-                            angular.forEach(feature.properties, function (value, key) {
-                                popupContent += '<strong>' + key + ': </strong>' + value + '</br>';
-                            });
-                            layer.bindPopup(popupContent);
-                        };
-                    }
+                this.geojson["data"] = this.requestResults;
+                //        var bbox = item.bbox;
+                //        //console.log(bbox);
+                this.leafletData.getMap().then(function (map) {
+                    var latlngs = [];
+                    angular.forEach(_this.geojson["data"]["features"][0].geometry.coordinates, function (g) {
+                        var coord = g.coordinates;
+                        for (var j in coord) {
+                            var points = coord[j];
+                            for (var k in points) {
+                                latlngs.push(L.GeoJSON.coordsToLatLng(points[k]));
+                            }
+                        }
+                    });
+                    map.fitBounds(latlngs);
+                    //map.fitBounds(bounds); //lat, long, lat,long
                 });
+                if (this.selectedUri.id.indexOf("HWM") > 0) {
+                    //hwm query
+                    this.geojson["onEachFeature"] = function (obj, layer) {
+                        var popupContent = ''; //<strong>Latitude: </strong>' + obj.geometry.coordinates[1] + '</br><strong>Longitude: </strong>' + obj.geometry.coordinates[0] + '</br><strong>Region: </strong>' + 'rcode' + '</br><strong>WorkspaceID: </strong>' + 'workspaceID' + '</br>';
+                        angular.forEach(obj.properties, function (value, key) {
+                            if (key == 'hwm_id' || key == 'waterbody' || key == 'site_id' || key == 'event_id' || key == 'hwm_type_id' || key == 'hwm_quality_id' || key == 'hwm_locationdescription' || key == 'latitude_dd' || key == 'longitude_dd') {
+                                popupContent += '<strong>' + key + ': </strong>' + value + '</br>';
+                            }
+                        });
+                        layer.bindPopup(popupContent);
+                    };
+                } //if hwm
             };
             MainController.prototype.initMap = function () {
                 this.center = new Center(39, -100, 4);

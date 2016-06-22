@@ -91,21 +91,7 @@ module STN.Controllers {
         }
     }
 
-    //class mapFeatures {
-    //    //Properties
-    //    //-+-+-+-+-+-+-+-+-+-+-+-
-    //    public lat: number;
-    //    public lng: number;
-        
-    //    //public rcode: string;  //public crs: number;//public workspaceID: string;        
-        
-    //    //Constructor
-    //    //-+-+-+-+-+-+-+-+-+-+-+-
-    //    //constructor(rcode: string) {
-    //    //    this.rcode = rcode;
-    //    //}
-    //}   
-    
+   
     class MainController implements IMainController {
         //Events
         //-+-+-+-+-+-+-+-+-+-+-+-
@@ -122,6 +108,7 @@ module STN.Controllers {
         public selectedMedia: string;
         public requestResults: string;
         public waitCursor: boolean;
+        public onMapWaitCursor: boolean;
         public showOnMap: boolean;
         public applicationURL: string;
         public servicesBaseURL: string;
@@ -135,7 +122,7 @@ module STN.Controllers {
         public markers: Object = null;
         public geojson: Object = null;
         public fitBounds: IBounds;
-        public mapFeatures: Array<any>;
+        public mapPoints: Array<any>;
         public mapSpinner;
 
         //Constructor
@@ -145,6 +132,7 @@ module STN.Controllers {
             $scope.vm = this;         
             this.selectedUri = new STN.Models.URI('');
             this.waitCursor = false;
+            this.onMapWaitCursor = false;
             this.sideBarCollapsed = false;
             this.downloadable = false;
             this.applicationURL = configuration.baseurls['application'];
@@ -276,34 +264,30 @@ module STN.Controllers {
             });
         }
 
-        private showResponseOnMap() {                                
+        private showResponseOnMap() {  
+            this.onMapWaitCursor = true;                                       
             //clear out this.markers
             this.markers = {};
-            this.geojson = {};
-
+            this.geojson = {};            
             this.geojson["data"] = this.requestResults;
+            //get the bounds of all points
+            var mp = [];
+            this.geojson["data"]["features"].forEach((g) => {                
+                mp.push([g.geometry.coordinates[1], g.geometry.coordinates[0]]);                
+            })                        
            
-            //        var bbox = item.bbox;
-            //        //console.log(bbox);
-            this.leafletData.getMap().then((map: any) => {
-                var latlngs = [];
-                angular.forEach(this.geojson["data"]["features"][0].geometry.coordinates, function (g){
-                    var coord = g.coordinates;
-                    for (var j in coord) {
-                        var points = coord[j];
-                        for (var k in points) {
-                            latlngs.push(L.GeoJSON.coordsToLatLng(points[k]));
-                        }
-                    }
-                })
-                map.fitBounds(latlngs);
-                //map.fitBounds(bounds); //lat, long, lat,long
+            this.leafletData.getMap()
+                .then(
+                (map: any) => {
+                    map.fitBounds(mp);                
+            }).finally(() => {
+                this.onMapWaitCursor = false;                
             });
 
             if (this.selectedUri.id.indexOf("HWM") > 0) {
                 //hwm query
                 this.geojson["onEachFeature"] = function (obj, layer) {
-                    var popupContent = '';//<strong>Latitude: </strong>' + obj.geometry.coordinates[1] + '</br><strong>Longitude: </strong>' + obj.geometry.coordinates[0] + '</br><strong>Region: </strong>' + 'rcode' + '</br><strong>WorkspaceID: </strong>' + 'workspaceID' + '</br>';
+                    var popupContent = '';
                     angular.forEach(obj.properties, function (value, key) {
                         if (key == 'hwm_id' || key == 'waterbody' || key == 'site_id' || key == 'event_id' || key == 'hwm_type_id' || key == 'hwm_quality_id' ||
                             key == 'hwm_locationdescription' || key == 'latitude_dd' || key == 'longitude_dd') {
@@ -313,7 +297,30 @@ module STN.Controllers {
                     layer.bindPopup(popupContent);
                 }
             }//if hwm
-
+            if (this.selectedUri.id.indexOf("Site") > 0) {
+                //site query
+                this.geojson["onEachFeature"] = function (obj, layer) {
+                    var popupContent = '';
+                    angular.forEach(obj.properties, function (value, key) {
+                        if (key == 'site_id' || key == 'site_no' || key == 'site_name' || key == 'site_description' || key == 'waterbody' || key == 'latitude_dd' || key == 'longitude_dd') {
+                            popupContent += '<strong>' + key + ': </strong>' + value + '</br>';
+                        }
+                    });
+                    layer.bindPopup(popupContent);
+                }
+            }//if site 
+            if (this.selectedUri.id.indexOf("Objective") > 0) {
+                //objective point query
+                this.geojson["onEachFeature"] = function (obj, layer) {
+                    var popupContent = '';
+                    angular.forEach(obj.properties, function (value, key) {
+                        if (key == 'objective_point_id' || key == 'name' || key == 'description' || key == 'date_established' || key == 'site_id' || key == 'op_type_id' || key == 'latitude_dd' || key == 'longitude_dd') {
+                            popupContent += '<strong>' + key + ': </strong>' + value + '</br>';
+                        }
+                    });
+                    layer.bindPopup(popupContent);
+                }
+            }//if objective point
             
         }
         private initMap(): void {

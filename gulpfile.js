@@ -73,7 +73,7 @@ gulp.task('styles', function () {
 
 // Icons
 gulp.task('icons', function () {
-    return gulp.src(['bower_components/bootstrap/dist/fonts/*.*', 'bower_components/font-awesome/fonts/*.*', 'bower_components/lato/fonts/**/*'])
+    return gulp.src(['bower_components/bootstrap/dist/fonts/*.*', 'bower_components/font-awesome/fonts/*.*', 'bower_components/lato/font/**/*'])
         .pipe(gulp.dest('dist/fonts'));
 });
 
@@ -139,7 +139,45 @@ gulp.task('default', ['clean'], function () {
 gulp.task('watch', ['connect', 'serve'], function () {
     // start up
 });
+// clean, build, and watch live changes to the prod environment
+gulp.task('watch-prod', ['build-app-prod'], function() {
 
+    connect.server({
+        root: 'dist',
+        port: 9001,
+        livereload: true
+    });
+    open("http://localhost:9001");
+
+    // watch index
+    gulp.watch(paths.index, function() {
+        return pipes.builtIndexProd()
+            //.pipe(plugins.livereload());
+            .pipe(connect.reload());
+    });
+
+    // watch app scripts
+    gulp.watch(paths.scripts, function() {
+        return pipes.builtAppScriptsProd()
+            //.pipe(plugins.livereload());
+            .pipe(connect.reload());
+    });
+
+    // watch html partials
+    gulp.watch(paths.partials, function() {
+        return pipes.builtAppScriptsProd()
+            //.pipe(plugins.livereload());
+            .pipe(connect.reload());
+    });
+
+    // watch app styles
+    gulp.watch(paths.appStyles, function() {
+        return pipes.builtAppStylesProd()
+            //.pipe(plugins.livereload());
+            .pipe(connect.reload());
+    });
+
+});
 // Connect
 gulp.task('connect', function () {
     connect.server({

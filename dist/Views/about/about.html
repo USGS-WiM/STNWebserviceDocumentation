@@ -10,32 +10,31 @@
                         ng-click="vm.toggleSelected()">
                     &times;
                 </button>
-                <h4 class="modal-title">StreamStats Services</h4>
+                <h4 class="modal-title">STN Web Services</h4>
             </div>
             <div class="modal-body">
                 <div class="modal-body">
                     <ul id="aboutTabs" class="nav nav-tabs">
                         <li ng-class="{'active':vm.selectedTabName==='about'}"><a ng-click="vm.selectTab('about')"><i class="fa fa-question-circle"></i>&nbsp;About the project</a></li>
                         <li ng-class="{'active':vm.selectedTabName==='disclaimer'}"><a ng-click="vm.selectTab('disclaimer')"><i class="fa fa-exclamation-circle"></i>&nbsp;Disclaimer</a></li>
-                        <li ng-class="{'active':vm.selectedTabName==='contact'}"><a ng-click="vm.selectTab('contact')"><i class="fa fa-envelope"></i>&nbsp;Contact us</a></li>
+                        <!--<li ng-class="{'active':vm.selectedTabName==='contact'}"><a ng-click="vm.selectTab('contact')"><i class="fa fa-envelope"></i>&nbsp;Contact us</a></li>-->
 
                     </ul>
                     <div style="padding-top: 10px;">
                         <div id="about" ng-if="vm.selectedTabName==='about'">
 
                             <p style="color:black;">
-                                The StreamStats service API is developed by the Wisconsin Internet Mapping (WiM) group in collaboration with the Office of Surface Water StreamStats team working with USGS Water Science Centers across the nation.
+                                The STN service API is developed by the Wisconsin Internet Mapping (WiM) group in collaboration with ...
                             </p>
 
                         </div>
                         <div id="disclaimer" ng-show="vm.selectedTabName==='disclaimer'" class="text-danger">
                             <h3>Limitations</h3>
                             <p>
-                                The StreamStats Service API provides access to automated procedures and very large, complex data sets.
+                                The STN Web Service API provides access to automated procedures and very large, complex data sets.
                                 These data sets are known to contain occasional errors. Users are advised to carefully check all results for
                                 accuracy and to exercise their own professional judgment in evaluating the appropriateness of the results for
-                                their application. Basin delineations, in particular, frequently have been found to be erroneous. StreamStats
-                                provides tools and base maps useful for verifying the accuracy of the basin delineations and for correcting them, if necessary.
+                                their application.
                             </p>
 
                             <p>Absolutely no accuracy or completeness guarantee is implied or intended. The U.S. Geological Survey expressly disclaims responsibility for damages or liability that may arise from use of these data.</p>
@@ -77,8 +76,8 @@
 
             <div class="modal-footer">
                 <p style="color:black; margin-left:35px;text-align:left">
-                    For more information about the StreamStats Services API please contact <a href="http://wim.usgs.gov/" target="_blank"><img src="images/wimvectorxs.png" id="wim_logo"></a>
-                    or select the 'contact us' tab to submit a message.
+                    For more information about the STN Web Services API please contact <a href="http://wim.usgs.gov/" target="_blank"><img src="images/wimvectorxs.png" id="wim_logo"></a>
+                    <!--or select the 'contact us' tab to submit a message.-->
                 </p>
                 <button ng-click="vm.toggleSelected()" class="btn btn-default">Close</button>
             </div>

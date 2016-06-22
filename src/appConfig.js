@@ -2530,7 +2530,7 @@ configuration.resources =
         //#endregion
         //#region state (41)
         {
-            "name": "Source",
+            "name": "State",
             "description": "The state resource represents a state in which a site is created.",
             "methods": [{
                 "type": "GET",
@@ -2554,7 +2554,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/agencies/{1}/sources{0}",
+                        "uri": "/sites/{1}/states{0}",
                         "description": "This service returns a list of states that have sites.",
                         "id": "Site States",
                         "parameters": [],
@@ -2567,7 +2567,7 @@ configuration.resources =
         //#endregion
         //#region status type (42)
         {
-            "name": "Source",
+            "name": "Status Type",
             "description": "The status type resource represents a status type that a sensor has.",
             "methods": [{
                 "type": "GET",
@@ -2631,7 +2631,7 @@ configuration.resources =
                     },
                     {
                         "uri": "/hwms/{1}/verticalmethod{0}",
-                        "description": "This service returns the vertical collection method for a hwm",
+                        "description": "This service returns the vertical collection method for a hwm.",
                         "id": "HWM Vertical Collection Method",
                         "parameters": [
                             { "name": "hwmId", "type": "number", "description": "Id of hwm requested", "value": "" }

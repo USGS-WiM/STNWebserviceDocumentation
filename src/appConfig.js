@@ -1723,7 +1723,8 @@ configuration.resources =
                         "id": "All Objective Points",
                         "parameters": [],
                         "availableMedia": [".xml", ".json", ".geojson"],
-                        "selectedMedia": ".json"
+                        "selectedMedia": ".json",
+                        "showMap": true
                     },
                     {
                         "uri": "/objectivepoints/{1}{0}",
@@ -1733,7 +1734,8 @@ configuration.resources =
                            { "name": "objectivePointId", "type": "number", "description": "Id of objective point requested", "value": "" }
                         ],
                         "availableMedia": [".xml", ".json", ".geojson"],
-                        "selectedMedia": ".json"
+                        "selectedMedia": ".json",
+                        "showMap": true
                     },
                     {
                         "uri": "/verticaldatums/{1}/objectivepoints{0}",
@@ -1743,7 +1745,8 @@ configuration.resources =
                            { "name": "vdatumId", "type": "number", "description": "Id of the vertical datum", "value": "" }
                         ],
                         "availableMedia": [".xml", ".json", ".geojson"],
-                        "selectedMedia": ".json"
+                        "selectedMedia": ".json",
+                        "showMap": true
                     },
                     {
                         "uri": "/sites/{1}/objectivepoints{0}",
@@ -1753,7 +1756,8 @@ configuration.resources =
                            { "name": "siteId", "type": "number", "description": "Id of the site", "value": "" }
                         ],
                         "availableMedia": [".xml", ".json", ".geojson"],
-                        "selectedMedia": ".json"
+                        "selectedMedia": ".json",
+                        "showMap": true
                     }
                 ]
             }]
@@ -2264,7 +2268,8 @@ configuration.resources =
                         "id": "All Sites",
                         "parameters": [],
                         "availableMedia": [".xml", ".json", ".geojson"],
-                        "selectedMedia": ".json"
+                        "selectedMedia": ".json",
+                        "showMap": true
                     },
                     {
                         "uri": "/sites/{1}{0}",
@@ -2274,7 +2279,8 @@ configuration.resources =
                            { "name": "siteId", "type": "number", "description": "Id of site requested", "value": "" }
                         ],
                         "availableMedia": [".xml", ".json", ".geojson"],
-                        "selectedMedia": ".json"
+                        "selectedMedia": ".json",
+                        "showMap": true
                     },
                     {
                         "uri": "/sites/Search{0}?bySiteNo={1}&bySiteName={2}&bySiteId={3}",
@@ -2286,7 +2292,8 @@ configuration.resources =
                            { "name": "siteId", "type": "number", "description": "Id of the sensor", "optional": true, "value": "" }
                         ],
                         "availableMedia": [".xml", ".json", ".geojson"],
-                        "selectedMedia": ".json"
+                        "selectedMedia": ".json",
+                        "showMap": true
                     },
                     {
                         "uri": "/files/{1}/site{0}",
@@ -2296,7 +2303,8 @@ configuration.resources =
                            { "name": "fileId", "type": "number", "description": "Id of the file", "value": "" }
                         ],
                         "availableMedia": [".xml", ".json", ".geojson"],
-                        "selectedMedia": ".json"
+                        "selectedMedia": ".json",
+                        "showMap": true
                     },
                     {
                         "uri": "/objectivepoints/{1}/site{0}",
@@ -2306,7 +2314,8 @@ configuration.resources =
                            { "name": "objectivePointId", "type": "number", "description": "Id of the objective point", "value": "" }
                         ],
                         "availableMedia": [".xml", ".json", ".geojson"],
-                        "selectedMedia": ".json"
+                        "selectedMedia": ".json",
+                        "showMap": true
                     },
                     {
                         "uri": "/hwms/{1}/site{0}",
@@ -2316,7 +2325,8 @@ configuration.resources =
                            { "name": "hwmId", "type": "number", "description": "Id of the hwm", "value": "" }
                         ],
                         "availableMedia": [".xml", ".json", ".geojson"],
-                        "selectedMedia": ".json"
+                        "selectedMedia": ".json",
+                        "showMap": true
                     },
                     {
                         "uri": "/instruments/{1}/site{0}",
@@ -2326,7 +2336,8 @@ configuration.resources =
                            { "name": "sensorId", "type": "number", "description": "Id of the sensor", "value": "" }
                         ],
                         "availableMedia": [".xml", ".json", ".geojson"],
-                        "selectedMedia": ".json"
+                        "selectedMedia": ".json",
+                        "showMap": true
                     },
                     {
                         "uri": "/events/{1}/sites{0}",
@@ -2336,7 +2347,8 @@ configuration.resources =
                            { "name": "eventId", "type": "number", "description": "Id of the event", "value": "" }
                         ],
                         "availableMedia": [".xml", ".json", ".geojson"],
-                        "selectedMedia": ".json"
+                        "selectedMedia": ".json",
+                        "showMap": true
                     },
                     {
                         "uri": "/networktypes/{1}/sites{0}",
@@ -2346,7 +2358,8 @@ configuration.resources =
                            { "name": "networkTypeId", "type": "number", "description": "Id of the network type", "value": "" }
                         ],
                         "availableMedia": [".xml", ".json", ".geojson"],
-                        "selectedMedia": ".json"
+                        "selectedMedia": ".json",
+                        "showMap": true
                     },
                     {
                         "uri": "/networknames/{1}/sites{0}",
@@ -2356,7 +2369,8 @@ configuration.resources =
                            { "name": "networkNameId", "type": "number", "description": "Id of the network name", "value": "" }
                         ],
                         "availableMedia": [".xml", ".json", ".geojson"],
-                        "selectedMedia": ".json"
+                        "selectedMedia": ".json",
+                        "showMap": true
                     },
                     {
                         "uri": "/states/{1}/sites{0}",
@@ -2366,7 +2380,8 @@ configuration.resources =
                            { "name": "stateAbbrev", "type": "string", "description": "Abbreviation of the state.", "value": "" }
                         ],
                         "availableMedia": [".xml", ".json", ".geojson"],
-                        "selectedMedia": ".json"
+                        "selectedMedia": ".json",
+                        "showMap": true
                     },
                     {
                         "uri": "/sites{0}?Latitude={1}&Longitude={2}&Buffer={3}",
@@ -2378,7 +2393,8 @@ configuration.resources =
                            { "name": "buffer", "type": "number", "description": "buffer distance to search (in decimal degrees)", "optional": true, "value": "" }
                         ],
                         "availableMedia": [".xml", ".json", ".geojson"],
-                        "selectedMedia": ".json"
+                        "selectedMedia": ".json",
+                        "showMap": true
                     },
                     {
                         "uri": "/horizontaldatums/{1}/sites{0}",
@@ -2388,7 +2404,8 @@ configuration.resources =
                            { "name": "hdatumId", "type": "number", "description": "Id of the horizontal datum", "value": "" }
                         ],
                         "availableMedia": [".xml", ".json", ".geojson"],
-                        "selectedMedia": ".json"
+                        "selectedMedia": ".json",
+                        "showMap": true
                     },
                     {
                         "uri": "/landowners/{1}/sites{0}",
@@ -2398,7 +2415,8 @@ configuration.resources =
                            { "name": "landOwnerId", "type": "number", "description": "Id of the land owner", "value": "" }
                         ],
                         "availableMedia": [".xml", ".json", ".geojson"],
-                        "selectedMedia": ".json"
+                        "selectedMedia": ".json",
+                        "showMap": true
                     },
                     {
                         "uri": "/Sites/FilteredSites{0}?Event={1}&State={2}&SensorType={3}&NetworkName={4}&OPDefined={5}&HWMOnly={6}&SensorOnly={7}&RDGOnly={8}",
@@ -2415,7 +2433,8 @@ configuration.resources =
                            { "name": "rdgOnlySites", "type": "number", "description": "1 for sites that have an RDG sensor proposed or deployed or an RDG housing type listed", "optional": true, "value": "" }
                         ],
                         "availableMedia": [".xml", ".json", ".geojson"],
-                        "selectedMedia": ".json"
+                        "selectedMedia": ".json",
+                        "showMap": true
                     }
                 ]
             }]

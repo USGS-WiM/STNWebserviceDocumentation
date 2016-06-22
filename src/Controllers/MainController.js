@@ -41,18 +41,6 @@ var STN;
             }
             return Layer;
         })();
-        //class mapFeatures {
-        //    //Properties
-        //    //-+-+-+-+-+-+-+-+-+-+-+-
-        //    public lat: number;
-        //    public lng: number;
-        //    //public rcode: string;  //public crs: number;//public workspaceID: string;        
-        //    //Constructor
-        //    //-+-+-+-+-+-+-+-+-+-+-+-
-        //    //constructor(rcode: string) {
-        //    //    this.rcode = rcode;
-        //    //}
-        //}   
         var MainController = (function () {
             function MainController($scope, $filter, Resource, leafletBoundsHelper, leafletData) {
                 var _this = this;
@@ -67,6 +55,7 @@ var STN;
                 $scope.vm = this;
                 this.selectedUri = new STN.Models.URI('');
                 this.waitCursor = false;
+                this.onMapWaitCursor = false;
                 this.sideBarCollapsed = false;
                 this.downloadable = false;
                 this.applicationURL = configuration.baseurls['application'];
@@ -173,30 +162,25 @@ var STN;
             };
             MainController.prototype.showResponseOnMap = function () {
                 var _this = this;
+                this.onMapWaitCursor = true;
                 //clear out this.markers
                 this.markers = {};
                 this.geojson = {};
                 this.geojson["data"] = this.requestResults;
-                //        var bbox = item.bbox;
-                //        //console.log(bbox);
+                //get the bounds of all points
+                var mp = [];
+                this.geojson["data"]["features"].forEach(function (g) {
+                    mp.push([g.geometry.coordinates[1], g.geometry.coordinates[0]]);
+                });
                 this.leafletData.getMap().then(function (map) {
-                    var latlngs = [];
-                    angular.forEach(_this.geojson["data"]["features"][0].geometry.coordinates, function (g) {
-                        var coord = g.coordinates;
-                        for (var j in coord) {
-                            var points = coord[j];
-                            for (var k in points) {
-                                latlngs.push(L.GeoJSON.coordsToLatLng(points[k]));
-                            }
-                        }
-                    });
-                    map.fitBounds(latlngs);
-                    //map.fitBounds(bounds); //lat, long, lat,long
+                    map.fitBounds(mp);
+                }).finally(function () {
+                    _this.onMapWaitCursor = false;
                 });
                 if (this.selectedUri.id.indexOf("HWM") > 0) {
                     //hwm query
                     this.geojson["onEachFeature"] = function (obj, layer) {
-                        var popupContent = ''; //<strong>Latitude: </strong>' + obj.geometry.coordinates[1] + '</br><strong>Longitude: </strong>' + obj.geometry.coordinates[0] + '</br><strong>Region: </strong>' + 'rcode' + '</br><strong>WorkspaceID: </strong>' + 'workspaceID' + '</br>';
+                        var popupContent = '';
                         angular.forEach(obj.properties, function (value, key) {
                             if (key == 'hwm_id' || key == 'waterbody' || key == 'site_id' || key == 'event_id' || key == 'hwm_type_id' || key == 'hwm_quality_id' || key == 'hwm_locationdescription' || key == 'latitude_dd' || key == 'longitude_dd') {
                                 popupContent += '<strong>' + key + ': </strong>' + value + '</br>';
@@ -205,6 +189,30 @@ var STN;
                         layer.bindPopup(popupContent);
                     };
                 } //if hwm
+                if (this.selectedUri.id.indexOf("Site") > 0) {
+                    //site query
+                    this.geojson["onEachFeature"] = function (obj, layer) {
+                        var popupContent = '';
+                        angular.forEach(obj.properties, function (value, key) {
+                            if (key == 'site_id' || key == 'site_no' || key == 'site_name' || key == 'site_description' || key == 'waterbody' || key == 'latitude_dd' || key == 'longitude_dd') {
+                                popupContent += '<strong>' + key + ': </strong>' + value + '</br>';
+                            }
+                        });
+                        layer.bindPopup(popupContent);
+                    };
+                } //if site 
+                if (this.selectedUri.id.indexOf("Objective") > 0) {
+                    //objective point query
+                    this.geojson["onEachFeature"] = function (obj, layer) {
+                        var popupContent = '';
+                        angular.forEach(obj.properties, function (value, key) {
+                            if (key == 'objective_point_id' || key == 'name' || key == 'description' || key == 'date_established' || key == 'site_id' || key == 'op_type_id' || key == 'latitude_dd' || key == 'longitude_dd') {
+                                popupContent += '<strong>' + key + ': </strong>' + value + '</br>';
+                            }
+                        });
+                        layer.bindPopup(popupContent);
+                    };
+                } //if objective point
             };
             MainController.prototype.initMap = function () {
                 this.center = new Center(39, -100, 4);

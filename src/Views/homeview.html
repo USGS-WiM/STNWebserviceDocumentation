@@ -93,8 +93,12 @@
                     <p><a href="{{vm.servicesBaseURL}}{{vm.selectedUri.newURL}}" target="_blank">{{vm.servicesBaseURL}}{{vm.selectedUri.newURL}}</a></p>
                     <p>
                         <div ng-if="!vm.downloadable" class="btn-toolbar" role="toolbar" aria-label="...">
-                            <button ng-click="vm.loadResponse()" type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh" ng-class="(vm.waitCursor) ? 'fa-spin' : ''"></i>&nbsp;&nbsp;Load response in {{vm.selectedUri.selectedMedia}} format</button>
-                            <button ng-click="vm.showResponseOnMap()" type="button" class="btn btn-primary btn-sm" ng-if="vm.selectedUri.showMap && vm.selectedUri.selectedMedia == '.geojson'" ng-disabled="!vm.showOnMap"><i class="fa fa-map"></i>&nbsp;&nbsp;Show response on map</button>
+                            <button ng-click="vm.loadResponse()" type="button" class="btn btn-primary btn-sm">
+                                <i class="fa fa-refresh" ng-class="(vm.waitCursor) ? 'fa-spin' : ''"></i>&nbsp;&nbsp;Load response in {{vm.selectedUri.selectedMedia}} format
+                            </button>
+                            <button ng-click="vm.showResponseOnMap()" type="button" class="btn btn-primary btn-sm" ng-if="vm.selectedUri.showMap && vm.selectedUri.selectedMedia == '.geojson'" ng-disabled="!vm.showOnMap">
+                                <i class="fa fa-map"></i>&nbsp;&nbsp;Show response on map
+                            </button>
                             <span ng-if="vm.selectedUri.showMap && vm.selectedUri.selectedMedia != '.geojson'" style="font-size:12px; padding-left:5px;">Use Response Format '.geojson' to see results on map below.</span>
                            
                         </div>

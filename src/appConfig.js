@@ -108,93 +108,93 @@ configuration.resources =
         },
         //#endregion
         //#region contact  (3)
-        {
-            "name": "Contact",
-            "description": "The contact resource represents an contact that can be added to a report.",
-            "methods": [{
-                "type": "GET",
-                "uriList": [
-                    {
-                        "uri": "/contacts{0}",
-                        "description": "This service returns a list of contacts. Requires authentication.",
-                        "id": "All Contacts",
-                        "parameters": [],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/contacts/{1}{0}",
-                        "description": "This service returns a contact by it's ID. Requires authentication.",
-                        "id": "A Contact",
-                        "parameters": [
-                           { "name": "contactId", "type": "number", "description": "Id of contact requested", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/contacts{0}?reportmetric={1}&contacttype{2}",
-                        "description": "This service returns a contact for a report and by a contact type. Requires authentication.",
-                        "id": "Report Contact By Contact Type",
-                        "parameters": [
-                           { "name": "reportId", "type": "number", "description": "Id of the report", "value": "" },
-                           { "name": "contactTypeId", "type": "number", "description": "Id of the contact type", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/contacts{0}?reportmetric={1}",
-                        "description": "This service returns a list of contacts for a report. Requires authentication.",
-                        "id": "Report Contacts",
-                        "parameters": [
-                           { "name": "reportId", "type": "number", "description": "Id of report", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    }
-               ]
-           }]
-        },
+        //{
+        //    "name": "Contact",
+        //    "description": "The contact resource represents an contact that can be added to a report.",
+        //    "methods": [{
+        //        "type": "GET",
+        //        "uriList": [
+        //            {
+        //                "uri": "/contacts{0}",
+        //                "description": "This service returns a list of contacts. Requires authentication.",
+        //                "id": "All Contacts",
+        //                "parameters": [],
+        //                "availableMedia": [".xml", ".json"],
+        //                "selectedMedia": ".json"
+        //            },
+        //            {
+        //                "uri": "/contacts/{1}{0}",
+        //                "description": "This service returns a contact by it's ID. Requires authentication.",
+        //                "id": "A Contact",
+        //                "parameters": [
+        //                   { "name": "contactId", "type": "number", "description": "Id of contact requested", "value": "" }
+        //                ],
+        //                "availableMedia": [".xml", ".json"],
+        //                "selectedMedia": ".json"
+        //            },
+        //            {
+        //                "uri": "/contacts{0}?reportmetric={1}&contacttype{2}",
+        //                "description": "This service returns a contact for a report and by a contact type. Requires authentication.",
+        //                "id": "Report Contact By Contact Type",
+        //                "parameters": [
+        //                   { "name": "reportId", "type": "number", "description": "Id of the report", "value": "" },
+        //                   { "name": "contactTypeId", "type": "number", "description": "Id of the contact type", "value": "" }
+        //                ],
+        //                "availableMedia": [".xml", ".json"],
+        //                "selectedMedia": ".json"
+        //            },
+        //            {
+        //                "uri": "/contacts{0}?reportmetric={1}",
+        //                "description": "This service returns a list of contacts for a report. Requires authentication.",
+        //                "id": "Report Contacts",
+        //                "parameters": [
+        //                   { "name": "reportId", "type": "number", "description": "Id of report", "value": "" }
+        //                ],
+        //                "availableMedia": [".xml", ".json"],
+        //                "selectedMedia": ".json"
+        //            }
+        //       ]
+        //   }]
+        //},
         //#endregion
         //#region contact type  (4)
-        {
-            "name": "Contact Type",
-            "description": "The contact type resource represents a contact type that can be added to a contact.",
-            "methods": [{
-                "type": "GET",
-                "uriList": [
-                    {
-                        "uri": "/contacttypes{0}",
-                        "description": "This service returns a list of contact types.",
-                        "id": "All Contacts",
-                        "parameters": [],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/contacttypes/{1}{0}",
-                        "description": "This service returns a contact type by it's ID.",
-                        "id": "A Contact Type",
-                        "parameters": [
-                           { "name": "contactTypeId", "type": "number", "description": "Id of contact type requested", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/contacts/{1}/contacttypes{0}",
-                        "description": "This service returns a contact type for a contact.",
-                        "id": "Contact's Contact Type",
-                        "parameters": [
-                           { "name": "contactId", "type": "number", "description": "Id of the contact", "value": "" }                           
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    }
-                ]
-            }]
-        },
+        //{
+        //    "name": "Contact Type",
+        //    "description": "The contact type resource represents a contact type that can be added to a contact.",
+        //    "methods": [{
+        //        "type": "GET",
+        //        "uriList": [
+        //            {
+        //                "uri": "/contacttypes{0}",
+        //                "description": "This service returns a list of contact types.",
+        //                "id": "All Contacts",
+        //                "parameters": [],
+        //                "availableMedia": [".xml", ".json"],
+        //                "selectedMedia": ".json"
+        //            },
+        //            {
+        //                "uri": "/contacttypes/{1}{0}",
+        //                "description": "This service returns a contact type by it's ID.",
+        //                "id": "A Contact Type",
+        //                "parameters": [
+        //                   { "name": "contactTypeId", "type": "number", "description": "Id of contact type requested", "value": "" }
+        //                ],
+        //                "availableMedia": [".xml", ".json"],
+        //                "selectedMedia": ".json"
+        //            },
+        //            {
+        //                "uri": "/contacts/{1}/contacttypes{0}",
+        //                "description": "This service returns a contact type for a contact.",
+        //                "id": "Contact's Contact Type",
+        //                "parameters": [
+        //                   { "name": "contactId", "type": "number", "description": "Id of the contact", "value": "" }                           
+        //                ],
+        //                "availableMedia": [".xml", ".json"],
+        //                "selectedMedia": ".json"
+        //            }
+        //        ]
+        //    }]
+        //},
         //#endregion
         //#region county  (5)
         {
@@ -881,7 +881,7 @@ configuration.resources =
                 "uriList": [
                     {
                         "uri": "/housingtypes{0}",
-                        "description": "This service returns a list of horizontal datum.",
+                        "description": "This service returns a list of housing types.",
                         "id": "All Housing Types",
                         "parameters": [],
                         "availableMedia": [".xml", ".json"],
@@ -1446,43 +1446,43 @@ configuration.resources =
         },
         //#endregion
         //#region land owner contact (23)
-        {
-            "name": "Land Owner Contact",
-            "description": "The land owner contact resource represents a land owner that can be associated with a site. Requires authentication.",
-            "methods": [{
-                "type": "GET",
-                "uriList": [
-                    {
-                        "uri": "/LandOwners{0}",
-                        "description": "This service returns a list of land owners. Requires authentication.",
-                        "id": "All Land Owners",
-                        "parameters": [],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/LandOwners/{1}{0}",
-                        "description": "This service returns a land owner by it's ID. Requires authentication.",
-                        "id": "A Land Owner",
-                        "parameters": [
-                           { "name": "landOwnerId", "type": "number", "description": "Id of land owner requested", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/sites/{1}/landowner{0}",
-                        "description": "This service returns a land owner associated with a site. Requires authentication.",
-                        "id": "Site Land Owner",
-                        "parameters": [
-                           { "name": "siteId", "type": "number", "description": "Id of the site", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    }
-                ]
-            }]
-        },
+        //{
+        //    "name": "Land Owner Contact",
+        //    "description": "The land owner contact resource represents a land owner that can be associated with a site. Requires authentication.",
+        //    "methods": [{
+        //        "type": "GET",
+        //        "uriList": [
+        //            {
+        //                "uri": "/LandOwners{0}",
+        //                "description": "This service returns a list of land owners. Requires authentication.",
+        //                "id": "All Land Owners",
+        //                "parameters": [],
+        //                "availableMedia": [".xml", ".json"],
+        //                "selectedMedia": ".json"
+        //            },
+        //            {
+        //                "uri": "/LandOwners/{1}{0}",
+        //                "description": "This service returns a land owner by it's ID. Requires authentication.",
+        //                "id": "A Land Owner",
+        //                "parameters": [
+        //                   { "name": "landOwnerId", "type": "number", "description": "Id of land owner requested", "value": "" }
+        //                ],
+        //                "availableMedia": [".xml", ".json"],
+        //                "selectedMedia": ".json"
+        //            },
+        //            {
+        //                "uri": "/sites/{1}/landowner{0}",
+        //                "description": "This service returns a land owner associated with a site. Requires authentication.",
+        //                "id": "Site Land Owner",
+        //                "parameters": [
+        //                   { "name": "siteId", "type": "number", "description": "Id of the site", "value": "" }
+        //                ],
+        //                "availableMedia": [".xml", ".json"],
+        //                "selectedMedia": ".json"
+        //            }
+        //        ]
+        //    }]
+        //},
         //#endregion
         //#region marker (24)
         {
@@ -1524,113 +1524,113 @@ configuration.resources =
         },
         //#endregion
         //#region member (25)
-        {
-            "name": "Member",
-            "description": "The member resource represents a member that can be the creator of an event, a site, hwm, sensor, file, and an objective point. Requires authentication.",
-            "methods": [{
-                "type": "GET",
-                "uriList": [
-                    {
-                        "uri": "/members{0}",
-                        "description": "This service returns a list of members.Requires authentication.",
-                        "id": "All Members",
-                        "parameters": [],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/members/{1}{0}",
-                        "description": "This service returns a member by it's ID. Requires authentication.",
-                        "id": "A Member",
-                        "parameters": [
-                           { "name": "memberId", "type": "number", "description": "Id of member requested", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/members/GetMemberName/{1}{0}",
-                        "description": "This service returns a member name. Does not require authentication.",
-                        "id": "Member Name",
-                        "parameters": [
-                           { "name": "memberId", "type": "number", "description": "Id of the member", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/agencies/{1}/members{0}",
-                        "description": "This service returns a list of members that are in the given agency. Requires authentication.",
-                        "id": "Agency Members",
-                        "parameters": [
-                           { "name": "agencyId", "type": "number", "description": "Id of the agency", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/roles/{1}/members{0}",
-                        "description": "This service returns a list of members that have the given role. Requires authentication.",
-                        "id": "Role Members",
-                        "parameters": [
-                           { "name": "roleId", "type": "number", "description": "Id of the role", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/events/{1}/eventcoordinator{0}",
-                        "description": "This service returns a member that is the coordinator for an event. Requires authentication.",
-                        "id": "Event Coordinator",
-                        "parameters": [
-                           { "name": "eventId", "type": "number", "description": "Id of the event", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/approvals/{1}/approvingofficial{0}",
-                        "description": "This service returns a member that created an approval. Requires authentication.",
-                        "id": "Approving Official",
-                        "parameters": [
-                           { "name": "approvalId", "type": "number", "description": "Id of the approval", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/datafiles/{1}/processor{0}",
-                        "description": "This service returns a member that processed a data file. Requires authentication.",
-                        "id": "Data File Processor",
-                        "parameters": [
-                           { "name": "dataFileId", "type": "number", "description": "Id of the data file", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/peaksummaries/{1}/processor{0}",
-                        "description": "This service returns a member that created a peak summary. Requires authentication.",
-                        "id": "Peak Summary Processor",
-                        "parameters": [
-                           { "name": "peakSummaryId", "type": "number", "description": "Id of the peak summary", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/events/{1}/members{0}",
-                        "description": "This service returns a list of members that have deployed or retrieved a sensor, and/or flagged or surveyed a hwm for an event. Requires authentication.",
-                        "id": "Event Members",
-                        "parameters": [
-                           { "name": "eventId", "type": "number", "description": "Id of the event", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    }
-                ]
-            }]
-        },
+        //{
+        //    "name": "Member",
+        //    "description": "The member resource represents a member that can be the creator of an event, a site, hwm, sensor, file, and an objective point. Requires authentication.",
+        //    "methods": [{
+        //        "type": "GET",
+        //        "uriList": [
+        //            {
+        //                "uri": "/members{0}",
+        //                "description": "This service returns a list of members.Requires authentication.",
+        //                "id": "All Members",
+        //                "parameters": [],
+        //                "availableMedia": [".xml", ".json"],
+        //                "selectedMedia": ".json"
+        //            },
+        //            {
+        //                "uri": "/members/{1}{0}",
+        //                "description": "This service returns a member by it's ID. Requires authentication.",
+        //                "id": "A Member",
+        //                "parameters": [
+        //                   { "name": "memberId", "type": "number", "description": "Id of member requested", "value": "" }
+        //                ],
+        //                "availableMedia": [".xml", ".json"],
+        //                "selectedMedia": ".json"
+        //            },
+        //            {
+        //                "uri": "/members/GetMemberName/{1}{0}",
+        //                "description": "This service returns a member name. Does not require authentication.",
+        //                "id": "Member Name",
+        //                "parameters": [
+        //                   { "name": "memberId", "type": "number", "description": "Id of the member", "value": "" }
+        //                ],
+        //                "availableMedia": [".xml", ".json"],
+        //                "selectedMedia": ".json"
+        //            },
+        //            {
+        //                "uri": "/agencies/{1}/members{0}",
+        //                "description": "This service returns a list of members that are in the given agency. Requires authentication.",
+        //                "id": "Agency Members",
+        //                "parameters": [
+        //                   { "name": "agencyId", "type": "number", "description": "Id of the agency", "value": "" }
+        //                ],
+        //                "availableMedia": [".xml", ".json"],
+        //                "selectedMedia": ".json"
+        //            },
+        //            {
+        //                "uri": "/roles/{1}/members{0}",
+        //                "description": "This service returns a list of members that have the given role. Requires authentication.",
+        //                "id": "Role Members",
+        //                "parameters": [
+        //                   { "name": "roleId", "type": "number", "description": "Id of the role", "value": "" }
+        //                ],
+        //                "availableMedia": [".xml", ".json"],
+        //                "selectedMedia": ".json"
+        //            },
+        //            {
+        //                "uri": "/events/{1}/eventcoordinator{0}",
+        //                "description": "This service returns a member that is the coordinator for an event. Requires authentication.",
+        //                "id": "Event Coordinator",
+        //                "parameters": [
+        //                   { "name": "eventId", "type": "number", "description": "Id of the event", "value": "" }
+        //                ],
+        //                "availableMedia": [".xml", ".json"],
+        //                "selectedMedia": ".json"
+        //            },
+        //            {
+        //                "uri": "/approvals/{1}/approvingofficial{0}",
+        //                "description": "This service returns a member that created an approval. Requires authentication.",
+        //                "id": "Approving Official",
+        //                "parameters": [
+        //                   { "name": "approvalId", "type": "number", "description": "Id of the approval", "value": "" }
+        //                ],
+        //                "availableMedia": [".xml", ".json"],
+        //                "selectedMedia": ".json"
+        //            },
+        //            {
+        //                "uri": "/datafiles/{1}/processor{0}",
+        //                "description": "This service returns a member that processed a data file. Requires authentication.",
+        //                "id": "Data File Processor",
+        //                "parameters": [
+        //                   { "name": "dataFileId", "type": "number", "description": "Id of the data file", "value": "" }
+        //                ],
+        //                "availableMedia": [".xml", ".json"],
+        //                "selectedMedia": ".json"
+        //            },
+        //            {
+        //                "uri": "/peaksummaries/{1}/processor{0}",
+        //                "description": "This service returns a member that created a peak summary. Requires authentication.",
+        //                "id": "Peak Summary Processor",
+        //                "parameters": [
+        //                   { "name": "peakSummaryId", "type": "number", "description": "Id of the peak summary", "value": "" }
+        //                ],
+        //                "availableMedia": [".xml", ".json"],
+        //                "selectedMedia": ".json"
+        //            },
+        //            {
+        //                "uri": "/events/{1}/members{0}",
+        //                "description": "This service returns a list of members that have deployed or retrieved a sensor, and/or flagged or surveyed a hwm for an event. Requires authentication.",
+        //                "id": "Event Members",
+        //                "parameters": [
+        //                   { "name": "eventId", "type": "number", "description": "Id of the event", "value": "" }
+        //                ],
+        //                "availableMedia": [".xml", ".json"],
+        //                "selectedMedia": ".json"
+        //            }
+        //        ]
+        //    }]
+        //},
         //#endregion
         //#region network name (26)
         {
@@ -2480,53 +2480,53 @@ configuration.resources =
         },
         //#endregion
         //#region source (40)
-        {
-            "name": "Source",
-            "description": "The source resource represents a source that is the photo file source. Authentication is required.",
-            "methods": [{
-                "type": "GET",
-                "uriList": [
-                    {
-                        "uri": "/sources{0}",
-                        "description": "This service returns a list of sources. Authentication is required.",
-                        "id": "All Sources",
-                        "parameters": [],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/sources/{1}{0}",
-                        "description": "This service returns a source by it's ID. Authentication is required.",
-                        "id": "A Source",
-                        "parameters": [
-                           { "name": "sourceId", "type": "number", "description": "Id of source requested", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/agencies/{1}/sources{0}",
-                        "description": "This service returns a list of sources with the given agency. Authentication is required.",
-                        "id": "Agency Sources",
-                        "parameters": [
-                           { "name": "agencyId", "type": "number", "description": "Id of the agency", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/files/{1}/source{0}",
-                        "description": "This service returns a source that is the source photographer of a photo file. Authentication is required.",
-                        "id": "File Source",
-                        "parameters": [
-                           { "name": "fileId", "type": "number", "description": "Id of the file", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    }
-                ]
-            }]
-        },
+        //{
+        //    "name": "Source",
+        //    "description": "The source resource represents a source that is the photo file source. Authentication is required.",
+        //    "methods": [{
+        //        "type": "GET",
+        //        "uriList": [
+        //            {
+        //                "uri": "/sources{0}",
+        //                "description": "This service returns a list of sources. Authentication is required.",
+        //                "id": "All Sources",
+        //                "parameters": [],
+        //                "availableMedia": [".xml", ".json"],
+        //                "selectedMedia": ".json"
+        //            },
+        //            {
+        //                "uri": "/sources/{1}{0}",
+        //                "description": "This service returns a source by it's ID. Authentication is required.",
+        //                "id": "A Source",
+        //                "parameters": [
+        //                   { "name": "sourceId", "type": "number", "description": "Id of source requested", "value": "" }
+        //                ],
+        //                "availableMedia": [".xml", ".json"],
+        //                "selectedMedia": ".json"
+        //            },
+        //            {
+        //                "uri": "/agencies/{1}/sources{0}",
+        //                "description": "This service returns a list of sources with the given agency. Authentication is required.",
+        //                "id": "Agency Sources",
+        //                "parameters": [
+        //                   { "name": "agencyId", "type": "number", "description": "Id of the agency", "value": "" }
+        //                ],
+        //                "availableMedia": [".xml", ".json"],
+        //                "selectedMedia": ".json"
+        //            },
+        //            {
+        //                "uri": "/files/{1}/source{0}",
+        //                "description": "This service returns a source that is the source photographer of a photo file. Authentication is required.",
+        //                "id": "File Source",
+        //                "parameters": [
+        //                   { "name": "fileId", "type": "number", "description": "Id of the file", "value": "" }
+        //                ],
+        //                "availableMedia": [".xml", ".json"],
+        //                "selectedMedia": ".json"
+        //            }
+        //        ]
+        //    }]
+        //},
         //#endregion
         //#region state (41)
         {

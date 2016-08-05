@@ -24,20 +24,30 @@
                         <div id="about" ng-if="vm.selectedTabName==='about'">
 
                             <p style="color:black;">
-                                The STN service API is developed by the Wisconsin Internet Mapping (WiM) group in collaboration with ...
+                                The STN Web Service API is developed by the Wisconsin Internet Mapping (WiM) group in collaboration with the Office of Surface Water and the USGS Water Science Centers.
                             </p>
 
                         </div>
                         <div id="disclaimer" ng-show="vm.selectedTabName==='disclaimer'" class="text-danger">
                             <h3>Limitations</h3>
                             <p>
-                                The STN Web Service API provides access to automated procedures and very large, complex data sets.
-                                These data sets are known to contain occasional errors. Users are advised to carefully check all results for
-                                accuracy and to exercise their own professional judgment in evaluating the appropriateness of the results for
-                                their application.
+                                Data are provisional and are subject to revision until thoroughly reviewed and approved.
                             </p>
-
-                            <p>Absolutely no accuracy or completeness guarantee is implied or intended. The U.S. Geological Survey expressly disclaims responsibility for damages or liability that may arise from use of these data.</p>
+                            <p>
+                                Real-time data relayed by satellite or other telemetry are automatically screened to not display improbable values until they can be verified.
+                            </p>
+                            <p>
+                                Provisional data may be inaccurate due to instrument malfunctions or physical changes at the measurement site. Subsequent review based on field inspections
+                                and measurements may result in significant revisions to the data.
+                            </p>
+                            <p>
+                                The data are being provided to meet the need for timely best science and are released on the condition that neither the USGS nor the U.S. Government may be held
+                                liable for any damages resulting from authorized or unauthorized use of the information. Data users are cautioned to consider carefully the provisional nature
+                                of the information before using it for decisions that concern personal or public safety or the conduct of business that involves substantial monetary or operational consequences.
+                            </p>
+                            <p>
+                                Information concerning the accuracy and appropriate uses of these data or concerning other hydrologic data may be obtained from the USGS.
+                            </p>                                                        
                         </div>
                         <div id="contact" ng-show="vm.selectedTabName === 'contact'">
                             <form id="contact-form">

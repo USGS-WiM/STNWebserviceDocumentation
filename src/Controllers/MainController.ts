@@ -284,7 +284,7 @@ module STN.Controllers {
                 this.onMapWaitCursor = false;                
             });
 
-            if (this.selectedUri.id.indexOf("HWM") > 0) {
+            if (this.selectedUri.id.indexOf("HWM") >= 0) {
                 //hwm query
                 this.geojson["onEachFeature"] = function (obj, layer) {
                     var popupContent = '';
@@ -297,7 +297,7 @@ module STN.Controllers {
                     layer.bindPopup(popupContent);
                 }
             }//if hwm
-            if (this.selectedUri.id.indexOf("Site") > 0) {
+            if (this.selectedUri.id.indexOf("Site") >= 0) {
                 //site query
                 this.geojson["onEachFeature"] = function (obj, layer) {
                     var popupContent = '';
@@ -309,7 +309,7 @@ module STN.Controllers {
                     layer.bindPopup(popupContent);
                 }
             }//if site 
-            if (this.selectedUri.id.indexOf("Objective") > 0) {
+            if (this.selectedUri.id.indexOf("Objective") >= 0) {
                 //objective point query
                 this.geojson["onEachFeature"] = function (obj, layer) {
                     var popupContent = '';
@@ -321,7 +321,19 @@ module STN.Controllers {
                     layer.bindPopup(popupContent);
                 }
             }//if objective point
-            
+            if (this.selectedUri.id.indexOf("Sensor") >= 0) {
+                //sensor view query
+                this.geojson["onEachFeature"] = function (obj, layer) {
+                    var popupContent = '';
+                    angular.forEach(obj.properties, function (value, key) {
+                        if (key == 'site_no' || key == 'latitude_dd' || key == 'longitude_dd' || key == 'instrument_id' || key == 'sensor_type_id' || key == 'deployment_type_id'
+                            || key == 'event_name' || key == 'status') {
+                            popupContent += '<strong>' + key + ': </strong>' + value + '</br>';
+                        }
+                    });
+                    layer.bindPopup(popupContent);
+                }
+            }//if sensor view
         }
         private initMap(): void {
             this.center = new Center(39, -100, 4);

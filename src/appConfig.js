@@ -1239,163 +1239,7 @@ configuration.resources =
             }]
         },
         //#endregion
-        //#region sensor  (21)
-        {
-            "name": "Sensor",
-            "description": "The sensor resource represents a sensor that can be deployed and retrieved at a site.",
-            "methods": [{
-                "type": "GET",
-                "uriList": [
-                    {
-                        "uri": "/instruments{0}",
-                        "description": "This service returns a list of sensors.",
-                        "id": "All Sensors",
-                        "parameters": [],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/instruments/{1}{0}",
-                        "description": "This service returns a sensor by it's ID.",
-                        "id": "A Sensor",
-                        "parameters": [
-                           { "name": "sensorId", "type": "number", "description": "Id of sensor requested", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/files/{1}/instrument{0}",
-                        "description": "This service returns a sensor that the given file was uploaded for.",
-                        "id": "File Sensor",
-                        "parameters": [
-                           { "name": "fileId", "type": "number", "description": "Id of the file", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/instrumentstatus/{1}/instrument{0}",
-                        "description": "This service returns a sensor associated with an instrument status.",
-                        "id": "Instrument Status Sensor",
-                        "parameters": [
-                           { "name": "instrumentStatusId", "type": "number", "description": "Id of the instrument status", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/datafiles/{1}/instrument{0}",
-                        "description": "This service returns a sensor for a data file.",
-                        "id": "Data File Sensor",
-                        "parameters": [
-                           { "name": "dataFileId", "type": "number", "description": "Id of the data file", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/sites/{1}/instruments{0}",
-                        "description": "This service returns a list of sensors that were deployed at a site.",
-                        "id": "Site Sensors",
-                        "parameters": [
-                           { "name": "siteId", "type": "number", "description": "Id of the site", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/sensortypes/{1}/instruments{0}",
-                        "description": "This service returns a list of sensors with the given sensor type.",
-                        "id": "Sensor Type Sensors",
-                        "parameters": [
-                           { "name": "sensorTypeId", "type": "number", "description": "Id of the sensor type", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/sensorbrands/{1}/instruments{0}",
-                        "description": "This service returns a list of sensors with the given sensor brand.",
-                        "id": "Sensor Brand Sensors",
-                        "parameters": [
-                           { "name": "sensorBrandId", "type": "number", "description": "Id of the sensor brand", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/deploymenttypes/{1}/instruments{0}",
-                        "description": "This service returns a list of sensors with the given deployment type.",
-                        "id": "Deployment Type Sensors",
-                        "parameters": [
-                           { "name": "deploymentTypeId", "type": "number", "description": "Id of the deployment type", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/events/{1}/instruments{0}",
-                        "description": "This service returns a list of sensors that were deployed for an event.",
-                        "id": "Event Sensors",
-                        "parameters": [
-                           { "name": "eventId", "type": "number", "description": "Id of the event", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/sites/{1}/instruments{0}?Event={2}",
-                        "description": "This service returns a list of sensors deployed at a given site for an event.",
-                        "id": "Site Event Sensors",
-                        "parameters": [
-                           { "name": "siteId", "type": "number", "description": "Id of the site", "value": "" },
-                           { "name": "eventId", "type": "number", "description": "Id of the event", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/Instruments/FilteredInstruments{0}?Event={1}&EventType={2}&EventStatus={3}&States={4}&County={5}&CurrentStatus={6}&CollectionCondition={7}&DeploymentType={8}",
-                        "description": "This service returns a list of sensors that meet the passed-in parameters.",
-                        "id": "Filtered Sensors",
-                        "parameters": [
-                           { "name": "eventIds", "type": "comma separated string", "description": "Comma separated list of event IDs (ex: '1,2,3' or '1')", "optional": true, "value": "" },
-                           { "name": "eventTypeIDs", "type": "comma separated string", "description": "Comma separated list of event type IDs", "optional": true, "value": "" },
-                           { "name": "eventStatusID", "type": "number", "description": "Id of the event status", "optional": true, "value": "" },
-                           { "name": "states", "type": "comma separated string", "description": "Comma separated list of state abbreviations", "optional": true, "value": "" },
-                           { "name": "counties", "type": "comma separated string", "description": "Comma separated list of county names (Include 'County' at the end, ex: 'Washington County')", "optional": true, "value": "" },
-                           { "name": "statusIDs", "type": "comma separated string", "description": "Comma separated list of sensor status IDs", "optional": true, "value": "" },
-                           { "name": "collectionConditionIDs", "type": "comma separated string", "description": "Comma separated list of instrument collection condition IDs", "optional": true, "value": "" },
-                           { "name": "deploymentTypeIDs", "type": "comma separated string", "description": "Comma separated list of deployment type IDs", "optional": true, "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/instruments/{1}/fullinstrument{0}",
-                        "description": "This service returns a list of sensors with their associated sensor statuses (instrument_status). (response can only be returned as .json)",
-                        "id": "Full Sensors",
-                        "parameters": [
-                           { "name": "sensorId", "type": "number", "description": "Id of the sensor", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    },
-                    {
-                        "uri": "/sites/{1}/sitefullinstrumentlist{0}",
-                        "description": "This service returns a list of sensors with their associated sensor statuses (instrument_status) that were deployed at a site. (response can only be returned as .json).",
-                        "id": "Site Full Sensors",
-                        "parameters": [
-                           { "name": "siteId", "type": "number", "description": "Id of the site", "value": "" }
-                        ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
-                    }
-                ]
-            }]
-        },
-        //#endregion
+       
         //#region instrument status (22)
         {
             "name": "Instrument Status",
@@ -2159,6 +2003,184 @@ configuration.resources =
                         "id": "Member Role",
                         "parameters": [
                            { "name": "memberId", "type": "number", "description": "Id of the member", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    }
+                ]
+            }]
+        },
+        //#endregion
+        //#region sensor  (21)
+        {
+            "name": "Sensor",
+            "description": "The sensor resource represents a sensor that can be deployed and retrieved at a site.",
+            "methods": [{
+                "type": "GET",
+                "uriList": [
+                    {
+                        "uri": "/instruments{0}",
+                        "description": "This service returns a list of sensors.",
+                        "id": "All Sensors",
+                        "parameters": [],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/instruments/{1}{0}",
+                        "description": "This service returns a sensor by it's ID.",
+                        "id": "A Sensor",
+                        "parameters": [
+                           { "name": "sensorId", "type": "number", "description": "Id of sensor requested", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/files/{1}/instrument{0}",
+                        "description": "This service returns a sensor that the given file was uploaded for.",
+                        "id": "File Sensor",
+                        "parameters": [
+                           { "name": "fileId", "type": "number", "description": "Id of the file", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/instrumentstatus/{1}/instrument{0}",
+                        "description": "This service returns a sensor associated with an instrument status.",
+                        "id": "Instrument Status Sensor",
+                        "parameters": [
+                           { "name": "instrumentStatusId", "type": "number", "description": "Id of the instrument status", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/datafiles/{1}/instrument{0}",
+                        "description": "This service returns a sensor for a data file.",
+                        "id": "Data File Sensor",
+                        "parameters": [
+                           { "name": "dataFileId", "type": "number", "description": "Id of the data file", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/sites/{1}/instruments{0}",
+                        "description": "This service returns a list of sensors that were deployed at a site.",
+                        "id": "Site Sensors",
+                        "parameters": [
+                           { "name": "siteId", "type": "number", "description": "Id of the site", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/sensortypes/{1}/instruments{0}",
+                        "description": "This service returns a list of sensors with the given sensor type.",
+                        "id": "Sensor Type Sensors",
+                        "parameters": [
+                           { "name": "sensorTypeId", "type": "number", "description": "Id of the sensor type", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/sensorbrands/{1}/instruments{0}",
+                        "description": "This service returns a list of sensors with the given sensor brand.",
+                        "id": "Sensor Brand Sensors",
+                        "parameters": [
+                           { "name": "sensorBrandId", "type": "number", "description": "Id of the sensor brand", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/deploymenttypes/{1}/instruments{0}",
+                        "description": "This service returns a list of sensors with the given deployment type.",
+                        "id": "Deployment Type Sensors",
+                        "parameters": [
+                           { "name": "deploymentTypeId", "type": "number", "description": "Id of the deployment type", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/events/{1}/instruments{0}",
+                        "description": "This service returns a list of sensors that were deployed for an event.",
+                        "id": "Event Sensors",
+                        "parameters": [
+                           { "name": "eventId", "type": "number", "description": "Id of the event", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/sites/{1}/instruments{0}?Event={2}",
+                        "description": "This service returns a list of sensors deployed at a given site for an event.",
+                        "id": "Site Event Sensors",
+                        "parameters": [
+                           { "name": "siteId", "type": "number", "description": "Id of the site", "value": "" },
+                           { "name": "eventId", "type": "number", "description": "Id of the event", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/Instruments/FilteredInstruments{0}?Event={1}&EventType={2}&EventStatus={3}&States={4}&County={5}&CurrentStatus={6}&CollectionCondition={7}&SensorType={8}&DeploymentType={9}",
+                        "description": "This service returns a list of sensors that meet the passed-in parameters.",
+                        "id": "Filtered Sensors",
+                        "parameters": [
+                           { "name": "eventIds", "type": "comma separated string", "description": "Comma separated list of event IDs (ex: '1,2,3' or '1')", "optional": true, "value": "" },
+                           { "name": "eventTypeIDs", "type": "comma separated string", "description": "Comma separated list of event type IDs", "optional": true, "value": "" },
+                           { "name": "eventStatusID", "type": "number", "description": "Id of the event status", "optional": true, "value": "" },
+                           { "name": "states", "type": "comma separated string", "description": "Comma separated list of state abbreviations", "optional": true, "value": "" },
+                           { "name": "counties", "type": "comma separated string", "description": "Comma separated list of county names (Include 'County' at the end, ex: 'Washington County')", "optional": true, "value": "" },
+                           { "name": "statusIDs", "type": "comma separated string", "description": "Comma separated list of sensor status IDs", "optional": true, "value": "" },
+                           { "name": "collectionConditionIDs", "type": "comma separated string", "description": "Comma separated list of instrument collection condition IDs", "optional": true, "value": "" },
+                           { "name": "sensorTypeIDs", "type": "comma separated string", "description": "Comma separated list of sensor type IDs", "optional": true, "value": "" },
+                           { "name": "deploymentTypeIDs", "type": "comma separated string", "description": "Comma separated list of deployment type IDs", "optional": true, "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/SensorViews{0}?ViewType={1}&Event={2}&EventType={3}&EventStatus={4}&States={5}&County={6}&CurrentStatus={7}&CollectionCondition={8}&SensorType={9}&DeploymentType={10}",
+                        "description": "This service returns a list of a custom sensor view that meet the passed-in parameters.",
+                        "id": "Sensor View",
+                        "parameters": [
+                            { "name": "view", "type": "string", "description": "string representing which sensor view is being requested. Required to be one of the following: 'baro_view', 'met_view', 'rdg_view', 'stormtide_view', or 'waveheight_view'", "value": "" },
+                           { "name": "eventIds", "type": "comma separated string", "description": "Comma separated list of event IDs (ex: '1,2,3' or '1')", "optional": true, "value": "" },
+                           { "name": "eventTypeIDs", "type": "comma separated string", "description": "Comma separated list of event type IDs", "optional": true, "value": "" },
+                           { "name": "eventStatusID", "type": "number", "description": "Id of the event status", "optional": true, "value": "" },
+                           { "name": "states", "type": "comma separated string", "description": "Comma separated list of state abbreviations", "optional": true, "value": "" },
+                           { "name": "counties", "type": "comma separated string", "description": "Comma separated list of county names (Include 'County' at the end, ex: 'Washington County')", "optional": true, "value": "" },
+                           { "name": "statusIDs", "type": "comma separated string", "description": "Comma separated list of sensor status IDs", "optional": true, "value": "" },
+                           { "name": "collectionConditionIDs", "type": "comma separated string", "description": "Comma separated list of instrument collection condition IDs", "optional": true, "value": "" },
+                           { "name": "sensorTypeIDs", "type": "comma separated string", "description": "Comma separated list of sensor type IDs", "optional": true, "value": "" },
+                           { "name": "deploymentTypeIDs", "type": "comma separated string", "description": "Comma separated list of deployment type IDs", "optional": true, "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json", ".geojson"],
+                        "selectedMedia": ".geojson",
+                        "showMap": true
+                    },
+                    {
+                        "uri": "/instruments/{1}/fullinstrument{0}",
+                        "description": "This service returns a list of sensors with their associated sensor statuses (instrument_status). (response can only be returned as .json)",
+                        "id": "Full Sensors",
+                        "parameters": [
+                           { "name": "sensorId", "type": "number", "description": "Id of the sensor", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json"],
+                        "selectedMedia": ".json"
+                    },
+                    {
+                        "uri": "/sites/{1}/sitefullinstrumentlist{0}",
+                        "description": "This service returns a list of sensors with their associated sensor statuses (instrument_status) that were deployed at a site. (response can only be returned as .json).",
+                        "id": "Site Full Sensors",
+                        "parameters": [
+                           { "name": "siteId", "type": "number", "description": "Id of the site", "value": "" }
                         ],
                         "availableMedia": [".xml", ".json"],
                         "selectedMedia": ".json"

@@ -334,6 +334,19 @@ module STN.Controllers {
                     layer.bindPopup(popupContent);
                 }
             }//if sensor view
+            if (this.selectedUri.id.indexOf("Peak") >= 0) {
+                //sensor view query
+                this.geojson["onEachFeature"] = function (obj, layer) {
+                    var popupContent = '';
+                    angular.forEach(obj.properties, function (value, key) {
+                        if (key == 'site_no' || key == 'latitude_dd' || key == 'longitude_dd' || key == 'description' || key == 'peak_date' || key == 'peak_stage'
+                            || key == 'vdatum') {
+                            popupContent += '<strong>' + key + ': </strong>' + value + '</br>';
+                        }
+                    });
+                    layer.bindPopup(popupContent);
+                }
+            }//if sensor view
         }
         private initMap(): void {
             this.center = new Center(39, -100, 4);

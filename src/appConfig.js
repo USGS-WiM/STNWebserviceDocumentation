@@ -920,7 +920,7 @@ configuration.resources =
                 "uriList": [
                     {
                         "uri": "/hwms{0}",
-                        "description": "This service returns a list of hwms. If unauthorized, only approved hwms will be returned.",
+                        "description": "This service returns a list of hwms.",
                         "id": "All HWMs",
                         "parameters": [],
                         "availableMedia": [".xml", ".json", ".geojson"],
@@ -940,7 +940,7 @@ configuration.resources =
                     },
                     {
                         "uri": "/events/{1}/hwms{0}",
-                        "description": "This service returns a list of hwms found at an event. If unauthorized, only approved hwms will be returned.",
+                        "description": "This service returns a list of hwms found at an event.",
                         "id": "Event HWMs",
                         "parameters": [
                            { "name": "eventId", "type": "number", "description": "Id of the event", "value": "" }
@@ -951,7 +951,7 @@ configuration.resources =
                     },
                     {
                         "uri": "/sites/{1}/EventHWMs{0}?Event={2}",
-                        "description": "This service returns a list of hwms found at a site for an event. If unauthorized, only approved hwms will be returned.",
+                        "description": "This service returns a list of hwms found at a site for an event.",
                         "id": "Site Event HWMs",
                         "parameters": [
                             { "name": "siteId", "type": "number", "description": "Id of the site", "value": "" },
@@ -963,7 +963,7 @@ configuration.resources =
                     },
                     {
                         "uri": "/hwms{0}?IsApproved={1}&Event={2}&Member={3}&State={4}",
-                        "description": "This service returns a list of hwms that meet the passed-in parameters. If unauthorized, only approved hwms will be returned.",
+                        "description": "This service returns a list of hwms that meet the passed-in parameters.",
                         "id": "Approval HWMs",
                         "parameters": [
                            { "name": "appoved", "type": "boolean", "description": "True for hwms that are approved, false for those that are not", "value": "" },
@@ -988,7 +988,7 @@ configuration.resources =
                     },
                     {
                         "uri": "/members/{1}/hwms{0}",
-                        "description": "This service returns a list of hwms that were flagged or surveyed by the given member. If unauthorized, only approved hwms will be returned.",
+                        "description": "This service returns a list of hwms that were flagged or surveyed by the given member.",
                         "id": "Member HWMs",
                         "parameters": [
                            { "name": "memberId", "type": "number", "description": "Id of the member", "value": "" }
@@ -999,7 +999,7 @@ configuration.resources =
                     },
                     {
                         "uri": "/hwmqualities/{1}/hwms{0}",
-                        "description": "This service returns a list of hwms with a given hwm quality. If unauthorized, only approved hwms will be returned.",
+                        "description": "This service returns a list of hwms with a given hwm quality.",
                         "id": "HWM Quality HWMs",
                         "parameters": [
                            { "name": "hwmQualId", "type": "number", "description": "Id of the hwm quality", "value": "" }
@@ -1010,7 +1010,7 @@ configuration.resources =
                     },
                     {
                         "uri": "/hwmtypes/{1}/hwms{0}",
-                        "description": "This service returns a list of hwms with a given hwm type. If unauthorized, only approved hwms will be returned.",
+                        "description": "This service returns a list of hwms with a given hwm type.",
                         "id": "HWM Type HWMs",
                         "parameters": [
                            { "name": "hwmTypeId", "type": "number", "description": "Id of the hwm type", "value": "" }
@@ -1021,7 +1021,7 @@ configuration.resources =
                     },
                     {
                         "uri": "/horizontalmethods/{1}/hwms{0}",
-                        "description": "This service returns a list of hwms with a given horizontal method. If unauthorized, only approved hwms will be returned.",
+                        "description": "This service returns a list of hwms with a given horizontal method.",
                         "id": "Horizontal Method HWMs",
                         "parameters": [
                            { "name": "horizontalMethodId", "type": "number", "description": "Id of the horizontal method", "value": "" }
@@ -1032,7 +1032,7 @@ configuration.resources =
                     },
                     {
                         "uri": "/verticalmethods/{1}/hwms{0}",
-                        "description": "This service returns a list of hwms with a given vertical method. If unauthorized, only approved hwms will be returned.",
+                        "description": "This service returns a list of hwms with a given vertical method.",
                         "id": "Vertical Method HWMs",
                         "parameters": [
                            { "name": "verticalMethodId", "type": "number", "description": "Id of the vertical method", "value": "" }
@@ -1043,7 +1043,7 @@ configuration.resources =
                     },
                     {
                         "uri": "/sites/{1}/hwms{0}",
-                        "description": "This service returns a list of hwms at a given site. If unauthorized, only approved hwms will be returned.",
+                        "description": "This service returns a list of hwms at a given site.",
                         "id": "Site HWMs",
                         "parameters": [
                            { "name": "siteId", "type": "number", "description": "Id of the site", "value": "" }
@@ -1054,7 +1054,7 @@ configuration.resources =
                     },
                     {
                         "uri": "/VerticalDatums/{1}/hwms{0}",
-                        "description": "This service returns a list of hwms with a given vertical datum. If unauthorized, only approved hwms will be returned.",
+                        "description": "This service returns a list of hwms with a given vertical datum.",
                         "id": "Vertical Datum HWMs",
                         "parameters": [
                            { "name": "verticalDatumId", "type": "number", "description": "Id of the vertical datum", "value": "" }
@@ -1065,7 +1065,7 @@ configuration.resources =
                     },
                     {
                         "uri": "/markers/{1}/hwms{0}",
-                        "description": "This service returns a list of hwms with a given marker. If unauthorized, only approved hwms will be returned.",
+                        "description": "This service returns a list of hwms with a given marker.",
                         "id": "Marker HWMs",
                         "parameters": [
                            { "name": "markerId", "type": "number", "description": "Id of the marker", "value": "" }
@@ -1076,7 +1076,7 @@ configuration.resources =
                     },
                     {
                         "uri": "/peaksummaries/{1}/hwms{0}",
-                        "description": "This service returns a list of hwms with a given peak summary. If unauthorized, only approved hwms will be returned.",
+                        "description": "This service returns a list of hwms with a given peak summary.",
                         "id": "Peak Summary HWMs",
                         "parameters": [
                            { "name": "peakSummaryId", "type": "number", "description": "Id of the peak summary", "value": "" }
@@ -1087,7 +1087,7 @@ configuration.resources =
                     },
                     {
                         "uri": "/files/{1}/hwm{0}",
-                        "description": "This service returns a hwm that a given file was uploaded for. If unauthorized, only approved hwms will be returned.",
+                        "description": "This service returns a hwm that a given file was uploaded for.",
                         "id": "File HWM",
                         "parameters": [
                            { "name": "fileId", "type": "number", "description": "Id of the file", "value": "" }
@@ -1100,7 +1100,7 @@ configuration.resources =
                         "uri": "/HWMs/FilteredHWMs{0}?Event={1}&EventType={2}&EventStatus={3}"+
                             "&States={4}&County={5}&HWMType={6}&HWMQuality={7}"+
                             "&HWMEnvironment={8}&SurveyComplete={9}&StillWater={10}",
-                        "description": "This service returns a list of hwms that meet the passed-in parameters. If unauthorized, only approved hwms will be returned.",
+                        "description": "This service returns a list of hwms that meet the passed-in parameters.",
                         "id": "Filtered HWMs",
                         "parameters": [
                            { "name": "eventId", "type": "comma separated string", "description": "Comma separated list of event IDs (ex: '1,2,3' or '1')", "optional":true, "value": "" },
@@ -1861,8 +1861,9 @@ configuration.resources =
                            { "name": "startDate", "type": "date", "description": "Date to start searching (ex with format: '05/20/2015')", "optional": true, "value": "" },
                            { "name": "endDate", "type": "date", "description": "Date to end searching (ex with format: '07/20/2015')", "optional": true, "value": "" }
                         ],
-                        "availableMedia": [".xml", ".json"],
-                        "selectedMedia": ".json"
+                        "availableMedia": [".xml", ".json", ".geojson"],
+                        "selectedMedia": ".json",
+                        "showMap": true
                     }
                 ]
             }]
@@ -2151,7 +2152,7 @@ configuration.resources =
                         "id": "Sensor View",
                         "parameters": [
                             { "name": "view", "type": "string", "description": "string representing which sensor view is being requested. Required to be one of the following: 'baro_view', 'met_view', 'rdg_view', 'stormtide_view', or 'waveheight_view'", "value": "" },
-                           { "name": "eventIds", "type": "comma separated string", "description": "Comma separated list of event IDs (ex: '1,2,3' or '1')", "optional": true, "value": "" },
+                           { "name": "eventIds", "type": "comma separated string", "description": "Comma separated list of event IDs (ex: '1,2,3' or '1') OR event Names (be sure to remove spaces in names. ex: 'Sandy, Ike, OhioJul1976')", "optional": true, "value": "" },
                            { "name": "eventTypeIDs", "type": "comma separated string", "description": "Comma separated list of event type IDs", "optional": true, "value": "" },
                            { "name": "eventStatusID", "type": "number", "description": "Id of the event status", "optional": true, "value": "" },
                            { "name": "states", "type": "comma separated string", "description": "Comma separated list of state abbreviations", "optional": true, "value": "" },

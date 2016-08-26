@@ -442,10 +442,10 @@ configuration.resources =
                     },
                     {
                         "uri": "/events/{1}{0}",
-                        "description": "This service returns an event by it's ID.",
+                        "description": "This service returns an event by it's ID or Name.",
                         "id": "An Event",
                         "parameters": [
-                           { "name": "eventId", "type": "number", "description": "Id of event requested", "value": "" }
+                           { "name": "eventValue", "type": "string", "description": "Id or Name (remove all spaces) of event requested", "value": "" }
                         ],
                         "availableMedia": [".xml", ".json"],
                         "selectedMedia": ".json"

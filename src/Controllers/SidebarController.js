@@ -51,8 +51,9 @@ var STN;
             //-+-+-+-+-+-+-+-+-+-+-+-
             SidebarController.$inject = ['$scope', 'STN.Services.ResourceService'];
             return SidebarController;
-        })(); //end class
-        angular.module('STN.Controllers').controller('STN.Controllers.SidebarController', SidebarController);
+        }()); //end class
+        angular.module('STN.Controllers')
+            .controller('STN.Controllers.SidebarController', SidebarController);
     })(Controllers = STN.Controllers || (STN.Controllers = {}));
 })(STN || (STN = {})); //end module
 //# sourceMappingURL=SidebarController.js.map

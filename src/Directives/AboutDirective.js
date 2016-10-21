@@ -50,7 +50,7 @@ var STN;
             //-+-+-+-+-+-+-+-+-+-+-+-
             AboutController.$inject = ['$scope'];
             return AboutController;
-        })();
+        }());
         var wimAbout = (function () {
             function wimAbout() {
                 this.scope = true;
@@ -67,8 +67,9 @@ var STN;
                 // The result of this process is why the live data- binding exists between the scope and the DOM tree.
             }; //end link
             return wimAbout;
-        })(); //end UrlDirective
-        angular.module('STN.Directives', []).directive('about', wimAbout.instance);
+        }()); //end UrlDirective
+        angular.module('STN.Directives', [])
+            .directive('about', wimAbout.instance);
     })(Directives = STN.Directives || (STN.Directives = {}));
 })(STN || (STN = {})); //end module 
 //# sourceMappingURL=AboutDirective.js.map

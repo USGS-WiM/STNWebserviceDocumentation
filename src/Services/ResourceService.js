@@ -1,11 +1,10 @@
 //------------------------------------------------------------------------------
 //----- StudyAreaService -------------------------------------------------------
 //------------------------------------------------------------------------------
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 //-------1---------2---------3---------4---------5---------6---------7---------8
 //       01234567890123456789012345678901234567890123456789012345678901234567890
@@ -101,7 +100,7 @@ var STN;
                 //add the study area to studyAreaList
             };
             ResourceService.prototype.getURL = function (url, selectedMedia) {
-                var request = new WiM.Services.Helpers.RequestInfo(url, false, 0 /* GET */, selectedMedia);
+                var request = new WiM.Services.Helpers.RequestInfo(url, false, WiM.Services.Helpers.methodType.GET, selectedMedia);
                 return this.Execute(request);
             };
             //Helper Methods
@@ -111,12 +110,13 @@ var STN;
                 this._resourceList = configuration.resources;
             };
             return ResourceService;
-        })(WiM.Services.HTTPServiceBase); //end class
+        }(WiM.Services.HTTPServiceBase)); //end class
         factory.$inject = ['$http', '$q'];
         function factory($http, $q) {
             return new ResourceService($http, $q);
         }
-        angular.module('STN.Services').factory('STN.Services.ResourceService', factory);
+        angular.module('STN.Services')
+            .factory('STN.Services.ResourceService', factory);
     })(Services = STN.Services || (STN.Services = {}));
 })(STN || (STN = {})); //end module
 //# sourceMappingURL=ResourceService.js.map

@@ -29,7 +29,7 @@ var STN;
                 this.optional = r;
             }
             return URIParameter;
-        })();
+        }());
         Models.URIParameter = URIParameter; //end class
     })(Models = STN.Models || (STN.Models = {}));
 })(STN || (STN = {})); //end module 

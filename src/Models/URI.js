@@ -27,7 +27,7 @@ var STN;
                 this.showMap = false;
             }
             return URI;
-        })();
+        }());
         Models.URI = URI; //end class
     })(Models = STN.Models || (STN.Models = {}));
 })(STN || (STN = {})); //end module   

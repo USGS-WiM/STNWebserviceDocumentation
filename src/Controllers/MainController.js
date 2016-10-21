@@ -29,7 +29,7 @@ var STN;
                 this.zoom = zm;
             }
             return Center;
-        })();
+        }());
         var Layer = (function () {
             function Layer(nm, ul, ty, vis, op) {
                 if (op === void 0) { op = undefined; }
@@ -40,7 +40,7 @@ var STN;
                 this.layerOptions = op;
             }
             return Layer;
-        })();
+        }());
         var MainController = (function () {
             function MainController($scope, $filter, Resource, leafletBoundsHelper, leafletData) {
                 var _this = this;
@@ -120,7 +120,8 @@ var STN;
                 this.waitCursor = true;
                 this.showOnMap = false;
                 this.requestResults = '';
-                this.Resource.getURL(this.selectedUri.newURL, this.selectedMedia).then(function (response) {
+                this.Resource.getURL(this.selectedUri.newURL, this.selectedMedia)
+                    .then(function (response) {
                     _this.requestResults = response.data;
                 }, function (error) {
                     _this.requestResults = "(" + error.status + ") " + error.data;
@@ -151,6 +152,7 @@ var STN;
             //-+-+-+-+-+-+-+-+-+-+-+-
             MainController.prototype.changeMapRegion = function (region) {
                 this.leafletData.getMap().then(function (map) {
+                    //console.log('getting the map for fitbounds');
                     for (var index in configuration.regions) {
                         var value = configuration.regions[index];
                         if (value.RegionID == region.toUpperCase()) {
@@ -172,7 +174,8 @@ var STN;
                 this.geojson["data"]["features"].forEach(function (g) {
                     mp.push([g.geometry.coordinates[1], g.geometry.coordinates[0]]);
                 });
-                this.leafletData.getMap().then(function (map) {
+                this.leafletData.getMap()
+                    .then(function (map) {
                     map.fitBounds(mp);
                 }).finally(function () {
                     _this.onMapWaitCursor = false;
@@ -182,7 +185,8 @@ var STN;
                     this.geojson["onEachFeature"] = function (obj, layer) {
                         var popupContent = '';
                         angular.forEach(obj.properties, function (value, key) {
-                            if (key == 'hwm_id' || key == 'waterbody' || key == 'site_id' || key == 'event_id' || key == 'hwm_type_id' || key == 'hwm_quality_id' || key == 'hwm_locationdescription' || key == 'latitude_dd' || key == 'longitude_dd') {
+                            if (key == 'hwm_id' || key == 'waterbody' || key == 'site_id' || key == 'event_id' || key == 'hwm_type_id' || key == 'hwm_quality_id' ||
+                                key == 'hwm_locationdescription' || key == 'latitude_dd' || key == 'longitude_dd') {
                                 popupContent += '<strong>' + key + ': </strong>' + value + '</br>';
                             }
                         });
@@ -218,7 +222,8 @@ var STN;
                     this.geojson["onEachFeature"] = function (obj, layer) {
                         var popupContent = '';
                         angular.forEach(obj.properties, function (value, key) {
-                            if (key == 'site_no' || key == 'latitude_dd' || key == 'longitude_dd' || key == 'instrument_id' || key == 'sensor_type_id' || key == 'deployment_type_id' || key == 'event_name' || key == 'status') {
+                            if (key == 'site_no' || key == 'latitude_dd' || key == 'longitude_dd' || key == 'instrument_id' || key == 'sensor_type_id' || key == 'deployment_type_id'
+                                || key == 'event_name' || key == 'status') {
                                 popupContent += '<strong>' + key + ': </strong>' + value + '</br>';
                             }
                         });
@@ -230,7 +235,8 @@ var STN;
                     this.geojson["onEachFeature"] = function (obj, layer) {
                         var popupContent = '';
                         angular.forEach(obj.properties, function (value, key) {
-                            if (key == 'site_no' || key == 'latitude_dd' || key == 'longitude_dd' || key == 'description' || key == 'peak_date' || key == 'peak_stage' || key == 'vdatum') {
+                            if (key == 'site_no' || key == 'latitude_dd' || key == 'longitude_dd' || key == 'description' || key == 'peak_date' || key == 'peak_stage'
+                                || key == 'vdatum') {
                                 popupContent += '<strong>' + key + ': </strong>' + value + '</br>';
                             }
                         });
@@ -262,8 +268,9 @@ var STN;
             //-+-+-+-+-+-+-+-+-+-+-+-
             MainController.$inject = ['$scope', '$filter', 'STN.Services.ResourceService', 'leafletBoundsHelpers', 'leafletData'];
             return MainController;
-        })(); //end class
-        angular.module('STN.Controllers').controller('STN.Controllers.MainController', MainController);
+        }()); //end class
+        angular.module('STN.Controllers')
+            .controller('STN.Controllers.MainController', MainController);
     })(Controllers = STN.Controllers || (STN.Controllers = {}));
 })(STN || (STN = {})); //end module
 //# sourceMappingURL=MainController.js.map

@@ -8,7 +8,8 @@ var STN;
             this.$stateProvider = $stateProvider;
             this.$urlRouterProvider = $urlRouterProvider;
             this.$locationProvider = $locationProvider;
-            this.$stateProvider.state("main", {
+            this.$stateProvider
+                .state("main", {
                 url: '/',
                 reloadOnSearch: true,
                 //abstract: true,
@@ -33,17 +34,14 @@ var STN;
         } //end constructor
         config.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
         return config;
-    })(); //end class
+    }()); //end class
     angular.module('STN', [
-        "ui.router",
-        "mobile-angular-ui",
+        "ui.router", "mobile-angular-ui",
         'leaflet-directive',
         "STN.Services",
         "STN.Controllers",
-        'jsonFormatter',
-        'WiM.Services',
-        'WiM.Event',
-        'STN.Directives'
-    ]).config(config);
+        'jsonFormatter', 'WiM.Services', 'WiM.Event', 'STN.Directives'
+    ])
+        .config(config);
 })(STN || (STN = {})); //end module 
 //# sourceMappingURL=config.js.map

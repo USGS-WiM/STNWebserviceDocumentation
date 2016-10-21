@@ -25,7 +25,7 @@ var STN;
                 this.type = t;
             }
             return Method;
-        })();
+        }());
         Models.Method = Method; //end class
     })(Models = STN.Models || (STN.Models = {}));
 })(STN || (STN = {})); //end module  

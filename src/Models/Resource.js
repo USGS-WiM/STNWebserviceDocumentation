@@ -25,7 +25,7 @@ var STN;
                 this.name = n;
             }
             return Resource;
-        })();
+        }());
         Models.Resource = Resource; //end class
     })(Models = STN.Models || (STN.Models = {}));
 })(STN || (STN = {})); //end module  

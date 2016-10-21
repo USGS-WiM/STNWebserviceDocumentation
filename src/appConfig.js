@@ -1,6 +1,7 @@
 ﻿var configuration = {}
 configuration.baseurls =
 {
+    //'services': 'https://stntest.wim.usgs.gov/STNServices2',
     'services': 'https://stn.wim.usgs.gov/STNServices',
     //'services': 'https://localhost/STNServices2',
     'application': 'https://stn.wim.usgs.gov/STNWeb'    
@@ -950,6 +951,18 @@ configuration.resources =
                         "showMap": true
                     },
                     {
+                        "uri": "/events/{1}/stateHWMs{0}?State={2}",
+                        "description": "This service returns a list of hwms found for an event within a state.",
+                        "id": "Event State HWMs",
+                        "parameters": [
+                           { "name": "eventId", "type": "number", "description": "Id of the event", "value": "" },
+                           { "name": "stateAbbrev", "type": "string", "description": "State Abbreviation", "value": "" }
+                        ],
+                        "availableMedia": [".xml", ".json", ".geojson"],
+                        "selectedMedia": ".json",
+                        "showMap": true
+                    },
+                    {
                         "uri": "/sites/{1}/EventHWMs{0}?Event={2}",
                         "description": "This service returns a list of hwms found at a site for an event.",
                         "id": "Site Event HWMs",
@@ -1239,7 +1252,6 @@ configuration.resources =
             }]
         },
         //#endregion
-       
         //#region instrument status (22)
         {
             "name": "Instrument Status",
@@ -2442,7 +2454,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/Sites/FilteredSites{0}?Event={1}&State={2}&SensorType={3}&NetworkName={4}&OPDefined={5}&HWMOnly={6}&SensorOnly={7}&RDGOnly={8}",
+                        "uri": "/Sites/FilteredSites{0}?Event={1}&State={2}&SensorType={3}&NetworkName={4}&OPDefined={5}&HWMOnly={6}&HWMSurveyed={7}&SensorOnly={8}&RDGOnly={9}",
                         "description": "This service returns a list of sites that meet the passed-in parameters. Includes most recent OP, network names, and events.",
                         "id": "Filtered Sites",
                         "parameters": [
@@ -2452,6 +2464,7 @@ configuration.resources =
                            { "name": "networkNameId", "type": "number", "description": "Id of the network name", "optional": true, "value": "" },
                            { "name": "opDefined", "type": "number", "description": "1 for sites with an objective point/datum location", "optional": true, "value": "" },
                            { "name": "hwmOnlySites", "type": "number", "description": "1 for sites with hwms only (no sensors)", "optional": true, "value": "" },
+                           { "name": "surveyedHWMs", "type": "boolean", "description": "true for sites with surveyed hwms only, false for those with unsurveyed hwms", "optional": true, "value": "" },
                            { "name": "sensorOnlySites", "type": "number", "description": "1 for sites with sensors only (no hwms)", "optional": true, "value": "" },
                            { "name": "rdgOnlySites", "type": "number", "description": "1 for sites that have an RDG sensor proposed or deployed or an RDG housing type listed", "optional": true, "value": "" }
                         ],

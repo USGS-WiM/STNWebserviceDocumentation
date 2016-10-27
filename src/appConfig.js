@@ -1,7 +1,7 @@
 ﻿var configuration = {}
 configuration.baseurls =
 {
-    //'services': 'https://stntest.wim.usgs.gov/STNServices2',
+   // 'services': 'https://stntest.wim.usgs.gov/STNServices2',
     'services': 'https://stn.wim.usgs.gov/STNServices',
     //'services': 'https://localhost/STNServices2',
     'application': 'https://stn.wim.usgs.gov/STNWeb'    
@@ -721,16 +721,20 @@ configuration.resources =
                         "availableMedia": [".xml", ".json"],
                         "selectedMedia": ".json"
                     },
-                    {
-                        "uri": "/events/{1}/eventfileitems",
-                        "description": "This service returns a zip file of all files uploaded during an event.",
-                        "id": "Event File Items",
-                        "parameters": [
-                           { "name": "eventId", "type": "number", "description": "Id of the event", "value": "" }
-                        ],
-                        "availableMedia": [],
-                        "selectedMedia": ""
-                    },
+                    //{//Events/:eventId/EventFileItems' },//?HWMFiles={hwmFiles}&HWMFileType={hwmFileTypes}&SensorFiles={sensorFiles}&SensorFileTypes={sensorFileTypes}"
+                    //    "uri": "/events/{1}/eventfileitems?HWMFiles={2}&HWMFileType={3}&SensorFiles={4}&SensorFileTypes={5}",
+                    //    "description": "This service returns a zip file of Files uploaded during an event that are either HWM files or Sensor files (one must be chosen) and then further filtered by File Type.",
+                    //    "id": "Event File Zip",
+                    //    "parameters": [
+                    //       { "name": "eventId", "type": "number", "description": "Id of the event", "value": "" },
+                    //       { "name": "hwmFiles", "type": "boolean", "optional": true, "description": "set to true to received HWM files in the zip file", "value": "" },
+                    //       { "name": "hwmFileTypes", "type": "comma separated string", "optional": true, "description": "comma separated string of hwm file type id's (see File Type for list). Ex: '1,2,3'", "value": "" },
+                    //       { "name": "sensorFiles", "type": "boolean", "optional": true, "description": "set to true to received Sensor files in the zip file", "value": "" },
+                    //       { "name": "sensorFileTypes", "type": "comma separated string", "optional": true, "description": "comma separated string of sensor file type id's (see File Type for list). Ex: '1,2,3'", "value": "" },
+                    //    ],
+                    //    "availableMedia": [],
+                    //    "selectedMedia": ""
+                    //},
                     {
                         "uri": "/files{0}?Site={1}&Event={2}",
                         "description": "This service returns a list of files for a site during a given event.",

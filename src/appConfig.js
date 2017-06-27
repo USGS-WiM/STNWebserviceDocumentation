@@ -17,7 +17,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/agencies{0}",
+                        "uri": "/Agencies{0}",
                         "description": "This service returns a list of agencies.",
                         "id": "All Agencies",
                         "parameters": [],
@@ -25,7 +25,7 @@ configuration.resources =
                         "selectedMedia": ".json"                        
                     },
                     {
-                        "uri": "/agencies/{1}{0}",
+                        "uri": "/Agencies/{1}{0}",
                         "description": "This service returns an agency.",
                         "id": "An Agency",
                         "parameters": [
@@ -35,7 +35,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                         "uri": "/members/{1}/agencies{0}",
+                         "uri": "/members/{1}/Agencies{0}",
                          "description": "This service returns a member's agency.",
                          "id": "Member Agency",
                          "parameters": [
@@ -45,7 +45,7 @@ configuration.resources =
                          "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/sources/{1}/agencies{0}",
+                        "uri": "/sources/{1}/Agencies{0}",
                         "description": "This service returns a source's agency.",
                         "id": "Source Agency",
                         "parameters": [
@@ -67,7 +67,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/approvals{0}",
+                        "uri": "/Approvals{0}",
                         "description": "This service returns a list of approvals.",
                         "id": "All Approvals",
                         "parameters": [],
@@ -75,7 +75,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/approvals/{1}{0}",
+                        "uri": "/Approvals/{1}{0}",
                         "description": "This service returns an approval by it's ID.",
                         "id": "An Approval",
                         "parameters": [
@@ -85,7 +85,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/hwms/{1}/approval{0}",
+                        "uri": "/HWMs/{1}/Approval{0}",
                         "description": "This service returns a hwm approval by a hwm ID.",
                         "id": "HWM Approval",
                         "parameters": [
@@ -95,7 +95,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/datafiles/{1}/approval{0}",
+                        "uri": "/DataFiles/{1}/Approval{0}",
                         "description": "This service returns a data file approval by a data file ID.",
                         "id": "Data File Approval",
                         "parameters": [
@@ -107,97 +107,8 @@ configuration.resources =
                 ]
             }]
         },
-        //#endregion
-        //#region contact  (3)
-        //{
-        //    "name": "Contact",
-        //    "description": "The contact resource represents an contact that can be added to a report.",
-        //    "methods": [{
-        //        "type": "GET",
-        //        "uriList": [
-        //            {
-        //                "uri": "/contacts{0}",
-        //                "description": "This service returns a list of contacts. Requires authentication.",
-        //                "id": "All Contacts",
-        //                "parameters": [],
-        //                "availableMedia": [".xml", ".json"],
-        //                "selectedMedia": ".json"
-        //            },
-        //            {
-        //                "uri": "/contacts/{1}{0}",
-        //                "description": "This service returns a contact by it's ID. Requires authentication.",
-        //                "id": "A Contact",
-        //                "parameters": [
-        //                   { "name": "contactId", "type": "number", "description": "Id of contact requested", "value": "" }
-        //                ],
-        //                "availableMedia": [".xml", ".json"],
-        //                "selectedMedia": ".json"
-        //            },
-        //            {
-        //                "uri": "/contacts{0}?reportmetric={1}&contacttype{2}",
-        //                "description": "This service returns a contact for a report and by a contact type. Requires authentication.",
-        //                "id": "Report Contact By Contact Type",
-        //                "parameters": [
-        //                   { "name": "reportId", "type": "number", "description": "Id of the report", "value": "" },
-        //                   { "name": "contactTypeId", "type": "number", "description": "Id of the contact type", "value": "" }
-        //                ],
-        //                "availableMedia": [".xml", ".json"],
-        //                "selectedMedia": ".json"
-        //            },
-        //            {
-        //                "uri": "/contacts{0}?reportmetric={1}",
-        //                "description": "This service returns a list of contacts for a report. Requires authentication.",
-        //                "id": "Report Contacts",
-        //                "parameters": [
-        //                   { "name": "reportId", "type": "number", "description": "Id of report", "value": "" }
-        //                ],
-        //                "availableMedia": [".xml", ".json"],
-        //                "selectedMedia": ".json"
-        //            }
-        //       ]
-        //   }]
-        //},
-        //#endregion
-        //#region contact type  (4)
-        //{
-        //    "name": "Contact Type",
-        //    "description": "The contact type resource represents a contact type that can be added to a contact.",
-        //    "methods": [{
-        //        "type": "GET",
-        //        "uriList": [
-        //            {
-        //                "uri": "/contacttypes{0}",
-        //                "description": "This service returns a list of contact types.",
-        //                "id": "All Contacts",
-        //                "parameters": [],
-        //                "availableMedia": [".xml", ".json"],
-        //                "selectedMedia": ".json"
-        //            },
-        //            {
-        //                "uri": "/contacttypes/{1}{0}",
-        //                "description": "This service returns a contact type by it's ID.",
-        //                "id": "A Contact Type",
-        //                "parameters": [
-        //                   { "name": "contactTypeId", "type": "number", "description": "Id of contact type requested", "value": "" }
-        //                ],
-        //                "availableMedia": [".xml", ".json"],
-        //                "selectedMedia": ".json"
-        //            },
-        //            {
-        //                "uri": "/contacts/{1}/contacttypes{0}",
-        //                "description": "This service returns a contact type for a contact.",
-        //                "id": "Contact's Contact Type",
-        //                "parameters": [
-        //                   { "name": "contactId", "type": "number", "description": "Id of the contact", "value": "" }                           
-        //                ],
-        //                "availableMedia": [".xml", ".json"],
-        //                "selectedMedia": ".json"
-        //            }
-        //        ]
-        //    }]
-        //},
-        //#endregion
-        //#region county  (5)
+        //#endregion        
+        //#region county  (3)
         {
             "name": "Counties",
             "description": "The counties resource represents U.S. counties.",
@@ -205,7 +116,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/counties{0}",
+                        "uri": "/Counties{0}",
                         "description": "This service returns a list of counties.",
                         "id": "All Counties",
                         "parameters": [],
@@ -213,7 +124,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/counties/{1}{0}",
+                        "uri": "/Counties/{1}{0}",
                         "description": "This service returns a county by it's ID.",
                         "id": "A County",
                         "parameters": [
@@ -223,7 +134,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/states/{1}/counties{0}",
+                        "uri": "/States/{1}/Counties{0}",
                         "description": "This service returns a list of counties for a state by state ID.",
                         "id": "State Counties by Id",
                         "parameters": [
@@ -233,7 +144,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/states/counties{0}?StateAbbrev={1}",
+                        "uri": "/States/Counties{0}?StateAbbrev={1}",
                         "description": "This service returns a list of counties for a state by state abbreviation.",
                         "id": "State Counties by Abbrev",
                         "parameters": [
@@ -243,7 +154,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/sites/countiesbystate{0}?StateAbbrev={1}",
+                        "uri": "/Sites/CountiesByState{0}?StateAbbrev={1}",
                         "description": "This service returns a list of counties in a state where sites exists.",
                         "id": "Site Counties",
                         "parameters": [
@@ -256,7 +167,7 @@ configuration.resources =
             }]
         },
         //#endregion
-        //#region data file  (6)
+        //#region data file  (4)
         {
             "name": "Data Files",
             "description": "The data file resource represents data files associated with sensors.",
@@ -264,7 +175,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/datafiles{0}",
+                        "uri": "/DataFiles{0}",
                         "description": "This service returns a list of data files. Without authentication, only approved data files are returned.",
                         "id": "All Data Files",
                         "parameters": [],
@@ -272,7 +183,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/datafiles/{1}{0}",
+                        "uri": "/DataFiles/{1}{0}",
                         "description": "This service returns a data file by it's ID. Without authentication, only approved data files are returned.",
                         "id": "A Data File",
                         "parameters": [
@@ -282,7 +193,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/files/{1}/datafile{0}",
+                        "uri": "/Files/{1}/DataFile{0}",
                         "description": "This service returns a data file of a file that is of type data. Without authentication, only approved data files are returned.",
                         "id": "File Data File",
                         "parameters": [
@@ -292,7 +203,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/approvals/{1}/datafiles{0}",
+                        "uri": "/Approvals/{1}/DataFiles{0}",
                         "description": "This service returns a list of data files for an approval. Without authentication, only approved data files are returned.",
                         "id": "Approval Data Files",
                         "parameters": [
@@ -302,7 +213,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/datafiles{0}?IsApproved={1}&event={2}&processor={3}&state={4}",
+                        "uri": "/DataFiles{0}?IsApproved={1}&Event={2}&Processor={3}&State={4}",
                         "description": "This service returns a list of data files that meet the passed-in parameters. Without authentication, only approved data files are returned.",
                         "id": "Filtered Data Files",
                         "parameters": [
@@ -315,7 +226,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/instruments/{1}/datafiles{0}",
+                        "uri": "/Instruments/{1}/DataFiles{0}",
                         "description": "This service returns a list of data files for a sensor. Without authentication, only approved data files are returned.",
                         "id": "Sensor Data Files",
                         "parameters": [
@@ -325,7 +236,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/peaksummaries/{1}/datafiles{0}",
+                        "uri": "/PeakSummaries/{1}/DataFiles{0}",
                         "description": "This service returns a list of data files for a peak summary. Without authentication, only approved data files are returned.",
                         "id": "Peak Summary Data files",
                         "parameters": [
@@ -338,7 +249,7 @@ configuration.resources =
             }]
         },
         //#endregion
-        //#region deployment priority (7)
+        //#region deployment priority (5)
         {
             "name": "Deployment Priority",
             "description": "The deployment priority resource represents deployment priorities that sites can have.",
@@ -346,7 +257,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/deploymentpriorities{0}",
+                        "uri": "/DeploymentPriorities{0}",
                         "description": "This service returns a list of deployment priorities.",
                         "id": "All Deployment Priorities",
                         "parameters": [],
@@ -354,7 +265,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/deploymentpriorities/{1}{0}",
+                        "uri": "/DeploymentPriorities/{1}{0}",
                         "description": "This service returns a deployment priority by it's ID.",
                         "id": "A Deployment Priority",
                         "parameters": [
@@ -364,7 +275,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/sites/{1}/deploymentpriorities{0}",
+                        "uri": "/Sites/{1}/DeploymentPriorities{0}",
                         "description": "This service returns a deployment priority of a site.",
                         "id": "Site Deployment Priority",
                         "parameters": [
@@ -377,7 +288,7 @@ configuration.resources =
             }]
         },
         //#endregion
-        //#region deployment type (8)
+        //#region deployment type (6)
         {
             "name": "Deployment Type",
             "description": "The deployment type resource represents deployment types that sensors can have.",
@@ -385,7 +296,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/deploymenttypes{0}",
+                        "uri": "/DeploymentTypes{0}",
                         "description": "This service returns a list of deployment types.",
                         "id": "All Deployment Types",
                         "parameters": [],
@@ -393,7 +304,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/deploymenttypes/{1}{0}",
+                        "uri": "/DeploymentTypes/{1}{0}",
                         "description": "This service returns a deployment type by it's ID.",
                         "id": "A Deployment Type",
                         "parameters": [
@@ -403,7 +314,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/instruments/{1}/deploymenttype{0}",
+                        "uri": "/Instruments/{1}/DeploymentType{0}",
                         "description": "This service returns a deployment type of a sensor.",
                         "id": "Sensor Deployment Type",
                         "parameters": [
@@ -413,7 +324,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/sensortypes/{1}/deploymenttypes{0}",
+                        "uri": "/SensorTypes/{1}/DeploymentTypes{0}",
                         "description": "This service returns a list of deployment types of a sensor type.",
                         "id": "Sensor Type Deployment Types",
                         "parameters": [
@@ -426,7 +337,7 @@ configuration.resources =
             }]
         },
         //#endregion
-        //#region event (9)
+        //#region event (7)
         {
             "name": "Event",
             "description": "The event resource represents the event that sensor and hwms are created during.",
@@ -434,7 +345,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/events{0}",
+                        "uri": "/Events{0}",
                         "description": "This service returns a list of events.",
                         "id": "All Events",
                         "parameters": [],
@@ -442,7 +353,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/events/{1}{0}",
+                        "uri": "/Events/{1}{0}",
                         "description": "This service returns an event by it's ID or Name.",
                         "id": "An Event",
                         "parameters": [
@@ -452,7 +363,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/events{0}?Site={1}",
+                        "uri": "/Events{0}?Site={1}",
                         "description": "This service returns a list of events that a site has sensor and/or hwms created at.",
                         "id": "Site Events",
                         "parameters": [
@@ -462,7 +373,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/eventtypes/{1}/events{0}",
+                        "uri": "/EventTypes/{1}/Events{0}",
                         "description": "This service returns a list of events that have this event type.",
                         "id": "Event Type Events",
                         "parameters": [
@@ -472,7 +383,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/eventstatus/{1}/events{0}",
+                        "uri": "/EventStatus/{1}/Events{0}",
                         "description": "This service returns a list of events that have this event status.",
                         "id": "Event Status Events",
                         "parameters": [
@@ -482,7 +393,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/hwms/{1}/event{0}",
+                        "uri": "/HWMs/{1}/Event{0}",
                         "description": "This service returns the event that this hwm was created at.",
                         "id": "HWM Event",
                         "parameters": [
@@ -492,7 +403,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/instruments/{1}/event{0}",
+                        "uri": "/Instruments/{1}/Event{0}",
                         "description": "This service returns the event that this sensor was deployed at.",
                         "id": "Sensor Event",
                         "parameters": [
@@ -502,7 +413,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/events/FilteredEvents{0}?Date={1}&Type={2}&State={3}",
+                        "uri": "/Events/FilteredEvents{0}?Date={1}&Type={2}&State={3}",
                         "description": "This service returns a list of events that meet the passed-in parameters.",
                         "id": "Filtered Events",
                         "parameters": [
@@ -517,7 +428,7 @@ configuration.resources =
             }]
         },
         //#endregion
-        //#region event status (10)
+        //#region event status (8)
         {
             "name": "Event Status",
             "description": "The event status resource represents event statuses that events can have.",
@@ -525,7 +436,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/eventstatus{0}",
+                        "uri": "/EventStatus{0}",
                         "description": "This service returns a list of event statuses.",
                         "id": "All Event Statuses",
                         "parameters": [],
@@ -533,7 +444,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/eventstatus/{1}{0}",
+                        "uri": "/EventStatus/{1}{0}",
                         "description": "This service returns an event status by it's ID.",
                         "id": "An Event Status",
                         "parameters": [
@@ -543,7 +454,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/events/{1}/status{0}",
+                        "uri": "/Events/{1}/Status{0}",
                         "description": "This service returns an event status of an event.",
                         "id": "Event Event Status",
                         "parameters": [
@@ -556,7 +467,7 @@ configuration.resources =
             }]
         },
         //#endregion
-        //#region event type (11)
+        //#region event type (9)
         {
             "name": "Event Type",
             "description": "The event type resource represents event types that events can have.",
@@ -564,7 +475,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/eventtypes{0}",
+                        "uri": "/EventTypes{0}",
                         "description": "This service returns a list of event types.",
                         "id": "All Event Types",
                         "parameters": [],
@@ -572,7 +483,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/eventtypes/{1}{0}",
+                        "uri": "/EventTypes/{1}{0}",
                         "description": "This service returns an event type by it's ID.",
                         "id": "An Event Type",
                         "parameters": [
@@ -582,7 +493,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/events/{1}/Type{0}",
+                        "uri": "/Events/{1}/Type{0}",
                         "description": "This service returns an event type of an event.",
                         "id": "Event Event Type",
                         "parameters": [
@@ -595,7 +506,7 @@ configuration.resources =
             }]
         },
         //#endregion
-        //#region file (12)
+        //#region file (10)
         {
             "name": "File",
             "description": "The file resource represents files that can be uploaded at sites, objective points, hwms, and sensors.",
@@ -603,7 +514,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/files{0}",
+                        "uri": "/Files{0}",
                         "description": "This service returns a list of files.",
                         "id": "All Files",
                         "parameters": [],
@@ -611,7 +522,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/files/{1}{0}",
+                        "uri": "/Files/{1}{0}",
                         "description": "This service returns a file by it's ID.",
                         "id": "A File",
                         "parameters": [
@@ -621,7 +532,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/files/{1}/item",
+                        "uri": "/Files/{1}/item",
                         "description": "This service returns a file item.",
                         "id": "File Item",
                         "parameters": [
@@ -631,7 +542,7 @@ configuration.resources =
                         "selectedMedia": ""
                     },
                     {
-                        "uri": "/files{0}?FromDate={1}&ToDate={2}",
+                        "uri": "/Files{0}?FromDate={1}&ToDate={2}",
                         "description": "This service returns a list of files that were uploaded within the given date range.",
                         "id": "Files By Date Range",
                         "parameters": [
@@ -642,7 +553,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/hwms/{1}/files{0}",
+                        "uri": "/HWMs/{1}/Files{0}",
                         "description": "This service returns a list of files for a hwm.",
                         "id": "HWM Files",
                         "parameters": [
@@ -652,7 +563,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/objectivepoints/{1}/files{0}",
+                        "uri": "/ObjectivePoints/{1}/Files{0}",
                         "description": "This service returns a list of file for an objective point.",
                         "id": "Objective Point Files",
                         "parameters": [
@@ -662,7 +573,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/filetypes/{1}/files{0}",
+                        "uri": "/FileTypes/{1}/Files{0}",
                         "description": "This service returns a list of file that are of a given file type.",
                         "id": "File Type Files",
                         "parameters": [
@@ -672,7 +583,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/sites/{1}/files{0}",
+                        "uri": "/Sites/{1}/Files{0}",
                         "description": "This service returns a list of files for a site.",
                         "id": "Site Files",
                         "parameters": [
@@ -682,7 +593,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/sources/{1}/files{0}",
+                        "uri": "/Sources/{1}/Files{0}",
                         "description": "This service returns a list of files that were uploaded by a given source.",
                         "id": "Source Files",
                         "parameters": [
@@ -692,7 +603,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/datafiles/{1}/files{0}",
+                        "uri": "/DataFiles/{1}/Files{0}",
                         "description": "This service returns a list of files for a data file.",
                         "id": "Data File Files",
                         "parameters": [
@@ -702,7 +613,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/instruments/{1}/files{0}",
+                        "uri": "/Instruments/{1}/Files{0}",
                         "description": "This service returns a list of files for a sensor.",
                         "id": "Sensor Files",
                         "parameters": [
@@ -712,7 +623,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/events/{1}/files{0}",
+                        "uri": "/Events/{1}/Files{0}",
                         "description": "This service returns a list of files for an event.",
                         "id": "Event Files",
                         "parameters": [
@@ -720,23 +631,9 @@ configuration.resources =
                         ],
                         "availableMedia": [".xml", ".json"],
                         "selectedMedia": ".json"
-                    },
-                    //{//Events/:eventId/EventFileItems' },//?HWMFiles={hwmFiles}&HWMFileType={hwmFileTypes}&SensorFiles={sensorFiles}&SensorFileTypes={sensorFileTypes}"
-                    //    "uri": "/events/{1}/eventfileitems?HWMFiles={2}&HWMFileType={3}&SensorFiles={4}&SensorFileTypes={5}",
-                    //    "description": "This service returns a zip file of Files uploaded during an event that are either HWM files or Sensor files (one must be chosen) and then further filtered by File Type.",
-                    //    "id": "Event File Zip",
-                    //    "parameters": [
-                    //       { "name": "eventId", "type": "number", "description": "Id of the event", "value": "" },
-                    //       { "name": "hwmFiles", "type": "boolean", "optional": true, "description": "set to true to received HWM files in the zip file", "value": "" },
-                    //       { "name": "hwmFileTypes", "type": "comma separated string", "optional": true, "description": "comma separated string of hwm file type id's (see File Type for list). Ex: '1,2,3'", "value": "" },
-                    //       { "name": "sensorFiles", "type": "boolean", "optional": true, "description": "set to true to received Sensor files in the zip file", "value": "" },
-                    //       { "name": "sensorFileTypes", "type": "comma separated string", "optional": true, "description": "comma separated string of sensor file type id's (see File Type for list). Ex: '1,2,3'", "value": "" },
-                    //    ],
-                    //    "availableMedia": [],
-                    //    "selectedMedia": ""
-                    //},
+                    },                   
                     {
-                        "uri": "/files{0}?Site={1}&Event={2}",
+                        "uri": "/Files{0}?Site={1}&Event={2}",
                         "description": "This service returns a list of files for a site during a given event.",
                         "id": "Site Event Files",
                         "parameters": [
@@ -745,22 +642,12 @@ configuration.resources =
                         ],
                         "availableMedia": [".xml", ".json"],
                         "selectedMedia": ".json"
-                    }//,
-                    //{ //do we really need this one.. anyone using it?? -- doesn't work
-                    //    "uri": "/files{0}?State={1}",
-                    //    "description": "This service returns a list of files for a state.",
-                    //    "id": "Files By State",
-                    //    "parameters": [
-                    //       { "name": "stateAbbrev", "type": "string", "description": "State abbreviation", "value": "" }
-                    //    ],
-                    //    "availableMedia": [".xml", ".json"],
-                    //    "selectedMedia": ".json"
-                    //}
+                    }
                 ]
             }]
         },
         //#endregion
-        //#region file type (13)
+        //#region file type (11)
         {
             "name": "File Type",
             "description": "The file type resource represents file types that files can have.",
@@ -768,7 +655,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/filetypes{0}",
+                        "uri": "/FileTypes{0}",
                         "description": "This service returns a list of file types.",
                         "id": "All File Types",
                         "parameters": [],
@@ -776,7 +663,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/filetypes/{1}{0}",
+                        "uri": "/FileTypes/{1}{0}",
                         "description": "This service returns a file type by it's ID.",
                         "id": "A File Type",
                         "parameters": [
@@ -786,7 +673,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/files/{1}/type{0}",
+                        "uri": "/Files/{1}/Type{0}",
                         "description": "This service returns a file type of a file.",
                         "id": "File File Type",
                         "parameters": [
@@ -799,7 +686,7 @@ configuration.resources =
             }]
         },
         //#endregion
-        //#region horizontal collect methods (14)
+        //#region horizontal collect methods (12)
         {
             "name": "Horizontal Collect Method",
             "description": "The horizontal collect method resource represents horizontal collect method that sites, objective points, and hwms can have.",
@@ -807,7 +694,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/horizontalmethods{0}",
+                        "uri": "/HorizontalMethods{0}",
                         "description": "This service returns a list of horizontal collect methods.",
                         "id": "All Horizontal Collect Methods",
                         "parameters": [],
@@ -815,7 +702,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/horizontalmethods/{1}{0}",
+                        "uri": "/HorizontalMethods/{1}{0}",
                         "description": "This service returns an horizontal collect method by it's ID.",
                         "id": "An Horizontal Collect Method",
                         "parameters": [
@@ -825,7 +712,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/hwms/{1}/horizontalmethod{0}",
+                        "uri": "/HWMs/{1}/HorizontalMethod{0}",
                         "description": "This service returns an horizontal collect method of an hwm.",
                         "id": "HWM Horizontal Collect Method",
                         "parameters": [
@@ -838,7 +725,7 @@ configuration.resources =
             }]
         },
         //#endregion
-        //#region horizontal datum (15)
+        //#region horizontal datum (13)
         {
             "name": "Horizontal Datum",
             "description": "The horizontal datum resource represents horizontal datum that sites, objective points, and hwms can have.",
@@ -846,7 +733,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/horizontaldatums{0}",
+                        "uri": "/HorizontalDatums{0}",
                         "description": "This service returns a list of horizontal datum.",
                         "id": "All Horizontal Datums",
                         "parameters": [],
@@ -854,7 +741,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/horizontaldatums/{1}{0}",
+                        "uri": "/HorizontalDatums/{1}{0}",
                         "description": "This service returns an horizontal datum by it's ID.",
                         "id": "An Horizontal Datum",
                         "parameters": [
@@ -864,7 +751,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/sites/{1}/hdatum{0}",
+                        "uri": "/Sites/{1}/hDatum{0}",
                         "description": "This service returns an horizontal datum of a site.",
                         "id": "Site Horizontal Datum",
                         "parameters": [
@@ -877,7 +764,7 @@ configuration.resources =
             }]
         },
         //#endregion
-        //#region housing type (16)
+        //#region housing type (14)
         {
             "name": "Housing Type",
             "description": "The housing type resource represents housing type that sensors can have.",
@@ -885,7 +772,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/housingtypes{0}",
+                        "uri": "/HousingTypes{0}",
                         "description": "This service returns a list of housing types.",
                         "id": "All Housing Types",
                         "parameters": [],
@@ -893,7 +780,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/housingtypes/{1}{0}",
+                        "uri": "/HousingTypes/{1}{0}",
                         "description": "This service returns an housing type by it's ID.",
                         "id": "An Housing Type",
                         "parameters": [
@@ -903,7 +790,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/instruments/{1}/instrumenthousingtype{0}",
+                        "uri": "/Instruments/{1}/InstrumentHousingType{0}",
                         "description": "This service returns an housing type of a sensor.",
                         "id": "Sensor Housing Type",
                         "parameters": [
@@ -916,7 +803,7 @@ configuration.resources =
             }]
         },
         //#endregion
-        //#region hwm (17)
+        //#region hwm (15)
         {
             "name": "HWM",
             "description": "The hwm resource represents hwms that are found at site locations.",
@@ -924,7 +811,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/hwms{0}",
+                        "uri": "/HWMs{0}",
                         "description": "This service returns a list of hwms.",
                         "id": "All HWMs",
                         "parameters": [],
@@ -933,7 +820,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/hwms/{1}{0}",
+                        "uri": "/HWMs/{1}{0}",
                         "description": "This service returns a hwm by it's ID.",
                         "id": "A HWM",
                         "parameters": [
@@ -944,7 +831,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/events/{1}/hwms{0}",
+                        "uri": "/Events/{1}/HWMs{0}",
                         "description": "This service returns a list of hwms found at an event.",
                         "id": "Event HWMs",
                         "parameters": [
@@ -955,7 +842,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/events/{1}/stateHWMs{0}?State={2}",
+                        "uri": "/Events/{1}/stateHWMs{0}?State={2}",
                         "description": "This service returns a list of hwms found for an event within a state.",
                         "id": "Event State HWMs",
                         "parameters": [
@@ -967,7 +854,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/sites/{1}/EventHWMs{0}?Event={2}",
+                        "uri": "/Sites/{1}/EventHWMs{0}?Event={2}",
                         "description": "This service returns a list of hwms found at a site for an event.",
                         "id": "Site Event HWMs",
                         "parameters": [
@@ -979,7 +866,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/hwms{0}?IsApproved={1}&Event={2}&Member={3}&State={4}",
+                        "uri": "/HWMs{0}?IsApproved={1}&Event={2}&Member={3}&State={4}",
                         "description": "This service returns a list of hwms that meet the passed-in parameters.",
                         "id": "Approval HWMs",
                         "parameters": [
@@ -993,7 +880,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/approvals/{1}/hwms{0}",
+                        "uri": "/Approvals/{1}/HWMs{0}",
                         "description": "This service returns a list of hwms for this approval.",
                         "id": "Approved HWMs",
                         "parameters": [
@@ -1004,7 +891,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/members/{1}/hwms{0}",
+                        "uri": "/Members/{1}/HWMs{0}",
                         "description": "This service returns a list of hwms that were flagged or surveyed by the given member.",
                         "id": "Member HWMs",
                         "parameters": [
@@ -1015,7 +902,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/hwmqualities/{1}/hwms{0}",
+                        "uri": "/HWMQualities/{1}/HWMs{0}",
                         "description": "This service returns a list of hwms with a given hwm quality.",
                         "id": "HWM Quality HWMs",
                         "parameters": [
@@ -1026,7 +913,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/hwmtypes/{1}/hwms{0}",
+                        "uri": "/HWMTypes/{1}/HWMs{0}",
                         "description": "This service returns a list of hwms with a given hwm type.",
                         "id": "HWM Type HWMs",
                         "parameters": [
@@ -1037,7 +924,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/horizontalmethods/{1}/hwms{0}",
+                        "uri": "/HorizontalMethods/{1}/HWMs{0}",
                         "description": "This service returns a list of hwms with a given horizontal method.",
                         "id": "Horizontal Method HWMs",
                         "parameters": [
@@ -1048,7 +935,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/verticalmethods/{1}/hwms{0}",
+                        "uri": "/VerticalMethods/{1}/HWMs{0}",
                         "description": "This service returns a list of hwms with a given vertical method.",
                         "id": "Vertical Method HWMs",
                         "parameters": [
@@ -1059,7 +946,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/sites/{1}/hwms{0}",
+                        "uri": "/Sites/{1}/HWMs{0}",
                         "description": "This service returns a list of hwms at a given site.",
                         "id": "Site HWMs",
                         "parameters": [
@@ -1070,7 +957,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/VerticalDatums/{1}/hwms{0}",
+                        "uri": "/VerticalDatums/{1}/HWMs{0}",
                         "description": "This service returns a list of hwms with a given vertical datum.",
                         "id": "Vertical Datum HWMs",
                         "parameters": [
@@ -1081,7 +968,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/markers/{1}/hwms{0}",
+                        "uri": "/Markers/{1}/HWMs{0}",
                         "description": "This service returns a list of hwms with a given marker.",
                         "id": "Marker HWMs",
                         "parameters": [
@@ -1092,7 +979,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/peaksummaries/{1}/hwms{0}",
+                        "uri": "/PeakSummaries/{1}/HWMs{0}",
                         "description": "This service returns a list of hwms with a given peak summary.",
                         "id": "Peak Summary HWMs",
                         "parameters": [
@@ -1103,7 +990,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/files/{1}/hwm{0}",
+                        "uri": "/Files/{1}/HWM{0}",
                         "description": "This service returns a hwm that a given file was uploaded for.",
                         "id": "File HWM",
                         "parameters": [
@@ -1139,7 +1026,7 @@ configuration.resources =
             }]
         },
         //#endregion
-        //#region hwm quality (18)
+        //#region hwm quality (16)
         {
             "name": "HWM Quality",
             "description": "The hwm quality resource represents a hwm quality that can be added to a hwm.",
@@ -1147,7 +1034,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/hwmqualities{0}",
+                        "uri": "/HWMQualities{0}",
                         "description": "This service returns a list of hwm qualities.",
                         "id": "All HWM Qualities",
                         "parameters": [],
@@ -1155,7 +1042,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/hwmqualities/{1}{0}",
+                        "uri": "/HWMQualities/{1}{0}",
                         "description": "This service returns a hwm quality by it's ID.",
                         "id": "A HWM Quality",
                         "parameters": [
@@ -1165,7 +1052,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/hwms/{1}/Quality{0}",
+                        "uri": "/HWMs/{1}/Quality{0}",
                         "description": "This service returns a hwm quality for a hwm.",
                         "id": "HWM HWM Quality",
                         "parameters": [
@@ -1186,7 +1073,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/hwmtypes{0}",
+                        "uri": "/HWMTypes{0}",
                         "description": "This service returns a list of hwm types.",
                         "id": "All HWM Types",
                         "parameters": [],
@@ -1194,7 +1081,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/hwmtypes/{1}{0}",
+                        "uri": "/HWMTypes/{1}{0}",
                         "description": "This service returns a hwm type by it's ID.",
                         "id": "A HWM Type",
                         "parameters": [
@@ -1204,7 +1091,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/hwms/{1}/type{0}",
+                        "uri": "/HWMs/{1}/Type{0}",
                         "description": "This service returns a hwm type for a hwm.",
                         "id": "HWM HWM Type",
                         "parameters": [
@@ -1225,7 +1112,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/instrcollectconditions{0}",
+                        "uri": "/InstrCollectConditions{0}",
                         "description": "This service returns a list of instrument collection conditions.",
                         "id": "All Instrument Collect Conditions",
                         "parameters": [],
@@ -1233,7 +1120,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/instrcollectconditions/{1}{0}",
+                        "uri": "/InstrCollectConditions/{1}{0}",
                         "description": "This service returns an instrument collection condition by it's ID.",
                         "id": "An Instrument Collect Condition",
                         "parameters": [
@@ -1243,7 +1130,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/instruments/{1}/CollectCondition{0}",
+                        "uri": "/Instruments/{1}/CollectCondition{0}",
                         "description": "This service returns an instrument collection condition for a sensor.",
                         "id": "Sensor Instrument Collection Condition",
                         "parameters": [
@@ -1264,7 +1151,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/instrumentstatus{0}",
+                        "uri": "/InstrumentStatus{0}",
                         "description": "This service returns a list of instrument statuses.",
                         "id": "All Instrument Statuses",
                         "parameters": [],
@@ -1272,7 +1159,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/instrumentstatus/{1}{0}",
+                        "uri": "/InstrumentStatus/{1}{0}",
                         "description": "This service returns an instrument status by it's ID.",
                         "id": "An Instrument Status",
                         "parameters": [
@@ -1282,7 +1169,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/instruments/{1}/InstrumentStatusLog{0}",
+                        "uri": "/Instruments/{1}/InstrumentStatusLog{0}",
                         "description": "This service returns a list of all the instrument statuses that a sensor has in descending order (most recent first).",
                         "id": "Instrument Status Log",
                         "parameters": [
@@ -1292,7 +1179,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/instruments/{1}/instrumentstatus{0}",
+                        "uri": "/Instruments/{1}/InstrumentStatus{0}",
                         "description": "This service returns the most recent instrument status of a sensor.",
                         "id": "Sensor Instrument Status",
                         "parameters": [
@@ -1305,45 +1192,6 @@ configuration.resources =
             }]
         },
         //#endregion
-        //#region land owner contact (23)
-        //{
-        //    "name": "Land Owner Contact",
-        //    "description": "The land owner contact resource represents a land owner that can be associated with a site. Requires authentication.",
-        //    "methods": [{
-        //        "type": "GET",
-        //        "uriList": [
-        //            {
-        //                "uri": "/LandOwners{0}",
-        //                "description": "This service returns a list of land owners. Requires authentication.",
-        //                "id": "All Land Owners",
-        //                "parameters": [],
-        //                "availableMedia": [".xml", ".json"],
-        //                "selectedMedia": ".json"
-        //            },
-        //            {
-        //                "uri": "/LandOwners/{1}{0}",
-        //                "description": "This service returns a land owner by it's ID. Requires authentication.",
-        //                "id": "A Land Owner",
-        //                "parameters": [
-        //                   { "name": "landOwnerId", "type": "number", "description": "Id of land owner requested", "value": "" }
-        //                ],
-        //                "availableMedia": [".xml", ".json"],
-        //                "selectedMedia": ".json"
-        //            },
-        //            {
-        //                "uri": "/sites/{1}/landowner{0}",
-        //                "description": "This service returns a land owner associated with a site. Requires authentication.",
-        //                "id": "Site Land Owner",
-        //                "parameters": [
-        //                   { "name": "siteId", "type": "number", "description": "Id of the site", "value": "" }
-        //                ],
-        //                "availableMedia": [".xml", ".json"],
-        //                "selectedMedia": ".json"
-        //            }
-        //        ]
-        //    }]
-        //},
-        //#endregion
         //#region marker (24)
         {
             "name": "Marker",
@@ -1352,7 +1200,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/markers{0}",
+                        "uri": "/Markers{0}",
                         "description": "This service returns a list of markers.",
                         "id": "All Markers",
                         "parameters": [],
@@ -1360,7 +1208,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/markers/{1}{0}",
+                        "uri": "/Markers/{1}{0}",
                         "description": "This service returns a marker by it's ID.",
                         "id": "A Marker",
                         "parameters": [
@@ -1370,7 +1218,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/hwms/{1}/marker{0}",
+                        "uri": "/HWMs/{1}/Marker{0}",
                         "description": "This service returns a marker associated with a hwm.",
                         "id": "HWM Marker",
                         "parameters": [
@@ -1383,115 +1231,6 @@ configuration.resources =
             }]
         },
         //#endregion
-        //#region member (25)
-        //{
-        //    "name": "Member",
-        //    "description": "The member resource represents a member that can be the creator of an event, a site, hwm, sensor, file, and an objective point. Requires authentication.",
-        //    "methods": [{
-        //        "type": "GET",
-        //        "uriList": [
-        //            {
-        //                "uri": "/members{0}",
-        //                "description": "This service returns a list of members.Requires authentication.",
-        //                "id": "All Members",
-        //                "parameters": [],
-        //                "availableMedia": [".xml", ".json"],
-        //                "selectedMedia": ".json"
-        //            },
-        //            {
-        //                "uri": "/members/{1}{0}",
-        //                "description": "This service returns a member by it's ID. Requires authentication.",
-        //                "id": "A Member",
-        //                "parameters": [
-        //                   { "name": "memberId", "type": "number", "description": "Id of member requested", "value": "" }
-        //                ],
-        //                "availableMedia": [".xml", ".json"],
-        //                "selectedMedia": ".json"
-        //            },
-        //            {
-        //                "uri": "/members/GetMemberName/{1}{0}",
-        //                "description": "This service returns a member name. Does not require authentication.",
-        //                "id": "Member Name",
-        //                "parameters": [
-        //                   { "name": "memberId", "type": "number", "description": "Id of the member", "value": "" }
-        //                ],
-        //                "availableMedia": [".xml", ".json"],
-        //                "selectedMedia": ".json"
-        //            },
-        //            {
-        //                "uri": "/agencies/{1}/members{0}",
-        //                "description": "This service returns a list of members that are in the given agency. Requires authentication.",
-        //                "id": "Agency Members",
-        //                "parameters": [
-        //                   { "name": "agencyId", "type": "number", "description": "Id of the agency", "value": "" }
-        //                ],
-        //                "availableMedia": [".xml", ".json"],
-        //                "selectedMedia": ".json"
-        //            },
-        //            {
-        //                "uri": "/roles/{1}/members{0}",
-        //                "description": "This service returns a list of members that have the given role. Requires authentication.",
-        //                "id": "Role Members",
-        //                "parameters": [
-        //                   { "name": "roleId", "type": "number", "description": "Id of the role", "value": "" }
-        //                ],
-        //                "availableMedia": [".xml", ".json"],
-        //                "selectedMedia": ".json"
-        //            },
-        //            {
-        //                "uri": "/events/{1}/eventcoordinator{0}",
-        //                "description": "This service returns a member that is the coordinator for an event. Requires authentication.",
-        //                "id": "Event Coordinator",
-        //                "parameters": [
-        //                   { "name": "eventId", "type": "number", "description": "Id of the event", "value": "" }
-        //                ],
-        //                "availableMedia": [".xml", ".json"],
-        //                "selectedMedia": ".json"
-        //            },
-        //            {
-        //                "uri": "/approvals/{1}/approvingofficial{0}",
-        //                "description": "This service returns a member that created an approval. Requires authentication.",
-        //                "id": "Approving Official",
-        //                "parameters": [
-        //                   { "name": "approvalId", "type": "number", "description": "Id of the approval", "value": "" }
-        //                ],
-        //                "availableMedia": [".xml", ".json"],
-        //                "selectedMedia": ".json"
-        //            },
-        //            {
-        //                "uri": "/datafiles/{1}/processor{0}",
-        //                "description": "This service returns a member that processed a data file. Requires authentication.",
-        //                "id": "Data File Processor",
-        //                "parameters": [
-        //                   { "name": "dataFileId", "type": "number", "description": "Id of the data file", "value": "" }
-        //                ],
-        //                "availableMedia": [".xml", ".json"],
-        //                "selectedMedia": ".json"
-        //            },
-        //            {
-        //                "uri": "/peaksummaries/{1}/processor{0}",
-        //                "description": "This service returns a member that created a peak summary. Requires authentication.",
-        //                "id": "Peak Summary Processor",
-        //                "parameters": [
-        //                   { "name": "peakSummaryId", "type": "number", "description": "Id of the peak summary", "value": "" }
-        //                ],
-        //                "availableMedia": [".xml", ".json"],
-        //                "selectedMedia": ".json"
-        //            },
-        //            {
-        //                "uri": "/events/{1}/members{0}",
-        //                "description": "This service returns a list of members that have deployed or retrieved a sensor, and/or flagged or surveyed a hwm for an event. Requires authentication.",
-        //                "id": "Event Members",
-        //                "parameters": [
-        //                   { "name": "eventId", "type": "number", "description": "Id of the event", "value": "" }
-        //                ],
-        //                "availableMedia": [".xml", ".json"],
-        //                "selectedMedia": ".json"
-        //            }
-        //        ]
-        //    }]
-        //},
-        //#endregion
         //#region network name (26)
         {
             "name": "Network Name",
@@ -1500,7 +1239,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/networknames{0}",
+                        "uri": "/NetworkNames{0}",
                         "description": "This service returns a list of network names.",
                         "id": "All Network Names",
                         "parameters": [],
@@ -1508,7 +1247,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/networknames/{1}{0}",
+                        "uri": "/NetworkNames/{1}{0}",
                         "description": "This service returns a network name by it's ID.",
                         "id": "A Network Name",
                         "parameters": [
@@ -1518,7 +1257,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/sites/{1}/networknames{0}",
+                        "uri": "/Sites/{1}/NetworkNames{0}",
                         "description": "This service returns a list of network names associated with a site.",
                         "id": "Site Network Names",
                         "parameters": [
@@ -1539,7 +1278,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/networktypes{0}",
+                        "uri": "/NetworkTypes{0}",
                         "description": "This service returns a list of network types.",
                         "id": "All Network Types",
                         "parameters": [],
@@ -1547,7 +1286,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/networktypes/{1}{0}",
+                        "uri": "/NetworkTypes/{1}{0}",
                         "description": "This service returns a network type by it's ID.",
                         "id": "A Network Type",
                         "parameters": [
@@ -1557,7 +1296,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/sites/{1}/networktypes{0}",
+                        "uri": "/Sites/{1}/NetworkTypes{0}",
                         "description": "This service returns a list of network types associated with a site.",
                         "id": "Site Network Types",
                         "parameters": [
@@ -1578,7 +1317,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/objectivepoints{0}",
+                        "uri": "/ObjectivePoints{0}",
                         "description": "This service returns a list of objective points.",
                         "id": "All Objective Points",
                         "parameters": [],
@@ -1587,7 +1326,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/objectivepoints/{1}{0}",
+                        "uri": "/ObjectivePoints/{1}{0}",
                         "description": "This service returns an objective point by it's ID.",
                         "id": "An Objective Point",
                         "parameters": [
@@ -1598,7 +1337,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/verticaldatums/{1}/objectivepoints{0}",
+                        "uri": "/VerticalDatums/{1}/ObjectivePoints{0}",
                         "description": "This service returns a list of objective points with a vertical datum.",
                         "id": "Vertical Datum Objective Point",
                         "parameters": [
@@ -1609,7 +1348,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/sites/{1}/objectivepoints{0}",
+                        "uri": "/Sites/{1}/ObjectivePoints{0}",
                         "description": "This service returns a list of objective points at a site.",
                         "id": "Site Objective Point",
                         "parameters": [
@@ -1631,7 +1370,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/optypes{0}",
+                        "uri": "/OPTypes{0}",
                         "description": "This service returns a list of objective point types.",
                         "id": "All Objective Point Types",
                         "parameters": [],
@@ -1639,7 +1378,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/optypes/{1}{0}",
+                        "uri": "/OPTypes/{1}{0}",
                         "description": "This service returns a objective point type by it's ID.",
                         "id": "An Objective Point Type",
                         "parameters": [
@@ -1649,7 +1388,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/objectivepoints/{1}/optype{0}",
+                        "uri": "/ObjectivePoints/{1}/OPType{0}",
                         "description": "This service returns an objective point type for a objective point.",
                         "id": "Objective Point OP Type",
                         "parameters": [
@@ -1670,7 +1409,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/opcontrolidentifiers{0}",
+                        "uri": "/OPControlIdentifiers{0}",
                         "description": "This service returns a list of op control identifiers.",
                         "id": "All OP Control Identifiers",
                         "parameters": [],
@@ -1678,7 +1417,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/opcontrolidentifiers/{1}{0}",
+                        "uri": "/OPControlIdentifiers/{1}{0}",
                         "description": "This service returns an op control identifier by it's ID.",
                         "id": "An OP Control Identifier",
                         "parameters": [
@@ -1688,7 +1427,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/objectivepoints/{1}/opcontrols{0}",
+                        "uri": "/ObjectivePoints/{1}/OPControls{0}",
                         "description": "This service returns a list of op control identifiers for an objective point.",
                         "id": "Objective Point OP Control Identifiers",
                         "parameters": [
@@ -1709,7 +1448,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/opmeasurements{0}",
+                        "uri": "/OPMeasurements{0}",
                         "description": "This service returns a list of op measurements.",
                         "id": "All OP Measurements",
                         "parameters": [],
@@ -1717,7 +1456,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/opmeasurements/{1}{0}",
+                        "uri": "/OPMeasurements/{1}{0}",
                         "description": "This service returns an op measurement by it's ID.",
                         "id": "An OP Measurement",
                         "parameters": [
@@ -1727,7 +1466,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/objectivepoints/{1}/opmeasurements{0}",
+                        "uri": "/ObjectivePoints/{1}/OPMeasurements{0}",
                         "description": "This service returns a list of op measurements for an objective point.",
                         "id": "Objective Point OP Measurements",
                         "parameters": [
@@ -1737,7 +1476,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/instrumentstatus/{1}/opmeasurements{0}",
+                        "uri": "/InstrumentStatus/{1}/OPMeasurements{0}",
                         "description": "This service returns a list of op measurements for an instrument status.",
                         "id": "Instrument Status OP Measurements",
                         "parameters": [
@@ -1758,7 +1497,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/objectivepointqualities{0}",
+                        "uri": "/ObjectivePointQualities{0}",
                         "description": "This service returns a list of op qualities.",
                         "id": "All OP Qualities",
                         "parameters": [],
@@ -1766,7 +1505,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/objectivepointqualities/{1}{0}",
+                        "uri": "/ObjectivePointQualities/{1}{0}",
                         "description": "This service returns an op quality by it's ID.",
                         "id": "An OP Quality",
                         "parameters": [
@@ -1776,7 +1515,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/objectivepoints/{1}/quality{0}",
+                        "uri": "/ObjectivePoints/{1}/Quality{0}",
                         "description": "This service returns an op quality for an objective point.",
                         "id": "Objective Point OP Quality",
                         "parameters": [
@@ -1797,7 +1536,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/peaksummaries{0}",
+                        "uri": "/PeakSummaries{0}",
                         "description": "This service returns a list of peak summaries.",
                         "id": "All Peak Summaries",
                         "parameters": [],
@@ -1805,7 +1544,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/peaksummaries/{1}{0}",
+                        "uri": "/PeakSummaries/{1}{0}",
                         "description": "This service returns a peak summary by it's ID.",
                         "id": "A Peak Summary",
                         "parameters": [
@@ -1815,7 +1554,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/hwms/{1}/peaksummary{0}",
+                        "uri": "/HWMs/{1}/PeakSummary{0}",
                         "description": "This service returns a peak summary for a hwm. If unauthorized, only approved hwm will return a peak.",
                         "id": "HWM Peak Summary",
                         "parameters": [
@@ -1825,7 +1564,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/datafiles/{1}/peaksummary{0}",
+                        "uri": "/DataFiles/{1}/PeakSummary{0}",
                         "description": "This service returns an peak summary for a data file. If unauthorized, only approved data file will return a peak.",
                         "id": "Data File Peak Summary",
                         "parameters": [
@@ -1835,7 +1574,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/events/{1}/peaksummaries{0}",
+                        "uri": "/Events/{1}/PeakSummaries{0}",
                         "description": "This service returns a list of peak summaries for an event.",
                         "id": "Event Peak Summaries",
                         "parameters": [
@@ -1845,7 +1584,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/sites/{1}/peaksummaries{0}",
+                        "uri": "/Sites/{1}/PeakSummaries{0}",
                         "description": "This service returns a list of peak summaries for a site.",
                         "id": "Site Peak Summaries",
                         "parameters": [
@@ -1855,7 +1594,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/sites/{1}/peaksummaryview{0}",
+                        "uri": "/Sites/{1}/PeakSummaryView{0}",
                         "description": "This service returns a list of peak summaries for a site including event information.",
                         "id": "Site Peak Summary View",
                         "parameters": [
@@ -1893,7 +1632,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/reportingmetrics{0}",
+                        "uri": "/ReportingMetrics{0}",
                         "description": "This service returns a list of reporting metrics.",
                         "id": "All Reports",
                         "parameters": [],
@@ -1901,7 +1640,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/reportingmetrics/{1}{0}",
+                        "uri": "/ReportingMetrics/{1}{0}",
                         "description": "This service returns a reporting metrics by it's ID.",
                         "id": "A Report",
                         "parameters": [
@@ -1911,7 +1650,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/members/{1}/reports{0}",
+                        "uri": "/Members/{1}/Reports{0}",
                         "description": "This service returns a list of report metrics that a member submitted.",
                         "id": "Member Reports",
                         "parameters": [
@@ -1921,7 +1660,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/events/{1}/reports{0}",
+                        "uri": "/Events/{1}/Reports{0}",
                         "description": "This service returns a list of report metrics that were submitted for an event.",
                         "id": "Event Reports",
                         "parameters": [
@@ -1931,7 +1670,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/reportingmetrics/reportsbydate{0}?Date={1}",
+                        "uri": "/ReportingMetrics/ReportsByDate{0}?Date={1}",
                         "description": "This service returns a list of report metrics that were submitted on a given date.",
                         "id": "Date Reports",
                         "parameters": [
@@ -1941,7 +1680,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/reportingmetrics{0}?Event={1}&State={2}",
+                        "uri": "/ReportingMetrics{0}?Event={1}&State={2}",
                         "description": "This service returns a list of report metrics that were submitted for an event within a given state.",
                         "id": "Event State Reports",
                         "parameters": [
@@ -1952,7 +1691,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/reportingmetrics/filteredreports{0}?Event={2}&States={3}&Date={1}",
+                        "uri": "/ReportingMetrics/FilteredReports{0}?Event={2}&States={3}&Date={1}",
                         "description": "This service returns a list of report metrics that meet the passed-in parameters.",
                         "id": "Filtered Reports",
                         "parameters": [
@@ -1997,7 +1736,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/roles{0}",
+                        "uri": "/Roles{0}",
                         "description": "This service returns a list of roles.",
                         "id": "All Roles",
                         "parameters": [],
@@ -2005,7 +1744,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/roles/{1}{0}",
+                        "uri": "/Roles/{1}{0}",
                         "description": "This service returns a role by it's ID.",
                         "id": "A Role",
                         "parameters": [
@@ -2015,7 +1754,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/members/{1}/role{0}",
+                        "uri": "/Members/{1}/Role{0}",
                         "description": "This service returns the role for a member.",
                         "id": "Member Role",
                         "parameters": [
@@ -2036,7 +1775,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/instruments{0}",
+                        "uri": "/Instruments{0}",
                         "description": "This service returns a list of sensors.",
                         "id": "All Sensors",
                         "parameters": [],
@@ -2044,7 +1783,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/instruments/{1}{0}",
+                        "uri": "/Instruments/{1}{0}",
                         "description": "This service returns a sensor by it's ID.",
                         "id": "A Sensor",
                         "parameters": [
@@ -2054,7 +1793,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/files/{1}/instrument{0}",
+                        "uri": "/Files/{1}/Instrument{0}",
                         "description": "This service returns a sensor that the given file was uploaded for.",
                         "id": "File Sensor",
                         "parameters": [
@@ -2064,7 +1803,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/instrumentstatus/{1}/instrument{0}",
+                        "uri": "/InstrumentStatus/{1}/Instrument{0}",
                         "description": "This service returns a sensor associated with an instrument status.",
                         "id": "Instrument Status Sensor",
                         "parameters": [
@@ -2074,7 +1813,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/datafiles/{1}/instrument{0}",
+                        "uri": "/DataFiles/{1}/Instrument{0}",
                         "description": "This service returns a sensor for a data file.",
                         "id": "Data File Sensor",
                         "parameters": [
@@ -2084,7 +1823,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/sites/{1}/instruments{0}",
+                        "uri": "/Sites/{1}/Instruments{0}",
                         "description": "This service returns a list of sensors that were deployed at a site.",
                         "id": "Site Sensors",
                         "parameters": [
@@ -2094,7 +1833,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/sensortypes/{1}/instruments{0}",
+                        "uri": "/SensorTypes/{1}/Instruments{0}",
                         "description": "This service returns a list of sensors with the given sensor type.",
                         "id": "Sensor Type Sensors",
                         "parameters": [
@@ -2104,7 +1843,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/sensorbrands/{1}/instruments{0}",
+                        "uri": "/SensorBrands/{1}/Instruments{0}",
                         "description": "This service returns a list of sensors with the given sensor brand.",
                         "id": "Sensor Brand Sensors",
                         "parameters": [
@@ -2114,7 +1853,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/deploymenttypes/{1}/instruments{0}",
+                        "uri": "/DeploymentTypes/{1}/Instruments{0}",
                         "description": "This service returns a list of sensors with the given deployment type.",
                         "id": "Deployment Type Sensors",
                         "parameters": [
@@ -2124,7 +1863,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/events/{1}/instruments{0}",
+                        "uri": "/Events/{1}/Instruments{0}",
                         "description": "This service returns a list of sensors that were deployed for an event.",
                         "id": "Event Sensors",
                         "parameters": [
@@ -2134,7 +1873,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/sites/{1}/instruments{0}?Event={2}",
+                        "uri": "/Sites/{1}/Instruments{0}?Event={2}",
                         "description": "This service returns a list of sensors deployed at a given site for an event.",
                         "id": "Site Event Sensors",
                         "parameters": [
@@ -2183,7 +1922,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/instruments/{1}/fullinstrument{0}",
+                        "uri": "/Instruments/{1}/FullInstrument{0}",
                         "description": "This service returns a list of sensors with their associated sensor statuses (instrument_status). (response can only be returned as .json)",
                         "id": "Full Sensors",
                         "parameters": [
@@ -2193,7 +1932,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/sites/{1}/sitefullinstrumentlist{0}",
+                        "uri": "/Sites/{1}/SiteFullInstrumentList{0}",
                         "description": "This service returns a list of sensors with their associated sensor statuses (instrument_status) that were deployed at a site. (response can only be returned as .json).",
                         "id": "Site Full Sensors",
                         "parameters": [
@@ -2214,7 +1953,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/sensorbrands{0}",
+                        "uri": "/SensorBrands{0}",
                         "description": "This service returns a list of sensor brands.",
                         "id": "All Sensor Brands",
                         "parameters": [],
@@ -2222,7 +1961,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/sensorbrands/{1}{0}",
+                        "uri": "/SensorBrands/{1}{0}",
                         "description": "This service returns a sensor brand by it's ID.",
                         "id": "A Sensor Brand",
                         "parameters": [
@@ -2232,7 +1971,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/instruments/{1}/sensorbrand{0}",
+                        "uri": "/Instruments/{1}/SensorBrand{0}",
                         "description": "This service returns the sensor brand for a sensor.",
                         "id": "Sensor Sensor Brand",
                         "parameters": [
@@ -2253,7 +1992,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/sensortypes{0}",
+                        "uri": "/SensorTypes{0}",
                         "description": "This service returns a list of sensor types. Includes a list of deployment types for each sensor type.",
                         "id": "All Sensor Types",
                         "parameters": [],
@@ -2261,7 +2000,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/sensortypes/{1}{0}",
+                        "uri": "/SensorTypes/{1}{0}",
                         "description": "This service returns a sensor type by it's ID.",
                         "id": "A Sensor Type",
                         "parameters": [
@@ -2271,7 +2010,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/instruments/{1}/sensortype{0}",
+                        "uri": "/Instruments/{1}/SensorType{0}",
                         "description": "This service returns the sensor type for a sensor.",
                         "id": "Sensor Sensor type",
                         "parameters": [
@@ -2281,7 +2020,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/deploymenttypes/{1}/sensortype{0}",
+                        "uri": "/DeploymentTypes/{1}/SensorType{0}",
                         "description": "This service returns the sensor type for a deployment type.",
                         "id": "Deployment Type Sensor Type",
                         "parameters": [
@@ -2302,7 +2041,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/sites{0}",
+                        "uri": "/Sites{0}",
                         "description": "This service returns a list of sites.",
                         "id": "All Sites",
                         "parameters": [],
@@ -2311,7 +2050,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/sites/{1}{0}",
+                        "uri": "/Sites/{1}{0}",
                         "description": "This service returns a site by it's ID.",
                         "id": "A Site",
                         "parameters": [
@@ -2322,7 +2061,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/sites/Search{0}?bySiteNo={1}&bySiteName={2}&bySiteId={3}",
+                        "uri": "/Sites/Search{0}?bySiteNo={1}&bySiteName={2}&bySiteId={3}",
                         "description": "This service returns a site by the site number, site name or site id. Please provide one of the optional parameters to find the site.",
                         "id": "Site By Search",
                         "parameters": [
@@ -2335,7 +2074,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/files/{1}/site{0}",
+                        "uri": "/Files/{1}/Site{0}",
                         "description": "This service returns a site that a file was uploaded at.",
                         "id": "File Site",
                         "parameters": [
@@ -2346,7 +2085,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/objectivepoints/{1}/site{0}",
+                        "uri": "/ObjectivePoints/{1}/Site{0}",
                         "description": "This service returns a site that an objective point (datum location) was created at.",
                         "id": "Objective Point Site",
                         "parameters": [
@@ -2357,7 +2096,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/hwms/{1}/site{0}",
+                        "uri": "/HWMs/{1}/Site{0}",
                         "description": "This service returns a site that a hwm was found at.",
                         "id": "HWM Site",
                         "parameters": [
@@ -2368,7 +2107,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/instruments/{1}/site{0}",
+                        "uri": "/Instruments/{1}/Site{0}",
                         "description": "This service returns a site that an sensor was deployed at.",
                         "id": "Sensor Site",
                         "parameters": [
@@ -2379,7 +2118,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/events/{1}/sites{0}",
+                        "uri": "/Events/{1}/Sites{0}",
                         "description": "This service returns a list of sites for an event (a hwm was found here and/or a sensor was deployed here).",
                         "id": "Event Sites",
                         "parameters": [
@@ -2390,7 +2129,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/networktypes/{1}/sites{0}",
+                        "uri": "/NetworkTypes/{1}/Sites{0}",
                         "description": "This service returns a list of sites with a given network type.",
                         "id": "Network Type Sites",
                         "parameters": [
@@ -2401,7 +2140,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/networknames/{1}/sites{0}",
+                        "uri": "/NetworkNames/{1}/Sites{0}",
                         "description": "This service returns a list of sites with a given network name.",
                         "id": "Network Name Sites",
                         "parameters": [
@@ -2412,7 +2151,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/states/{1}/sites{0}",
+                        "uri": "/States/{1}/Sites{0}",
                         "description": "This service returns a list of sites within a state.",
                         "id": "State Sites",
                         "parameters": [
@@ -2423,7 +2162,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/sites{0}?Latitude={1}&Longitude={2}&Buffer={3}",
+                        "uri": "/Sites{0}?Latitude={1}&Longitude={2}&Buffer={3}",
                         "description": "This service returns a list of sites within a (optional) buffer distance using a latitude and longitude.",
                         "id": "Location Sites",
                         "parameters": [
@@ -2436,7 +2175,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/horizontaldatums/{1}/sites{0}",
+                        "uri": "/HorizontalDatums/{1}/Sites{0}",
                         "description": "This service returns a list of sites with the given horizontal datum.",
                         "id": "Horizontal Datum Sites",
                         "parameters": [
@@ -2447,7 +2186,7 @@ configuration.resources =
                         "showMap": true
                     },
                     {
-                        "uri": "/landowners/{1}/sites{0}",
+                        "uri": "/Landowners/{1}/Sites{0}",
                         "description": "This service returns a list of sites that have the given landowner associated with it.",
                         "id": "Land Ownser Sites",
                         "parameters": [
@@ -2488,7 +2227,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/sitehousings{0}",
+                        "uri": "/SiteHousings{0}",
                         "description": "This service returns a list of site housings.",
                         "id": "All Site Housings",
                         "parameters": [],
@@ -2496,7 +2235,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/sitehousings/{1}{0}",
+                        "uri": "/SiteHousings/{1}{0}",
                         "description": "This service returns a site housing by it's ID.",
                         "id": "A Site Housing",
                         "parameters": [
@@ -2506,7 +2245,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/sites/{1}/sitehousings{0}",
+                        "uri": "/Sites/{1}/SiteHousings{0}",
                         "description": "This service returns a list of site housings for a site.",
                         "id": "Site Site Housings",
                         "parameters": [
@@ -2519,55 +2258,6 @@ configuration.resources =
             }]
         },
         //#endregion
-        //#region source (40)
-        //{
-        //    "name": "Source",
-        //    "description": "The source resource represents a source that is the photo file source. Authentication is required.",
-        //    "methods": [{
-        //        "type": "GET",
-        //        "uriList": [
-        //            {
-        //                "uri": "/sources{0}",
-        //                "description": "This service returns a list of sources. Authentication is required.",
-        //                "id": "All Sources",
-        //                "parameters": [],
-        //                "availableMedia": [".xml", ".json"],
-        //                "selectedMedia": ".json"
-        //            },
-        //            {
-        //                "uri": "/sources/{1}{0}",
-        //                "description": "This service returns a source by it's ID. Authentication is required.",
-        //                "id": "A Source",
-        //                "parameters": [
-        //                   { "name": "sourceId", "type": "number", "description": "Id of source requested", "value": "" }
-        //                ],
-        //                "availableMedia": [".xml", ".json"],
-        //                "selectedMedia": ".json"
-        //            },
-        //            {
-        //                "uri": "/agencies/{1}/sources{0}",
-        //                "description": "This service returns a list of sources with the given agency. Authentication is required.",
-        //                "id": "Agency Sources",
-        //                "parameters": [
-        //                   { "name": "agencyId", "type": "number", "description": "Id of the agency", "value": "" }
-        //                ],
-        //                "availableMedia": [".xml", ".json"],
-        //                "selectedMedia": ".json"
-        //            },
-        //            {
-        //                "uri": "/files/{1}/source{0}",
-        //                "description": "This service returns a source that is the source photographer of a photo file. Authentication is required.",
-        //                "id": "File Source",
-        //                "parameters": [
-        //                   { "name": "fileId", "type": "number", "description": "Id of the file", "value": "" }
-        //                ],
-        //                "availableMedia": [".xml", ".json"],
-        //                "selectedMedia": ".json"
-        //            }
-        //        ]
-        //    }]
-        //},
-        //#endregion
         //#region state (41)
         {
             "name": "State",
@@ -2576,7 +2266,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/states{0}",
+                        "uri": "/States{0}",
                         "description": "This service returns a list of states.",
                         "id": "All States",
                         "parameters": [],
@@ -2584,7 +2274,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/states/{1}{0}",
+                        "uri": "/States/{1}{0}",
                         "description": "This service returns a state by it's ID.",
                         "id": "A State",
                         "parameters": [
@@ -2594,7 +2284,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/sites/{1}/states{0}",
+                        "uri": "/Sites/{1}/States{0}",
                         "description": "This service returns a list of states that have sites.",
                         "id": "Site States",
                         "parameters": [],
@@ -2613,7 +2303,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/statustypes{0}",
+                        "uri": "/StatusTypes{0}",
                         "description": "This service returns a list of status types.",
                         "id": "All Status Types",
                         "parameters": [],
@@ -2621,7 +2311,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/statustypes/{1}{0}",
+                        "uri": "/StatusTypes/{1}{0}",
                         "description": "This service returns a status type by it's ID.",
                         "id": "A Status Type",
                         "parameters": [
@@ -2631,7 +2321,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/instrumentstatus/{1}/status{0}",
+                        "uri": "/InstrumentStatus/{1}/Status{0}",
                         "description": "This service returns a status type for the given instrument status (each sensor can have multiple instrument statuses, ex: deployed, retrieved).",
                         "id": "Instrument Status Status Type",
                         "parameters": [
@@ -2652,7 +2342,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/verticalmethods{0}",
+                        "uri": "/VerticalMethods{0}",
                         "description": "This service returns a list of vertical collection methods.",
                         "id": "All Vertical Collection Methods",
                         "parameters": [],
@@ -2660,7 +2350,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/verticalmethods/{1}{0}",
+                        "uri": "/VerticalMethods/{1}{0}",
                         "description": "This service returns a vertical collection method by it's ID.",
                         "id": "A Vertical Collection Method",
                         "parameters": [
@@ -2670,7 +2360,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/hwms/{1}/verticalmethod{0}",
+                        "uri": "/HWMs/{1}/VerticalMethod{0}",
                         "description": "This service returns the vertical collection method for a hwm.",
                         "id": "HWM Vertical Collection Method",
                         "parameters": [
@@ -2691,7 +2381,7 @@ configuration.resources =
                 "type": "GET",
                 "uriList": [
                     {
-                        "uri": "/verticaldatums{0}",
+                        "uri": "/VerticalDatums{0}",
                         "description": "This service returns a list of vertical datums.",
                         "id": "All Vertical Datums",
                         "parameters": [],
@@ -2699,7 +2389,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/verticaldatums/{1}{0}",
+                        "uri": "/VerticalDatums/{1}{0}",
                         "description": "This service returns a vertical datum by it's ID.",
                         "id": "A Vertical Datum",
                         "parameters": [
@@ -2709,7 +2399,7 @@ configuration.resources =
                         "selectedMedia": ".json"
                     },
                     {
-                        "uri": "/hwms/{1}/vdatum{0}",
+                        "uri": "/HWMs/{1}/vDatum{0}",
                         "description": "This service returns the vertical datum for a hwm",
                         "id": "HWM Vertical Datum",
                         "parameters": [
@@ -2723,6 +2413,8 @@ configuration.resources =
         }
         //#endregion
     ]
+
+
 configuration.basemaps =
 {
     national: {

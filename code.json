@@ -1,0 +1,48 @@
+[
+  {
+    "name": "STNWebserviceDocumentation",
+    "organization": "U.S. Geological Survey",
+    "description": "Web services documentation application for Short-Term Network (STN) web services",
+    "version": "v0.0.0",
+    "status": "Archival"
+
+    "permissions": {
+      "usageType": "openSource",
+      "licenses": [
+        {
+          "name": "Public Domain",
+          "URL": "https://github.com/usgs/STNWebserviceDocumentation/blob/master/LICENSE.md"
+        }
+      ]
+    },
+
+    "homepageURL": "http://stn.wim.usgs.gov/STNServices/",
+    "downloadURL": "https://github.com/USGS-WiM/STNWebserviceDocumentation/archive/master.zip",
+    "disclaimerURL": "https://github.com/USGS-WiM/STNWebserviceDocumentation/blob/master/DISCLAIMER.md",
+    "repositoryUrl": "https://github.com/USGS-WiM/STNWebserviceDocumentation",
+    "vcs": "git",
+
+    "laborHours": null,
+
+    "tags": [
+      "stn",
+      "short-term network",
+      "web service",
+      "documentation"
+    ],
+
+    "languages": [
+      "javascript",
+      "typescript"
+    ],
+
+    "contact": {
+      "name": "Tonia Roddick",
+      "email": "troddick@usgs.gov"
+    },
+
+    "date": {
+      "metadataLastUpdated": "2018-02-20"
+    }
+  }
+]

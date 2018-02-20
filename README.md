@@ -1,12 +1,12 @@
-﻿# stn web service descriptions
+## Update, 2018-02-20: Deprecated 
+### This repo has been superceded by the STNServicesDocumentation repo and is no longer being actively maintained. 
+
+# stn web service descriptions
 
 > Describes the REST endpoint for STN Web Services.  It is an angular application that uses angular-ui-mobile
 
 > Build environment: Visual Studio 2013 with TypeScript 1.4
 
-
-## Update, 2018-02-20: Deprecated 
-### This repo hasa been superceded by the STNServicesDocumentation repo and is no longer being actively maintained. 
 
 ## Project setup
 
